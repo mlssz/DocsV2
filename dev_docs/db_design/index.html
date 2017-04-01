@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-04-01 Sat 20:59 -->
+<!-- 2017-04-01 Sat 21:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Documents</title>
@@ -179,7 +179,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" title="Standard" href="/statics/worg.css" type="text/css">
+<link rel="stylesheet" title="Standard" href="/DocsV2/statics/worg.css" type="text/css">
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -234,29 +234,34 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgffd4603">1. Public<sub>Infos</sub></a>
+<li><a href="#org319771f">1. collections</a>
 <ul>
-<li><a href="#orgb2e0c36">1.1. collections</a>
+<li><a href="#org51d032b">1.1. repositries</a>
 <ul>
-<li><a href="#org912c3f1">1.1.1. repositries</a></li>
-<li><a href="#orgce080b9">1.1.2. materials</a></li>
-<li><a href="#org0361c9c">1.1.3. migrations</a></li>
-<li><a href="#orgd03f2f7">1.1.4. tasks</a></li>
-<li><a href="#org8035303">1.1.5. exportinfos</a></li>
-<li><a href="#org692cd74">1.1.6. staffs</a></li>
+<li><a href="#orgad05a4a">1.1.1. locations Object</a></li>
 </ul>
 </li>
+<li><a href="#org0a31342">1.2. materials</a>
+<ul>
+<li><a href="#org75df53f">1.2.1. status</a></li>
+</ul>
+</li>
+<li><a href="#orgf6c6aeb">1.3. migrations</a></li>
+<li><a href="#orge66cc74">1.4. tasks</a>
+<ul>
+<li><a href="#orgfe6e004">1.4.1. action</a></li>
+</ul>
+</li>
+<li><a href="#orgdbdc0a0">1.5. exportinfos</a></li>
+<li><a href="#org31e2792">1.6. staffs</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgffd4603" class="outline-2">
-<h2 id="orgffd4603"><span class="section-number-2">1</span> Public<sub>Infos</sub></h2>
+<div id="outline-container-org319771f" class="outline-2">
+<h2 id="org319771f"><span class="section-number-2">1</span> collections</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-orgb2e0c36" class="outline-3">
-<h3 id="orgb2e0c36"><span class="section-number-3">1.1</span> collections</h3>
-<div class="outline-text-3" id="text-1-1">
 <blockquote>
 <p>
 ps1: 请用utc时间储存Date类型数据
@@ -280,9 +285,9 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 </blockquote>
 </div>
 
-<div id="outline-container-org912c3f1" class="outline-4">
-<h4 id="org912c3f1"><span class="section-number-4">1.1.1</span> repositries</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-org51d032b" class="outline-3">
+<h3 id="org51d032b"><span class="section-number-3">1.1</span> repositries</h3>
+<div class="outline-text-3" id="text-1-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -335,7 +340,9 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 </table>
 </div>
 
-<ol class="org-ol"><li><a id="orgafd57d6"></a>locations Object<br /><div class="outline-text-5" id="text-1-1-1-1">
+<div id="outline-container-orgad05a4a" class="outline-4">
+<h4 id="orgad05a4a"><span class="section-number-4">1.1.1</span> locations Object</h4>
+<div class="outline-text-4" id="text-1-1-1">
 <p>
 键为 location label， 值为该location的具体信息
 </p>
@@ -356,12 +363,13 @@ e.g.
 <span style="color: #AE81FF;">}</span>
 </pre>
 </div>
-</div></li></ol>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orgce080b9" class="outline-4">
-<h4 id="orgce080b9"><span class="section-number-4">1.1.2</span> materials</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-org0a31342" class="outline-3">
+<h3 id="org0a31342"><span class="section-number-3">1.2</span> materials</h3>
+<div class="outline-text-3" id="text-1-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -477,7 +485,9 @@ e.g.
 </table>
 </div>
 
-<ol class="org-ol"><li><a id="orge7a9bb1"></a>status<br /><div class="outline-text-5" id="text-1-1-2-1">
+<div id="outline-container-org75df53f" class="outline-4">
+<h4 id="org75df53f"><span class="section-number-4">1.2.1</span> status</h4>
+<div class="outline-text-4" id="text-1-2-1">
 <ul class="org-ul">
 <li>1 开头为位置正确
 <ul class="org-ul">
@@ -502,12 +512,13 @@ e.g.
 <li>400 : 物资找不到（一般为识别满损坏）</li>
 </ul></li>
 </ul>
-</div></li></ol>
+</div>
+</div>
 </div>
 
-<div id="outline-container-org0361c9c" class="outline-4">
-<h4 id="org0361c9c"><span class="section-number-4">1.1.3</span> migrations</h4>
-<div class="outline-text-4" id="text-1-1-3">
+<div id="outline-container-orgf6c6aeb" class="outline-3">
+<h3 id="orgf6c6aeb"><span class="section-number-3">1.3</span> migrations</h3>
+<div class="outline-text-3" id="text-1-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -568,9 +579,9 @@ e.g.
 </div>
 </div>
 
-<div id="outline-container-orgd03f2f7" class="outline-4">
-<h4 id="orgd03f2f7"><span class="section-number-4">1.1.4</span> tasks</h4>
-<div class="outline-text-4" id="text-1-1-4">
+<div id="outline-container-orge66cc74" class="outline-3">
+<h3 id="orge66cc74"><span class="section-number-3">1.4</span> tasks</h3>
+<div class="outline-text-3" id="text-1-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -665,7 +676,9 @@ e.g.
 </table>
 </div>
 
-<ol class="org-ol"><li><a id="org5f34b73"></a>action<br /><div class="outline-text-5" id="text-1-1-4-1">
+<div id="outline-container-orgfe6e004" class="outline-4">
+<h4 id="orgfe6e004"><span class="section-number-4">1.4.1</span> action</h4>
+<div class="outline-text-4" id="text-1-4-1">
 <ul class="org-ul">
 <li>5 开头为移动
 <ul class="org-ul">
@@ -679,12 +692,13 @@ e.g.
 <li>601 ：解决物资摆放方式异常或识别码损坏而造成系统无法识别的问题</li>
 </ul></li>
 </ul>
-</div></li></ol>
+</div>
+</div>
 </div>
 
-<div id="outline-container-org8035303" class="outline-4">
-<h4 id="org8035303"><span class="section-number-4">1.1.5</span> exportinfos</h4>
-<div class="outline-text-4" id="text-1-1-5">
+<div id="outline-container-orgdbdc0a0" class="outline-3">
+<h3 id="orgdbdc0a0"><span class="section-number-3">1.5</span> exportinfos</h3>
+<div class="outline-text-3" id="text-1-5">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -738,9 +752,9 @@ e.g.
 </div>
 </div>
 
-<div id="outline-container-org692cd74" class="outline-4">
-<h4 id="org692cd74"><span class="section-number-4">1.1.6</span> staffs</h4>
-<div class="outline-text-4" id="text-1-1-6">
+<div id="outline-container-org31e2792" class="outline-3">
+<h3 id="org31e2792"><span class="section-number-3">1.6</span> staffs</h3>
+<div class="outline-text-3" id="text-1-6">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -816,11 +830,10 @@ e.g.
 </div>
 </div>
 </div>
-</div>
 <div id="postamble" class="status">
 <p class="date">Date: 2017-04-01 Sat 00:00</p>
 <p class="author">Author: Mephis Pheies</p>
-<p class="date">Created: 2017-04-01 Sat 20:59</p>
+<p class="date">Created: 2017-04-01 Sat 21:11</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
