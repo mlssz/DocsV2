@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-04-01 Sat 21:29 -->
+<!-- 2017-04-02 Sun 11:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Documents</title>
@@ -234,33 +234,33 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc059e77">1. collections</a>
+<li><a href="#org82858e3">1. collections</a>
 <ul>
-<li><a href="#org7699fc8">1.1. repositries</a>
+<li><a href="#org560810e">1.1. repositries</a>
 <ul>
-<li><a href="#org830cd87">1.1.1. locations Object</a></li>
+<li><a href="#org97e20d9">1.1.1. locations Object</a></li>
 </ul>
 </li>
-<li><a href="#org3433f1d">1.2. materials</a>
+<li><a href="#org780e1d0">1.2. materials</a>
 <ul>
-<li><a href="#org6d06cc3">1.2.1. status</a></li>
+<li><a href="#org12354d8">1.2.1. status</a></li>
 </ul>
 </li>
-<li><a href="#org7e1bcc6">1.3. migrations</a></li>
-<li><a href="#org28d856c">1.4. tasks</a>
+<li><a href="#org3385647">1.3. migrations</a></li>
+<li><a href="#orgae54163">1.4. tasks</a>
 <ul>
-<li><a href="#orgb211454">1.4.1. action</a></li>
+<li><a href="#org25756ec">1.4.1. action</a></li>
 </ul>
 </li>
-<li><a href="#orge379eea">1.5. exportinfos</a></li>
-<li><a href="#orgf669996">1.6. staffs</a></li>
+<li><a href="#org8dc96e7">1.5. exportinfos</a></li>
+<li><a href="#orga6018bb">1.6. staffs</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc059e77" class="outline-2">
-<h2 id="orgc059e77"><span class="section-number-2">1</span> collections</h2>
+<div id="outline-container-org82858e3" class="outline-2">
+<h2 id="org82858e3"><span class="section-number-2">1</span> collections</h2>
 <div class="outline-text-2" id="text-1">
 <blockquote>
 <p>
@@ -285,8 +285,8 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 </blockquote>
 </div>
 
-<div id="outline-container-org7699fc8" class="outline-3">
-<h3 id="org7699fc8"><span class="section-number-3">1.1</span> repositries</h3>
+<div id="outline-container-org560810e" class="outline-3">
+<h3 id="org560810e"><span class="section-number-3">1.1</span> repositries</h3>
 <div class="outline-text-3" id="text-1-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -332,8 +332,8 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">locations</td>
 <td class="org-left">各位置信息</td>
 <td class="org-left">Array&lt;Object&gt;</td>
-<td class="org-right">{&#x2026;}</td>
-<td class="org-left">数组中对象格式见下方, default是39个locations</td>
+<td class="org-right">[&#x2026;]</td>
+<td class="org-left">数组中对象格式见下方, default是44个locations</td>
 </tr>
 
 <tr>
@@ -347,35 +347,33 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 </table>
 </div>
 
-<div id="outline-container-org830cd87" class="outline-4">
-<h4 id="org830cd87"><span class="section-number-4">1.1.1</span> locations Object</h4>
+<div id="outline-container-org97e20d9" class="outline-4">
+<h4 id="org97e20d9"><span class="section-number-4">1.1.1</span> locations Object</h4>
 <div class="outline-text-4" id="text-1-1-1">
-<p>
-键为 location label， 值为该location的具体信息
-</p>
-
 <p>
 e.g.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-json"><span style="color: #AE81FF;">{</span>
-  "<span style="color: #AE81FF;">2</span>" : <span style="color: #66D9EF;">{</span>
-    <span style="color: #F92672;">"available_height"</span>: <span style="color: #AE81FF;">2</span> , // Number          , &#35813;&#20301;&#32622;&#21097;&#20313;&#30340;&#39640;&#24230;&#12290;
-    <span style="color: #F92672;">"is_top_full"</span>: <span style="color: #AE81FF;">true</span>,    // Boolean         , &#26368;&#39030;&#23618;&#26159;&#21542;&#28385;
-    <span style="color: #F92672;">"materials"</span>: <span style="color: #A6E22E;">[</span> ... <span style="color: #A6E22E;">]</span>,   // Array&lt;ObjectId&gt; , &#23384;&#25918;&#22312;&#35813;&#20301;&#32622;&#30340;&#29289;&#36164;
-  <span style="color: #66D9EF;">}</span>,
+<pre class="src src-json"><span style="color: #3a81c3;">[</span>
+  <span style="color: #6c3163;">{</span>
+    <span style="color: #3a81c3; font-weight: bold;">"id"</span>: <span style="color: #4e3163;">1</span>,                // Number          , location id, &#35813;&#20540;&#29992;&#20110;&#23450;&#20301;, &#39034;&#26102;&#38024;&#31639;&#65288;&#8220;<span style="color: #4e3163;">17</span>&#8221; id &#20026; <span style="color: #4e3163;">1</span>&#65289;
+    <span style="color: #3a81c3; font-weight: bold;">"labal"</span>: <span style="color: #2d9574;">[</span><span style="color: #4e3163;">1</span>, "<span style="color: #4e3163;">31</span>"<span style="color: #2d9574;">]</span>,      // &#35813;&#20540;&#20165;&#29992;&#20110;&#26174;&#31034;&#65292;&#26681;&#25454;&#25991;&#26723;&#22270;&#65292;&#20998;&#22235;&#20010;&#22823;&#22359;&#65292;&#35813;&#20540;&#31532;&#19968;&#20010;&#20803;&#32032;&#34920;&#31034;&#31532;&#20960;&#22359;&#65288;&#39034;&#26102;&#38024;&#31639;&#65289;&#65292;&#31532;&#20108;&#20010;&#20803;&#32032;&#20026;&#26631;&#35760;
+    <span style="color: #3a81c3; font-weight: bold;">"available_height"</span>: <span style="color: #4e3163;">2</span> , // Number          , &#35813;&#20301;&#32622;&#21097;&#20313;&#30340;&#39640;&#24230;&#12290;
+    <span style="color: #3a81c3; font-weight: bold;">"is_top_full"</span>: <span style="color: #4e3163;">true</span>,    // Boolean         , &#26368;&#39030;&#23618;&#26159;&#21542;&#28385;
+    <span style="color: #3a81c3; font-weight: bold;">"materials"</span>: <span style="color: #2d9574;">[</span> ... <span style="color: #2d9574;">]</span>,   // Array&lt;ObjectId&gt; , &#23384;&#25918;&#22312;&#35813;&#20301;&#32622;&#30340;&#29289;&#36164;
+  <span style="color: #6c3163;">}</span>,
 
   ...
-<span style="color: #AE81FF;">}</span>
+<span style="color: #3a81c3;">]</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org3433f1d" class="outline-3">
-<h3 id="org3433f1d"><span class="section-number-3">1.2</span> materials</h3>
+<div id="outline-container-org780e1d0" class="outline-3">
+<h3 id="org780e1d0"><span class="section-number-3">1.2</span> materials</h3>
 <div class="outline-text-3" id="text-1-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -476,8 +474,8 @@ e.g.
 <tr>
 <td class="org-left">location<sub>label</sub></td>
 <td class="org-left">仓库中位置</td>
-<td class="org-left">String</td>
-<td class="org-right">""</td>
+<td class="org-left">Number</td>
+<td class="org-right">0</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -508,8 +506,8 @@ e.g.
 </table>
 </div>
 
-<div id="outline-container-org6d06cc3" class="outline-4">
-<h4 id="org6d06cc3"><span class="section-number-4">1.2.1</span> status</h4>
+<div id="outline-container-org12354d8" class="outline-4">
+<h4 id="org12354d8"><span class="section-number-4">1.2.1</span> status</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <ul class="org-ul">
 <li>1 开头为位置正确
@@ -539,8 +537,8 @@ e.g.
 </div>
 </div>
 
-<div id="outline-container-org7e1bcc6" class="outline-3">
-<h3 id="org7e1bcc6"><span class="section-number-3">1.3</span> migrations</h3>
+<div id="outline-container-org3385647" class="outline-3">
+<h3 id="org3385647"><span class="section-number-3">1.3</span> migrations</h3>
 <div class="outline-text-3" id="text-1-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -552,7 +550,7 @@ e.g.
 
 <col  class="org-left" />
 
-<col  class="org-left" />
+<col  class="org-right" />
 
 <col  class="org-left" />
 </colgroup>
@@ -561,7 +559,7 @@ e.g.
 <th scope="col" class="org-left">key</th>
 <th scope="col" class="org-left">key in Chinese</th>
 <th scope="col" class="org-left">type</th>
-<th scope="col" class="org-left">default</th>
+<th scope="col" class="org-right">default</th>
 <th scope="col" class="org-left">description</th>
 </tr>
 </thead>
@@ -570,7 +568,7 @@ e.g.
 <td class="org-left">material</td>
 <td class="org-left">物资</td>
 <td class="org-left">ObjectId</td>
-<td class="org-left">null</td>
+<td class="org-right">null</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -578,15 +576,15 @@ e.g.
 <td class="org-left">from<sub>repository</sub></td>
 <td class="org-left">原仓库</td>
 <td class="org-left">Number</td>
-<td class="org-left">0</td>
+<td class="org-right">0</td>
 <td class="org-left">仓库id, 0表示入库</td>
 </tr>
 
 <tr>
 <td class="org-left">from<sub>location</sub></td>
 <td class="org-left">原位置</td>
-<td class="org-left">String</td>
-<td class="org-left">""</td>
+<td class="org-left">Number</td>
+<td class="org-right">0</td>
 <td class="org-left">原位置的 label，from<sub>repository为0时</sub>，该值为空字符串</td>
 </tr>
 
@@ -594,15 +592,15 @@ e.g.
 <td class="org-left">to<sub>repository</sub></td>
 <td class="org-left">目标仓库</td>
 <td class="org-left">Number</td>
-<td class="org-left">0</td>
+<td class="org-right">0</td>
 <td class="org-left">仓库id, -1表示出库</td>
 </tr>
 
 <tr>
 <td class="org-left">to<sub>location</sub></td>
 <td class="org-left">目标位置</td>
-<td class="org-left">String</td>
-<td class="org-left">""</td>
+<td class="org-left">Number</td>
+<td class="org-right">0</td>
 <td class="org-left">目标位置的 label，to<sub>repository为</sub>-1时，该值为空字符串</td>
 </tr>
 </tbody>
@@ -610,8 +608,8 @@ e.g.
 </div>
 </div>
 
-<div id="outline-container-org28d856c" class="outline-3">
-<h3 id="org28d856c"><span class="section-number-3">1.4</span> tasks</h3>
+<div id="outline-container-orgae54163" class="outline-3">
+<h3 id="orgae54163"><span class="section-number-3">1.4</span> tasks</h3>
 <div class="outline-text-3" id="text-1-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -623,7 +621,7 @@ e.g.
 
 <col  class="org-left" />
 
-<col  class="org-left" />
+<col  class="org-right" />
 
 <col  class="org-left" />
 </colgroup>
@@ -632,7 +630,7 @@ e.g.
 <th scope="col" class="org-left">key</th>
 <th scope="col" class="org-left">key in Chinese</th>
 <th scope="col" class="org-left">type</th>
-<th scope="col" class="org-left">default</th>
+<th scope="col" class="org-right">default</th>
 <th scope="col" class="org-left">description</th>
 </tr>
 </thead>
@@ -641,7 +639,7 @@ e.g.
 <td class="org-left">action</td>
 <td class="org-left">动作</td>
 <td class="org-left">Number</td>
-<td class="org-left">0</td>
+<td class="org-right">0</td>
 <td class="org-left">动作码详细见下方</td>
 </tr>
 
@@ -649,7 +647,7 @@ e.g.
 <td class="org-left">staff</td>
 <td class="org-left">接受任务的员工</td>
 <td class="org-left">ObjectId</td>
-<td class="org-left">null</td>
+<td class="org-right">null</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -657,7 +655,7 @@ e.g.
 <td class="org-left">status</td>
 <td class="org-left">任务状态</td>
 <td class="org-left">Number</td>
-<td class="org-left">0</td>
+<td class="org-right">0</td>
 <td class="org-left">0未开始1进行中2完成3任务取消</td>
 </tr>
 
@@ -665,7 +663,7 @@ e.g.
 <td class="org-left">migration</td>
 <td class="org-left">移动信息</td>
 <td class="org-left">ObjectId</td>
-<td class="org-left">null</td>
+<td class="org-right">null</td>
 <td class="org-left">当action为6开头时，该值为空</td>
 </tr>
 
@@ -673,15 +671,15 @@ e.g.
 <td class="org-left">err<sub>repository</sub></td>
 <td class="org-left">错误仓库</td>
 <td class="org-left">Number</td>
-<td class="org-left">null</td>
+<td class="org-right">0</td>
 <td class="org-left">当action为5开头时，该值为空</td>
 </tr>
 
 <tr>
 <td class="org-left">err<sub>location</sub></td>
 <td class="org-left">错误位置</td>
-<td class="org-left">String</td>
-<td class="org-left">null</td>
+<td class="org-left">Number</td>
+<td class="org-right">0</td>
 <td class="org-left">当action为5开头时，该值为空</td>
 </tr>
 
@@ -689,7 +687,7 @@ e.g.
 <td class="org-left">publish<sub>time</sub></td>
 <td class="org-left">任务发布时间</td>
 <td class="org-left">Date</td>
-<td class="org-left">now</td>
+<td class="org-right">now</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -697,7 +695,7 @@ e.g.
 <td class="org-left">start<sub>time</sub></td>
 <td class="org-left">任务开始时间</td>
 <td class="org-left">Date</td>
-<td class="org-left">0</td>
+<td class="org-right">0</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -705,7 +703,7 @@ e.g.
 <td class="org-left">end<sub>time</sub></td>
 <td class="org-left">任务结束时间</td>
 <td class="org-left">Date</td>
-<td class="org-left">0</td>
+<td class="org-right">0</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -713,15 +711,15 @@ e.g.
 <td class="org-left">remark</td>
 <td class="org-left">任务附加评语</td>
 <td class="org-left">String</td>
-<td class="org-left">""</td>
+<td class="org-right">""</td>
 <td class="org-left">一般用于任务取消时</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<div id="outline-container-orgb211454" class="outline-4">
-<h4 id="orgb211454"><span class="section-number-4">1.4.1</span> action</h4>
+<div id="outline-container-org25756ec" class="outline-4">
+<h4 id="org25756ec"><span class="section-number-4">1.4.1</span> action</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <ul class="org-ul">
 <li>5 开头为移动
@@ -740,8 +738,8 @@ e.g.
 </div>
 </div>
 
-<div id="outline-container-orge379eea" class="outline-3">
-<h3 id="orge379eea"><span class="section-number-3">1.5</span> exportinfos</h3>
+<div id="outline-container-org8dc96e7" class="outline-3">
+<h3 id="org8dc96e7"><span class="section-number-3">1.5</span> exportinfos</h3>
 <div class="outline-text-3" id="text-1-5">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -803,8 +801,8 @@ e.g.
 </div>
 </div>
 
-<div id="outline-container-orgf669996" class="outline-3">
-<h3 id="orgf669996"><span class="section-number-3">1.6</span> staffs</h3>
+<div id="outline-container-orga6018bb" class="outline-3">
+<h3 id="orga6018bb"><span class="section-number-3">1.6</span> staffs</h3>
 <div class="outline-text-3" id="text-1-6">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -894,7 +892,7 @@ e.g.
 <div id="postamble" class="status">
 <p class="date">Date: 2017-04-01 Sat 00:00</p>
 <p class="author">Author: Mephis Pheies</p>
-<p class="date">Created: 2017-04-01 Sat 21:29</p>
+<p class="date">Created: 2017-04-02 Sun 11:27</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
