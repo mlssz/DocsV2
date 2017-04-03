@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-04-02 Sun 21:44 -->
+<!-- 2017-04-03 Mon 10:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Documents</title>
@@ -234,59 +234,55 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org316e4db">1. collections</a>
+<li><a href="#org40bcebf">1. collections</a>
 <ul>
-<li><a href="#orgad79abf">1.1. repositories</a>
+<li><a href="#org72931e8">1.1. repositories</a>
 <ul>
-<li><a href="#org7940027">1.1.1. locations Object</a></li>
+<li><a href="#orga0056b6">1.1.1. locations Object</a></li>
 </ul>
 </li>
-<li><a href="#org76270b9">1.2. materials</a>
+<li><a href="#org526011f">1.2. materials</a>
 <ul>
-<li><a href="#org465a291">1.2.1. status</a></li>
+<li><a href="#orgbe96fdd">1.2.1. status</a></li>
 </ul>
 </li>
-<li><a href="#org09f4f4f">1.3. migrations</a></li>
-<li><a href="#org962eddc">1.4. tasks</a>
+<li><a href="#org4d31fce">1.3. migrations</a></li>
+<li><a href="#orgdb6e419">1.4. tasks</a>
 <ul>
-<li><a href="#org21cdb95">1.4.1. action</a></li>
+<li><a href="#orgdf9c436">1.4.1. action</a></li>
 </ul>
 </li>
-<li><a href="#org867e560">1.5. exportinfos</a></li>
-<li><a href="#org0e5a1a5">1.6. staffs</a></li>
+<li><a href="#org56811cb">1.5. exportinfos</a></li>
+<li><a href="#orgbada56c">1.6. staffs</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org316e4db" class="outline-2">
-<h2 id="org316e4db"><span class="section-number-2">1</span> collections</h2>
+<div id="outline-container-org40bcebf" class="outline-2">
+<h2 id="org40bcebf"><span class="section-number-2">1</span> collections</h2>
 <div class="outline-text-2" id="text-1">
 <blockquote>
 <p>
-ps1: 请用utc时间储存Date类型数据
+ps1: 长度单位如果未给出，统一使用米
 </p>
 
 <p>
-ps2: 长度单位如果未给出，统一使用米
+ps2: 数据冗余储存，不要见怪
 </p>
 
 <p>
-ps3: 数据冗余储存，不要见怪
+ps3: 每个仓库布局与位置数都是一样的
 </p>
 
 <p>
-ps4: 每个仓库布局与位置数都是一样的
-</p>
-
-<p>
-ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
+ps4: ObjectId 为 mongodb 特有的 _id 字段的类型
 </p>
 </blockquote>
 </div>
 
-<div id="outline-container-orgad79abf" class="outline-3">
-<h3 id="orgad79abf"><span class="section-number-3">1.1</span> repositories</h3>
+<div id="outline-container-org72931e8" class="outline-3">
+<h3 id="org72931e8"><span class="section-number-3">1.1</span> repositories</h3>
 <div class="outline-text-3" id="text-1-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -347,8 +343,8 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 </table>
 </div>
 
-<div id="outline-container-org7940027" class="outline-4">
-<h4 id="org7940027"><span class="section-number-4">1.1.1</span> locations Object</h4>
+<div id="outline-container-orga0056b6" class="outline-4">
+<h4 id="orga0056b6"><span class="section-number-4">1.1.1</span> locations Object</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -427,8 +423,8 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 </div>
 </div>
 
-<div id="outline-container-org76270b9" class="outline-3">
-<h3 id="org76270b9"><span class="section-number-3">1.2</span> materials</h3>
+<div id="outline-container-org526011f" class="outline-3">
+<h3 id="org526011f"><span class="section-number-3">1.2</span> materials</h3>
 <div class="outline-text-3" id="text-1-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -440,7 +436,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 
 <col  class="org-left" />
 
-<col  class="org-right" />
+<col  class="org-left" />
 
 <col  class="org-left" />
 </colgroup>
@@ -449,7 +445,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <th scope="col" class="org-left">key</th>
 <th scope="col" class="org-left">key in Chinese</th>
 <th scope="col" class="org-left">type</th>
-<th scope="col" class="org-right">default</th>
+<th scope="col" class="org-left">default</th>
 <th scope="col" class="org-left">description</th>
 </tr>
 </thead>
@@ -458,15 +454,15 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">id</td>
 <td class="org-left">物资编号</td>
 <td class="org-left">Number</td>
-<td class="org-right">now</td>
-<td class="org-left">utc时间数字</td>
+<td class="org-left">now</td>
+<td class="org-left">&gt;=1, utc时间数字</td>
 </tr>
 
 <tr>
 <td class="org-left">type</td>
 <td class="org-left">物资类型</td>
 <td class="org-left">Number</td>
-<td class="org-right">0</td>
+<td class="org-left">0</td>
 <td class="org-left">哪些类型未定</td>
 </tr>
 
@@ -474,7 +470,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">description</td>
 <td class="org-left">物资描述</td>
 <td class="org-left">String</td>
-<td class="org-right">""</td>
+<td class="org-left">""</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -482,7 +478,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">import_time</td>
 <td class="org-left">入库时间</td>
 <td class="org-left">Date</td>
-<td class="org-right">now</td>
+<td class="org-left">now</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -490,7 +486,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">estimated_export_time</td>
 <td class="org-left">估计出库时间</td>
 <td class="org-left">Date</td>
-<td class="org-right">0</td>
+<td class="org-left">&#xa0;</td>
 <td class="org-left">用于自动搬移将出库的物资到门口</td>
 </tr>
 
@@ -498,7 +494,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">height</td>
 <td class="org-left">物资高度</td>
 <td class="org-left">Number</td>
-<td class="org-right">0</td>
+<td class="org-left">0</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -506,7 +502,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">length</td>
 <td class="org-left">物资长度</td>
 <td class="org-left">Number</td>
-<td class="org-right">0</td>
+<td class="org-left">0</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -514,23 +510,23 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">width</td>
 <td class="org-left">物资宽度</td>
 <td class="org-left">Number</td>
-<td class="org-right">0</td>
+<td class="org-left">0</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">repository</td>
+<td class="org-left">repository_id</td>
 <td class="org-left">储存仓库</td>
 <td class="org-left">Number</td>
-<td class="org-right">0</td>
+<td class="org-left">required</td>
 <td class="org-left">所在仓库的id, -1值意味着出库; 搬运到新地方，修改的是这两个字段</td>
 </tr>
 
 <tr>
-<td class="org-left">location_label</td>
+<td class="org-left">location_id</td>
 <td class="org-left">仓库中位置</td>
 <td class="org-left">Number</td>
-<td class="org-right">0</td>
+<td class="org-left">requried</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -538,7 +534,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">status</td>
 <td class="org-left">物资状态</td>
 <td class="org-left">Number</td>
-<td class="org-right">0</td>
+<td class="org-left">300</td>
 <td class="org-left">状态码，详细见下方</td>
 </tr>
 
@@ -546,7 +542,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">migrations</td>
 <td class="org-left">物资搬运记录</td>
 <td class="org-left">Array&lt;ObjectId&gt;</td>
-<td class="org-right">[]</td>
+<td class="org-left">[]</td>
 <td class="org-left">这个应当是一个队列，以创建时间从晚（距今更近）到早（距今更远）的顺序排序</td>
 </tr>
 
@@ -554,15 +550,15 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">location_update_time</td>
 <td class="org-left">位置更新时间</td>
 <td class="org-left">Date</td>
-<td class="org-right">now</td>
+<td class="org-left">now</td>
 <td class="org-left">这个是系统中位置更新时间，实际更新时间应当直接记录在migrations中</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<div id="outline-container-org465a291" class="outline-4">
-<h4 id="org465a291"><span class="section-number-4">1.2.1</span> status</h4>
+<div id="outline-container-orgbe96fdd" class="outline-4">
+<h4 id="orgbe96fdd"><span class="section-number-4">1.2.1</span> status</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <ul class="org-ul">
 <li>1 开头为位置正确
@@ -592,8 +588,8 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 </div>
 </div>
 
-<div id="outline-container-org09f4f4f" class="outline-3">
-<h3 id="org09f4f4f"><span class="section-number-3">1.3</span> migrations</h3>
+<div id="outline-container-org4d31fce" class="outline-3">
+<h3 id="org4d31fce"><span class="section-number-3">1.3</span> migrations</h3>
 <div class="outline-text-3" id="text-1-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -605,7 +601,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 
 <col  class="org-left" />
 
-<col  class="org-right" />
+<col  class="org-left" />
 
 <col  class="org-left" />
 </colgroup>
@@ -614,7 +610,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <th scope="col" class="org-left">key</th>
 <th scope="col" class="org-left">key in Chinese</th>
 <th scope="col" class="org-left">type</th>
-<th scope="col" class="org-right">default</th>
+<th scope="col" class="org-left">default</th>
 <th scope="col" class="org-left">description</th>
 </tr>
 </thead>
@@ -623,7 +619,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">material</td>
 <td class="org-left">物资</td>
 <td class="org-left">ObjectId</td>
-<td class="org-right">null</td>
+<td class="org-left">required</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -631,7 +627,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">from_repository</td>
 <td class="org-left">原仓库</td>
 <td class="org-left">Number</td>
-<td class="org-right">0</td>
+<td class="org-left">required</td>
 <td class="org-left">仓库id, 0表示入库</td>
 </tr>
 
@@ -639,7 +635,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">from_location</td>
 <td class="org-left">原位置</td>
 <td class="org-left">Number</td>
-<td class="org-right">0</td>
+<td class="org-left">required</td>
 <td class="org-left">原位置的 label，from_repository为0时，该值为空字符串</td>
 </tr>
 
@@ -647,7 +643,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">to_repository</td>
 <td class="org-left">目标仓库</td>
 <td class="org-left">Number</td>
-<td class="org-right">0</td>
+<td class="org-left">required</td>
 <td class="org-left">仓库id, -1表示出库</td>
 </tr>
 
@@ -655,7 +651,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">to_location</td>
 <td class="org-left">目标位置</td>
 <td class="org-left">Number</td>
-<td class="org-right">0</td>
+<td class="org-left">required</td>
 <td class="org-left">目标位置的 label，to_repository为-1时，该值为空字符串</td>
 </tr>
 </tbody>
@@ -663,8 +659,8 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 </div>
 </div>
 
-<div id="outline-container-org962eddc" class="outline-3">
-<h3 id="org962eddc"><span class="section-number-3">1.4</span> tasks</h3>
+<div id="outline-container-orgdb6e419" class="outline-3">
+<h3 id="orgdb6e419"><span class="section-number-3">1.4</span> tasks</h3>
 <div class="outline-text-3" id="text-1-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -676,7 +672,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 
 <col  class="org-left" />
 
-<col  class="org-right" />
+<col  class="org-left" />
 
 <col  class="org-left" />
 </colgroup>
@@ -685,7 +681,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <th scope="col" class="org-left">key</th>
 <th scope="col" class="org-left">key in Chinese</th>
 <th scope="col" class="org-left">type</th>
-<th scope="col" class="org-right">default</th>
+<th scope="col" class="org-left">default</th>
 <th scope="col" class="org-left">description</th>
 </tr>
 </thead>
@@ -694,7 +690,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">action</td>
 <td class="org-left">动作</td>
 <td class="org-left">Number</td>
-<td class="org-right">0</td>
+<td class="org-left">500</td>
 <td class="org-left">动作码详细见下方</td>
 </tr>
 
@@ -702,7 +698,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">staff</td>
 <td class="org-left">接受任务的员工</td>
 <td class="org-left">ObjectId</td>
-<td class="org-right">null</td>
+<td class="org-left">required</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -710,7 +706,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">status</td>
 <td class="org-left">任务状态</td>
 <td class="org-left">Number</td>
-<td class="org-right">0</td>
+<td class="org-left">0</td>
 <td class="org-left">0未开始1进行中2完成3任务取消</td>
 </tr>
 
@@ -718,7 +714,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">migration</td>
 <td class="org-left">移动信息</td>
 <td class="org-left">ObjectId</td>
-<td class="org-right">null</td>
+<td class="org-left">&#xa0;</td>
 <td class="org-left">当action为6开头时，该值为空</td>
 </tr>
 
@@ -726,7 +722,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">err_repository</td>
 <td class="org-left">错误仓库</td>
 <td class="org-left">Number</td>
-<td class="org-right">0</td>
+<td class="org-left">&#xa0;</td>
 <td class="org-left">当action为5开头时，该值为空</td>
 </tr>
 
@@ -734,7 +730,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">err_location</td>
 <td class="org-left">错误位置</td>
 <td class="org-left">Number</td>
-<td class="org-right">0</td>
+<td class="org-left">&#xa0;</td>
 <td class="org-left">当action为5开头时，该值为空</td>
 </tr>
 
@@ -742,7 +738,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">publish_time</td>
 <td class="org-left">任务发布时间</td>
 <td class="org-left">Date</td>
-<td class="org-right">now</td>
+<td class="org-left">now</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -750,7 +746,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">start_time</td>
 <td class="org-left">任务开始时间</td>
 <td class="org-left">Date</td>
-<td class="org-right">0</td>
+<td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -758,7 +754,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">end_time</td>
 <td class="org-left">任务结束时间</td>
 <td class="org-left">Date</td>
-<td class="org-right">0</td>
+<td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -766,15 +762,15 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">remark</td>
 <td class="org-left">任务附加评语</td>
 <td class="org-left">String</td>
-<td class="org-right">""</td>
+<td class="org-left">&#xa0;</td>
 <td class="org-left">一般用于任务取消时</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<div id="outline-container-org21cdb95" class="outline-4">
-<h4 id="org21cdb95"><span class="section-number-4">1.4.1</span> action</h4>
+<div id="outline-container-orgdf9c436" class="outline-4">
+<h4 id="orgdf9c436"><span class="section-number-4">1.4.1</span> action</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <ul class="org-ul">
 <li>5 开头为移动
@@ -793,8 +789,8 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 </div>
 </div>
 
-<div id="outline-container-org867e560" class="outline-3">
-<h3 id="org867e560"><span class="section-number-3">1.5</span> exportinfos</h3>
+<div id="outline-container-org56811cb" class="outline-3">
+<h3 id="org56811cb"><span class="section-number-3">1.5</span> exportinfos</h3>
 <div class="outline-text-3" id="text-1-5">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -824,7 +820,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">actual_export_time</td>
 <td class="org-left">实际出库时间</td>
 <td class="org-left">Date</td>
-<td class="org-left">0</td>
+<td class="org-left">&#xa0;</td>
 <td class="org-left">记录出库信息</td>
 </tr>
 
@@ -832,7 +828,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">material</td>
 <td class="org-left">物资</td>
 <td class="org-left">ObjectId</td>
-<td class="org-left">null</td>
+<td class="org-left">required</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -848,7 +844,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">from_repository</td>
 <td class="org-left">原仓库</td>
 <td class="org-left">ObjectId</td>
-<td class="org-left">null</td>
+<td class="org-left">required</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 </tbody>
@@ -856,8 +852,8 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 </div>
 </div>
 
-<div id="outline-container-org0e5a1a5" class="outline-3">
-<h3 id="org0e5a1a5"><span class="section-number-3">1.6</span> staffs</h3>
+<div id="outline-container-orgbada56c" class="outline-3">
+<h3 id="orgbada56c"><span class="section-number-3">1.6</span> staffs</h3>
 <div class="outline-text-3" id="text-1-6">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -869,7 +865,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 
 <col  class="org-left" />
 
-<col  class="org-right" />
+<col  class="org-left" />
 
 <col  class="org-left" />
 </colgroup>
@@ -878,7 +874,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <th scope="col" class="org-left">key</th>
 <th scope="col" class="org-left">key in Chinese</th>
 <th scope="col" class="org-left">type</th>
-<th scope="col" class="org-right">default</th>
+<th scope="col" class="org-left">default</th>
 <th scope="col" class="org-left">description</th>
 </tr>
 </thead>
@@ -887,7 +883,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">name</td>
 <td class="org-left">职员名</td>
 <td class="org-left">String</td>
-<td class="org-right">"无名"</td>
+<td class="org-left">"无名"</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -895,15 +891,15 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">account</td>
 <td class="org-left">职员账户</td>
 <td class="org-left">String</td>
-<td class="org-right">""</td>
-<td class="org-left">用于登录</td>
+<td class="org-left">required</td>
+<td class="org-left">length &gt;= 6, 用于登录</td>
 </tr>
 
 <tr>
 <td class="org-left">sex</td>
 <td class="org-left">性别</td>
 <td class="org-left">Number</td>
-<td class="org-right">1</td>
+<td class="org-left">1</td>
 <td class="org-left">0女1男</td>
 </tr>
 
@@ -911,7 +907,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">age</td>
 <td class="org-left">年龄</td>
 <td class="org-left">Number</td>
-<td class="org-right">0</td>
+<td class="org-left">1</td>
 <td class="org-left">&gt;1</td>
 </tr>
 
@@ -919,7 +915,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">position</td>
 <td class="org-left">职位</td>
 <td class="org-left">Number</td>
-<td class="org-right">1</td>
+<td class="org-left">1</td>
 <td class="org-left">0管理员1员工99root , 用于区分权限</td>
 </tr>
 
@@ -927,7 +923,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">signup_time</td>
 <td class="org-left">注册时间</td>
 <td class="org-left">Date</td>
-<td class="org-right">now</td>
+<td class="org-left">now</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -935,7 +931,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <td class="org-left">last_login_time</td>
 <td class="org-left">最近登录时间</td>
 <td class="org-left">Date</td>
-<td class="org-right">0</td>
+<td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 </tbody>
@@ -947,7 +943,7 @@ ps5: ObjectId 为 mongodb 特有的 _id 字段的类型
 <div id="postamble" class="status">
 <p class="date">Date: 2017-04-01 Sat 00:00</p>
 <p class="author">Author: Mephis Pheies</p>
-<p class="date">Created: 2017-04-02 Sun 21:44</p>
+<p class="date">Created: 2017-04-03 Mon 10:41</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
