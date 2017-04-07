@@ -40,7 +40,7 @@ others结构：
 - estimated_export_time   `Date(String)` -- 估计出库时间
 - height `Number` -- 物资长度，该系统中固定为1
 - width `Number` -- 物资长度，该系统中固定为1
-- length `Number` -- 物资长度，该系统中固定为1
+- length `Number` -- 物资长度，该系统中固定为2
 - repository_id `Number` -- 储存仓库的id
 - location_id `Number` -- 仓库中位置的id
 - status `Number` -- 状态码，详见 db doc
@@ -56,7 +56,7 @@ others结构：
         "estimated_export_time": "2017-04-06T04:57:36.801Z",
         "height": 1,
         "width": 1,
-        "length": 1,
+        "length": 2,
         "repository_id": 3,
         "location_id": 2,
         "status": 300,
@@ -96,7 +96,24 @@ others结构：
 + Response 200 (application/json)
     {}
 
-## migrations [/material/:id/migrations]
+## Migration of Material [/material/:id/migration/:mid]
+
++ Parameters
+    + id (String) - 物资的id
+    + mid (String) - 移动信息的_id
+
+### 取消移动物资 [DELETE]
+
+> 该接口只能修改对应任务处于未开始状态（status==0）的任务。通过 离当前最近的且已完成的移动信息 恢复 物资 的数据，主要是repository_id、location_id和last_migration，并修改 status 为 100，删除移动信息与任务信息。
+
+> 表示出库时，还需要删除exportinfo数据。
+
+
++ Response 200 (application/json)
+    {}
+
+
+## Migrations Of Material [/material/:id/migrations]
 
 + Parameters
     + id (String) - 物资的id
@@ -118,8 +135,9 @@ others结构：
 
 **Response 200 Body**
 
-- material `ObjectId`-- 物资_d
-- date `date` -- 搬运时间
+- _id `String` -- 移动信息的_id
+- material `String`-- 物资_d
+- date `date` -- 搬运完成时间, 未完成为空值
 - from_repository `number` -- 原仓库, 仓库id, 0表示入库
 - from_location `number` -- 原位置, 原位置的id
 - to_repository `number` -- 目标仓库, 仓库id, -1表示出库
@@ -133,12 +151,70 @@ others结构：
 + Response 200 (application/json)
 
     [{
-        "date": "2017-04-06T04:57:36.801Z",
+        "_id": "dsafdsaf32141314",
+        "material": "dsafdsaf32141314",
         "from_repository": 2,
         "from_location": 12,
         "to_repository": -1,
         "to_location": 0
     }, ...]
+    
+### 移动物资到新位置 [POST]
+
+> 该接口会创建一个新的migration，并修改materials的repository_id, location_id和status, 再创建一个相应的task。
+
+> 表示出库时，还需要创建一个exportinfo数据。
+
+**Resquest Body**
+
+- repository `Number` (required) -- 目标仓库, 仓库id, -1表示出库
+- location `Number` (required) -- 目标位置, 目标位置的id
+- exportinfo (object, required while repository == -1)
+    - destination `String` (required) -- 去向
+
+**Response 201 Body**
+
+- _id `String` -- 移动信息的_id
+- material `String`-- 物资_d
+- date `Date` -- 搬运完成时间, 未完成为空值
+- from_repository `Number` -- 原仓库, 仓库id
+- from_location `Number` -- 原位置, 原位置的id
+- to_repository `Number` -- 目标仓库, 仓库id, -1表示出库
+- to_location `Number` -- 目标位置, 目标位置的id
+- exportinfo (object) -- 当to_repository == -1时有效
+    - destination `String` -- 去向
+
+**Response 400 Body**
+
+- error `String` -- 请求体错误具体原因
+
++ Request (application/json)
+    {
+        "repository": -1,
+        "location": 0,
+        "exportinfo": {
+            "distination": "幻想乡"
+        }
+    }
+
++ Response 201 (application/json)
+    {
+        "_id": "dsafdsaf32141314",
+        "material": "dsafdsaf32141314",
+        "from_repository": 2,
+        "from_location": 12,
+        "to_repository": -1,
+        "to_location": 0,
+        "exportinfo": {
+            "distination": "幻想乡"
+        }
+    }
+
++ Response 400 (application/json)
+    {
+        "error": "Your request body is wrong!"
+    }
+    
 
 ## Materials [/materials]
 
@@ -155,9 +231,25 @@ others结构：
 - estimated_export_time `Date` (optional) -- 该值为时间数值, date.getTime(), 估计出库时间
 - height `Number` (optional, default: 1) --  物资高度，该系统中固定为1
 - width `Number` (optional, default: 1) --  物资高度，该系统中固定为1
-- length `Number` (optional, default: 1) --  物资高度，该系统中固定为1
+- length `Number` (optional, default: 2) --  物资高度，该系统中固定为2
 - repository_id `Number` (required) --  储存仓库的id
 - location_id `Number` (required) -- 仓库中位置的id
+
+**Response 201 Body**
+
+- id `Number` -- 物资编号
+- type `Number` -- 物资类型
+- description `String` -- 物资描述
+- import_time `Date(String)` -- 入库时间
+- estimated_export_time   `Date(String)` -- 估计出库时间
+- height `Number` -- 物资长度，该系统中固定为1
+- width `Number` -- 物资长度，该系统中固定为1
+- length `Number` -- 物资长度，该系统中固定为2
+- repository_id `Number` -- 储存仓库的id
+- location_id `Number` -- 仓库中位置的id
+- status `Number` -- 状态码，详见 db doc
+- last_migrations `String` -- 最近一次搬运记录_id
+- location_update_time `Date(String)` -- 位置更新时间
 
 **Response 400 Body**
 
@@ -172,13 +264,27 @@ others结构：
         "estimated_export_time": 1491451593158,
         "height": 1,
         "width": 1,
-        "length": 1,
+        "length": 2,
         "repository_id": 2,
         "location_id":  3,
     }
 
 + Response 201 (application/json)
-    {}
+    {
+         "id": 1491451593158,
+         "type": 0,
+         "description": "wonderful repository",
+         "import_time": "2017-04-06T04:57:36.801Z",
+         "estimated_export_time": "2017-04-06T04:57:36.801Z",
+         "height": 1,
+         "width": 1,
+         "length": 2,
+         "repository_id": 3,
+         "location_id": 2,
+         "status": 300,
+         "last_migrations": "1234",
+         "location_update_time": "2017-04-06T04:57:36.801Z"
+    }
 
 + Response 400 (application/json)
     {
@@ -216,7 +322,7 @@ others结构：
       - estimated_export_time   `Date(String)` -- 估计出库时间
       - height `Number` -- 物资长度，该系统中固定为1
       - width `Number` -- 物资长度，该系统中固定为1
-      - length `Number` -- 物资长度，该系统中固定为1
+      - length `Number` -- 物资长度，该系统中固定为2
       - repository_id `Number` -- 储存仓库的id
       - location_id `Number` -- 仓库中位置的id
       - status `Number` -- 状态码，详见 db doc
@@ -238,7 +344,7 @@ others结构：
          "estimated_export_time": "2017-04-06T04:57:36.801Z",
          "height": 1,
          "width": 1,
-         "length": 1,
+         "length": 2,
          "repository_id": 3,
          "location_id": 2,
          "status": 300,
@@ -253,7 +359,7 @@ others结构：
 + Response 200 (application/json)
     {}
 
-## Repository [/repository/:id/materials]
+## Materials In Repository [/repository/:id/materials]
 
 + Parameters
     + id (required) - 仓库id
@@ -287,7 +393,7 @@ others结构：
       - estimated_export_time   `Date(String)` -- 估计出库时间
       - height `Number` -- 物资长度，该系统中固定为1
       - width `Number` -- 物资长度，该系统中固定为1
-      - length `Number` -- 物资长度，该系统中固定为1
+      - length `Number` -- 物资长度，该系统中固定为2
       - repository_id `Number` -- 储存仓库的id
       - location_id `Number` -- 仓库中位置的id
       - status `Number` -- 状态码，详见 db doc
@@ -310,7 +416,7 @@ others结构：
          "estimated_export_time": "2017-04-06T04:57:36.801Z",
          "height": 1,
          "width": 1,
-         "length": 1,
+         "length": 2,
          "repository_id": 3,
          "location_id": 2,
          "status": 300,
@@ -318,7 +424,7 @@ others结构：
          "location_update_time": "2017-04-06T04:57:36.801Z"
     }, ...]
 
-## Location [/repository/:rid/location/:lid/materials]
+## Materials In Location [/repository/:rid/location/:lid/materials]
 
 + Parameters
     + rid (required) - 仓库id
@@ -353,7 +459,7 @@ others结构：
       - estimated_export_time   `Date(String)` -- 估计出库时间
       - height `Number` -- 物资长度，该系统中固定为1
       - width `Number` -- 物资长度，该系统中固定为1
-      - length `Number` -- 物资长度，该系统中固定为1
+      - length `Number` -- 物资长度，该系统中固定为2
       - repository_id `Number` -- 储存仓库的id
       - location_id `Number` -- 仓库中位置的id
       - status `Number` -- 状态码，详见 db doc
@@ -377,7 +483,7 @@ others结构：
          "estimated_export_time": "2017-04-06T04:57:36.801Z",
          "height": 1,
          "width": 1,
-         "length": 1,
+         "length": 2,
          "repository_id": 3,
          "location_id": 2,
          "status": 300,
@@ -385,8 +491,8 @@ others结构：
          "location_update_time": "2017-04-06T04:57:36.801Z"
     }, ...]
 
-
 # Group Repository
+
 
 ## Locations [/repository/:id/locations]
 
@@ -411,16 +517,235 @@ others结构：
         materials: 12
     }, ...]
     
-# Group Task
+## Location [/repository/:id/location]
+    
+### 返回仓库中的一个空位 [GET /repository/:id/empty-location(?width, height, length)]
 
-## Staff [/staff/:accout/tasks]
+> 该接口查询仓库余位，根据货物大小，调度分配到合适的仓库位置(具体到某个仓 库内的某个货架的位置标号)。在将货物信息保存到数据库之前，需要先调用该接口获得空位。如果没有找到需要的空位，会返回404错误
+
+**Response 200 Body**
+
+- repository `Number` - 仓库id
+- location `Number` - 位置id
 
 + Parameters
-    + account (String, required) - 职员的账户
+    + width: 1 (Number, optional) - 物资的宽度
+    + length: 2 (Number, optional) - 物资的长度
+    + height: 1 (Number, optional) - 物资的高度
+    
++ Response 200 (application/json)
+    {
+        "repository": 2,
+        "location": 3
+    }
+    
++ Response 404 (application/json)
+    {}
+    
+# Group Error
+
+## Errors [/errors]
+
+### 获取错误信息数量 [HEAD]
+
+> 当你希望一页一页地获取时，你可以先通过该接口获取所有的数量，然后使用下一个接口。
+
+**Response 200 Body**
+
+- num `Number` -- 错误信息数量
+
++ Parameters
+    + others (optional) - 见开头readme
+
++ Response 200 (application/json)
+    {
+        "num": 20
+    }
+
+
+### 获取所有出库信息 [GET /errors(?page, limit)]
+
+**Response 200 Body**
+
+- (array)
+    - (object)
+      - _id `String` -- 任务_id
+      - action `Number` --  动作，详见 db doc
+      - status `Number` -- 任务状态, 0未开始1进行中2完成3任务取消
+      - publish_time `Date`-- 任务发布时间
+      - start_time  `Date` --   任务开始时间
+      - end_time   `Date`  --   任务结束时间
+      - remark     `Date`  --   任务附加评语, 一般用于任务取消时
+      - error(object) -- 当action为6开头时才会有这个键值
+        - repository `Number` --  错误仓库
+        - location `Number` --  错误位置
+        - material `Number` -- 物资id, 如果错误码为2，则为空值
+        - image `Number` --  照相图片，错误照片，圈出错误
+
++ Parameters
+    + page: 0 (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
+    + limit: 10 (Number, optional) - 每页几项
+    + others (optional) - 见开头readme
+
++ Response 200 (application/json)
+
+    [{
+       "_id": "dsafdsadsaf32413141kl2",
+       "action": 500,
+       "status": 1,
+       "publish_time": "2017-04-06T04:57:36.801Z",
+       "start_time": "2017-04-06T04:57:36.801Z",
+       "end_time":  "2017-04-06T04:57:36.801Z",
+       "remark": "",
+       "error": {
+         "repository": 1,
+         "location": 3,
+         "material": 32143214,
+         "image": "/errors/a.png"
+        }
+    }, ...]
+
+### 创建错误 [POST]
+
+> 这个api留给server end调用, 在创建错误的同时需要创建任务。
+
+**Request Body**
+
+- repository `Number` (required) -- 错误所在仓库id
+- location `Number` (required) -- 错误所在位置id
+- error_code `Number` (optional, default: 1) -- 错误码, 1位置错误2无法识别
+- material `Number` (optional) -- 物资id, 如果错误码为1，则为必须
+- image `String` (required) -- 照相图片路径, 错误照片，圈出错误
+
+**Response 201 Body**
+- _id `String` -- 任务_id
+- action `Number` --  动作，详见 db doc
+- status `Number` -- 任务状态, 0未开始1进行中2完成3任务取消
+- publish_time `Date`-- 任务发布时间
+- start_time  `Date` --   任务开始时间
+- end_time   `Date`  --   任务结束时间
+- remark     `Date`  --   任务附加评语, 一般用于任务取消时
+- error(object) -- 当action为6开头时才会有这个键值
+  - repository `Number` --  错误仓库
+  - location `Number` --  错误位置
+  - material `Number` -- 物资id, 如果错误码为2，则为空值
+  - image `Number` --  照相图片，错误照片，圈出错误
+
+**Response 400 Body**
+
+- error `String` -- 请求体错误具体原因
+
++ Request (application/json)
+    {
+        "repository": 2,
+        "location": 3,
+        "error_code": 1,
+        "material": 3214132,
+        "image": "/errors/a.png"
+    }
+    
++ Response 201 (application/json)
+    {
+        "_id": "dsafdsadsaf32413141kl2",
+        "action": 500,
+        "status": 1,
+        "publish_time": "2017-04-06T04:57:36.801Z",
+        "start_time": "2017-04-06T04:57:36.801Z",
+        "end_time":  "2017-04-06T04:57:36.801Z",
+        "remark": "",
+        "error": {
+          "repository": 1,
+          "location": 3,
+          "material": 32143214,
+          "image": "/errors/a.png"
+        }
+    }
+
++ Response 400 (application/json)
+    {
+        "error": "Your request body is wrong!"
+    }
+
+    
+# Group Task
+
+## Error [/error/task/:id]
+
++ Parameters
+    + id (required) - 任务的_id
+    
+### 完成错误任务 [PATCH]
+
+> 完成任务的同时，需要修改相应错的fixed字段。
+
++ Response 200 (application/json)
+    {}
+
+## Staff's Task [/staff/:sid/task/:id]
+
++ Parameters
+    + sid (String, required) - 职员的_id
+    + id (String, required) - 任务的_id
+    
+### 接受任务 [POST]
+
+> 给任务填入staff，设置start_time为当前时间，修改status
+
++ Response 200 (application/json)
+    {}
+    
+### 开始执行任务 [PATCH]
+
+> 当微信扫到货物时，开始任务。修改status。如果任务为出库，则直接结束，结束时间为当前时间加上某一个固定值；
+
++ Response 200 (application/json)
+    {}
+
+### 放弃任务 [DELETE]
+
+> 删除任务staff字段，同时修改status为0
+
++ Response 200 (application/json)
+    {}
+
+## Staff's Tasks [/staff/:sid/tasks]
+
++ Parameters
+    + sid (String, required) - 职员的_id
+
+### 删除所有任务 [DELETE]
+> 删除该staff所有任务的staff字段，同时修改status为0
+
++ Response 200 (application/json)
+    {}
+    
+### 完成多个搬运任务 [PATCH]
+
+> 该接口在用户完成搬运扫货架上的条形码时调用，接口通过摄像头拍摄相应货架，通过图形技术获得该货架上所有货物，然后过滤得到处于搬运状态且为该职员的货物，然后完成这些货物相应的任务。在完成这些任务时，需要给相应migration的date赋值。
+
+**Request Body**
+
+- repository `Number` (required) -- 所在仓库id
+- location `Number` (required) -- 所在位置id
+
+**Response 200**
+
++ (array)
+    + (string) -- 完成的任务的_id 
+
++ Request (application/json)
+    {
+        "repository": 2,
+        "location": 3,
+    }
+
++ Response 200 (application/json)
+    ["dsaf32141", "adsfkihuihbj3241908"]
+
 
 ### 获取特定职员的任务数量 [HEAD]
 
-> 当你希望一页一页地获取物资时，你可以先通过该接口获取所有物资的数量，然后使用下一个接口。
+> 当你希望一页一页地获取任务时，你可以先通过该接口获取所有任务的数量，然后使用下一个接口。
 
 **Response 200 Body**
 
@@ -434,13 +759,14 @@ others结构：
         "num": 20
     }
     
-### 获取特定职员的任务 [GET /staff/:account/tasks(?page, limit)]
+### 获取特定职员的任务 [GET /staff/:sid/tasks(?page, limit)]
 
 **Response 200 Body**
 
 - (array)
     - (object)
-      - action `Number` --  动作, 动作码详细见下方
+      - _id `String` -- 任务_id
+      - action `Number` --  动作，详见 db doc
       - status `Number` -- 任务状态, 0未开始1进行中2完成3任务取消
       - publish_time `Date`-- 任务发布时间
       - start_time  `Date` --   任务开始时间
@@ -454,18 +780,23 @@ others结构：
         - estimated_export_time   `Date(String)` -- 估计出库时间
         - height `Number` -- 物资长度，该系统中固定为1
         - width `Number` -- 物资长度，该系统中固定为1
-        - length `Number` -- 物资长度，该系统中固定为1
-        - repository_id `Number` -- 储存仓库的id
-        - location_id `Number` -- 仓库中位置的id
+        - length `Number` -- 物资长度，该系统中固定为2
         - status `Number` -- 状态码，详见 db doc
         - last_migrations `String` -- 最近一次搬运记录_id
         - location_update_time `Date(String)` -- 位置更新时间
-      - err_repository `Number` --  错误仓库，当action为6开头时才会有这个键值
-      - err_location `Number` --  错误位置，当action为6开头时才会有这个键值
+        - from_repository `number` -- 原仓库, 仓库id, 0表示入库
+        - from_location `number` -- 原位置, 原位置的id
+        - to_repository `number` -- 目标仓库, 仓库id, -1表示出库
+        - to_location `number` -- 目标位置, 目标位置的id
+      - error(object) -- 当action为6开头时才会有这个键值
+        - repository `Number` --  错误仓库
+        - location `Number` --  错误位置
+        - material `Number` -- 物资id, 如果错误码为2，则为空值
+        - image `Number` --  照相图片，错误照片，圈出错误
      
 
 + Parameters
-    + account (String, required) - 职员的账户
+    + sid (String, required) - 职员的_id
     + page: 0 (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
     + limit: 10 (Number, optional) - 每页几项
     + others (optional) - 见开头readme
@@ -473,6 +804,7 @@ others结构：
 + Response 200 (application/json)
 
     [{
+        "_id": "dsafdsadsaf32413141kl2",
         "action": 500,
         "status": 1,
         "publish_time": "2017-04-06T04:57:36.801Z",
@@ -487,16 +819,18 @@ others结构：
             "estimated_export_time": "2017-04-06T04:57:36.801Z",
             "height": 1,
             "width": 1,
-            "length": 1,
-            "repository_id": 3,
-            "location_id": 2,
+            "length": 2,
             "status": 300,
+            "from_repository": 2,
+            "from_location": 12,
+            "to_repository": -1,
+            "to_location": 0,
             "last_migrations": "1234",
             "location_update_time": "2017-04-06T04:57:36.801Z"
         }
     }, ...]
 
-## Migration [/migration/:id/task]
+## Task with Migration [/migration/:id/task]
 
 + Parameters
     + id (String, required) - migration数据的 _id
@@ -505,7 +839,8 @@ others结构：
 
 **Response 200 Body**
 
-- action `Number` --  动作, 动作码详细见下方
+- _id `String` -- 任务_id
+- action `Number` --  动作，详见文档 db doc
 - status `Number` -- 任务状态, 0未开始1进行中2完成3任务取消
 - publish_time `Date`-- 任务发布时间
 - start_time  `Date` --   任务开始时间
@@ -528,7 +863,7 @@ others结构：
   - estimated_export_time   `Date(String)` -- 估计出库时间
   - height `Number` -- 物资长度，该系统中固定为1
   - width `Number` -- 物资长度，该系统中固定为1
-  - length `Number` -- 物资长度，该系统中固定为1
+  - length `Number` -- 物资长度，该系统中固定为2
   - repository_id `Number` -- 储存仓库的id
   - location_id `Number` -- 仓库中位置的id
   - status `Number` -- 状态码，详见 db doc
@@ -538,6 +873,7 @@ others结构：
 + Response 200 (application/json)
 
     {
+        "_id": "dsafdsadsaf32413141kl2",
         "action": 500,
         "status": 1,
         "publish_time": "2017-04-06T04:57:36.801Z",
@@ -562,7 +898,7 @@ others结构：
             "estimated_export_time": "2017-04-06T04:57:36.801Z",
             "height": 1,
             "width": 1,
-            "length": 1,
+            "length": 2,
             "repository_id": 3,
             "location_id": 2,
             "status": 300,
@@ -573,15 +909,17 @@ others结构：
 
 # Group Staff
 
-## Staff [/staff/:account]
+
+## Staff [/staff/:id]
 
 ### 获取特定用户的信息 [GET]
 
 + Parameters
-    + account (String, required) - 职员的账户
+    + id (String, required) - 职员的_id
 
 **Response 200 Body**
 
+- _id `String` -- 职员_id
 - name `String` -- 职员名
 - account `String` -- 职员账户
 - passwd `String` -- 职员密码
@@ -594,6 +932,7 @@ others结构：
 + Response 200 (application/json)
 
     {
+        "_id": "dsfa3241lk32j41",
         "name": "因幡帝",
         "account": "inaba_tewi",
         "passwd": "123456",
@@ -636,6 +975,75 @@ others结构：
 + Response 200 (application/json)
     {}
 
+## Auth [/staff/:id/auth]
+
+### 登录 [POST]
+
+**Request Body**
+
+- account `String` (required) -- 职员账户
+- passwd `String` (required) -- 职员密码
+
+**Response 200 Body**
+
+- _id `String` -- 职员_id
+- name `String` -- 职员名
+- account `String` -- 职员账户
+- sex `Number` -- 性别，0女1男
+- age `Number`  -- 年龄
+- permission `Number` -- 职员权限，0管理员1员工99root
+- signup_time `Date` -- 注册时间
+- last_login_time `Date` -- 最近登录时间
+
+**Response 400 Body**
+
+- error `String` -- 请求体错误具体原因
+
++ Request (application/json)
+    {
+        "account": "fuck1234",
+        "passwd": "sqs21995"
+    }
+    
++ Response 200 (application/json)
+    {
+        "_id": "dsfa3241lk32j41",
+        "name": "因幡帝",
+        "account": "inaba_tewi",
+        "sex": 0,
+        "age": 222,
+        "permission": 1,
+        "signup_time": 1491451593158,
+        "last_login_time": 1491451593158
+    }
+
++ Response 400 (application/json)
+    {
+        "error": "Your request body is wrong!"
+    }
+
+### 修改密码 [PATCH]
+
+**Request Body**
+
+- passwd `String` (required) -- 职员密码
+
+**Response 400 Body**
+
+- error `String` -- 请求体错误具体原因
+
++ Request (application/json)
+    {
+        "passwd": "sqs21995"
+    }
+    
++ Response 200 (application/json)
+    {}
+
++ Response 400 (application/json)
+    {
+        "error": "Your request body is wrong!"
+    }
 
 ## Staffs [/staffs]
 
@@ -654,6 +1062,18 @@ others结构：
 - signup_time `Date` (optional, default: now) -- 注册时间
 - last_login_time `Date` (optional) -- 最近登录时间
 
+**Response 201 Body**
+
+- _id `String` -- 职员_id
+- name `String` -- 职员名
+- account `String` -- 职员账户
+- passwd `String` -- 职员密码
+- sex `Number` -- 性别，0女1男
+- age `Number`  -- 年龄
+- permission `Number` -- 职员权限，0管理员1员工99root
+- signup_time `Date` -- 注册时间
+- last_login_time `Date` -- 最近登录时间
+
 **Response 400 Body**
 
 - error `String` -- 请求体错误具体原因
@@ -671,7 +1091,17 @@ others结构：
     }
 
 + Response 201 (application/json)
-    {}
+    {
+        "_id": "dsfa3241lk32j41",
+        "name": "因幡帝",
+        "account": "inaba_tewi",
+        "passwd": "123456",
+        "sex": 0,
+        "age": 222,
+        "permission": 1,
+        "signup_time": 1491451593158,
+        "last_login_time": 1491451593158
+    }
 
 + Response 400 (application/json)
     {
@@ -680,7 +1110,7 @@ others结构：
 
 ### 获取职员的数量 [HEAD]
 
-> 当你希望一页一页地获取物资时，你可以先通过该接口获取所有物资的数量，然后使用下一个接口。
+> 当你希望一页一页地获取职员时，你可以先通过该接口获取所有职员的数量，然后使用下一个接口。
 
 **Response 200 Body**
 
@@ -702,6 +1132,7 @@ others结构：
 
 - (array)
     - (object)
+      - _id `String` -- 职员_id
       - name `String`  -- 职员名
       - account `String`  -- 职员账户
       - passwd `String`  -- 职员密码
@@ -719,6 +1150,7 @@ others结构：
 + Response 200 (application/json)
 
     [{
+        "_id": "dsfa3241lk32j41",
         "name": "因幡帝",
         "account": "inaba_tewi",
         "passwd": "123456",
@@ -735,3 +1167,79 @@ others结构：
 
 + Response 200 (application/json)
     {}
+    
+# Group Exportinfo
+
+## Exportinfos [/exportinfos]
+
+### 获取出库信息数量 [HEAD]
+
+> 当你希望一页一页地获取时，你可以先通过该接口获取所有的数量，然后使用下一个接口。
+
+**Response 200 Body**
+
+- num `Number` -- 出库信息数量
+
++ Parameters
+    + others (optional) - 见开头readme
+
++ Response 200 (application/json)
+    {
+        "num": 20
+    }
+
+
+### 获取所有出库信息 [GET /exportinfos(?page, limit)]
+
+
+**Response 200 Body**
+
+- (array)
+    - (object)
+      - _id `String` -- 出库信息的_id
+      - actual_export_time `Date` -- 实际出库时间
+      - destination `String` -- 去向 
+      - from_repository `Number` -- 原仓库
+      - material (object) -- 物资
+        - id `Number` -- 物资编号
+        - type `Number` -- 物资类型
+        - description `Date(String)` -- 物资描述
+        - import_time `Date(String)` -- 入库时间
+        - estimated_export_time   `Date(String)` -- 估计出库时间
+        - height `Number` -- 物资长度，该系统中固定为1
+        - width `Number` -- 物资长度，该系统中固定为1
+        - length `Number` -- 物资长度，该系统中固定为2
+        - repository_id `Number` -- 储存仓库的id
+        - location_id `Number` -- 仓库中位置的id
+        - status `Number` -- 状态码，详见 db doc
+        - last_migrations `String` -- 最近一次搬运记录_id
+        - location_update_time `Date(String)` -- 位置更新时间
+
++ Parameters
+    + page: 0 (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
+    + limit: 10 (Number, optional) - 每页几项
+    + others (optional) - 见开头readme
+
++ Response 200 (application/json)
+
+    [{
+        "_id": "dsfkaljh3214",
+        "actual_export_time": "2017-04-06T04:57:36.801Z",
+        "destination": "幻想乡",
+        "from_repository": 2,
+        "material": {
+          "id": 1491451593158,
+          "type": 0,
+          "description": "wonderful repository",
+          "import_time": "2017-04-06T04:57:36.801Z",
+          "estimated_export_time": "2017-04-06T04:57:36.801Z",
+          "height": 1,
+          "width": 1,
+          "length": 2,
+          "repository_id": 3,
+          "location_id": 2,
+          "status": 300,
+          "last_migrations": "1234",
+          "location_update_time": "2017-04-06T04:57:36.801Z"
+        }
+    }, ...]
