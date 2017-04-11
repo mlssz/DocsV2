@@ -879,7 +879,7 @@ others结构：
         "publish_time": "2017-04-06T04:57:36.801Z",
         "start_time": "2017-04-06T04:57:36.801Z",
         "end_time":  "2017-04-06T04:57:36.801Z",
-        "remark": ""
+        "remark": "",
         "staff": {
             "name": "因幡帝",
             "account": "inaba_tewi",
