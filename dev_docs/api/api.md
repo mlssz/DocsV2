@@ -5,11 +5,13 @@ FORMAT: 1A
 ## Tips
 - host: http://o1.mephis.me:8234
 - db doc: [https://mlssz.github.io/DocsV2/dev_docs/db_design/index.html](https://mlssz.github.io/DocsV2/dev_docs/db_design/index.html)
+
+## readme
+
 - 响应吗 `501` 表示 `Not Implemented`, 即接口未写完
 - `Date(String)` 表示 日期字符串
 - _id 为 mongodb 中数据项的 pk
-
-## readme
+- url中的 page 参数是从 0 开始的
 
 **url 中的others参数作为筛选要求**
 > 下列 reponse body 结构表示，返回值为一个array，array的元素是object， 以及object的键值
