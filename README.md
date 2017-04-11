@@ -7,5 +7,5 @@
 ## online documents url
 
 - database design: [db_design](https://mlssz.github.io/DocsV2/dev_docs/db_design/index.html)
-- api : [api](https://mlssz.github.io/DocsV2/dev_docs/api/#staff-staff-get)
+- api : [api](https://mlssz.github.io/DocsV2/dev_docs/api/index.html)
 
