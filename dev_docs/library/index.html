@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-04-12 Wed 22:43 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Library</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Mephis Pheies" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" title="Standard" href="/DocsV2/statics/worg.css" type="text/css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Library</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org539aea1">1. mongodb update&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Mongo">Mongo</span></span></a>
+<ul>
+<li><a href="#org3647fe6">1.1. $inc</a></li>
+<li><a href="#orgf82ab4e">1.2. $set</a></li>
+<li><a href="#org9b468a7">1.3. $unset</a></li>
+<li><a href="#org73d7104">1.4. $push (数组修改器)</a></li>
+<li><a href="#orgf96a150">1.5. $ne/$addToSet (数组修改器)</a></li>
+<li><a href="#org6972101">1.6. $pop、$pull (数组修改器)</a></li>
+<li><a href="#orgcaf0302">1.7. 数组的定位修改器</a></li>
+<li><a href="#org620fa82">1.8. upsert</a></li>
+<li><a href="#orgc59be28">1.9. save函数</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org539aea1" class="outline-2">
+<h2 id="org539aea1"><span class="section-number-2">1</span> mongodb update&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Mongo">Mongo</span></span></h2>
+<div class="outline-text-2" id="text-1">
+<p>
+对于文档的更新除替换外，针对某个或多个文档只需要部分更新可使用原子的更新修改器，能够高效的进行文档更新。更新修改器是中特殊的键， 用来指定复杂的操作，比如增加、删除或者调整键，还可能是操作数组或者内嵌文档。
+</p>
+</div>
+
+<div id="outline-container-org3647fe6" class="outline-3">
+<h3 id="org3647fe6"><span class="section-number-3">1.1</span> $inc</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+这个修改器干什么使的呢？看看下面示例的具体操作后的结果即可知道。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #AE81FF;">{</span><span style="color: #E6DB74;">"uid"</span>:<span style="color: #E6DB74;">"201203"</span>,<span style="color: #E6DB74;">"type"</span>:<span style="color: #E6DB74;">"1"</span>,size:<span style="color: #AE81FF;">10</span><span style="color: #AE81FF;">}</span>
+&gt; db.b.insert<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span>:<span style="color: #E6DB74;">"201203"</span>,<span style="color: #E6DB74;">"type"</span>:<span style="color: #E6DB74;">"1"</span>,size:<span style="color: #AE81FF;">10</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.b.find<span style="color: #AE81FF;">()</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003b6135af21ff428dafbe6"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"201203"</span>, <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"1"</span>,
+<span style="color: #E6DB74;">"size"</span> : <span style="color: #AE81FF;">10</span> <span style="color: #AE81FF;">}</span>
+&gt; db.b.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"201203"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"$inc"</span>:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"size"</span> : <span style="color: #AE81FF;">1</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.b.find<span style="color: #AE81FF;">()</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003b6135af21ff428dafbe6"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"201203"</span>, <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"1"</span>,
+<span style="color: #E6DB74;">"size"</span> : <span style="color: #AE81FF;">11</span> <span style="color: #AE81FF;">}</span>
+&gt; db.b.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"201203"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"$inc"</span>:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"size"</span> : <span style="color: #AE81FF;">2</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.b.find<span style="color: #AE81FF;">()</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003b6135af21ff428dafbe6"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"201203"</span>, <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"1"</span>,
+<span style="color: #E6DB74;">"size"</span> : <span style="color: #AE81FF;">13</span> <span style="color: #AE81FF;">}</span>
+&gt; db.b.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"201203"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"$inc"</span>:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"size"</span> : -<span style="color: #AE81FF;">1</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.b.find<span style="color: #AE81FF;">()</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003b6135af21ff428dafbe6"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"201203"</span>, <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"1"</span>,
+<span style="color: #E6DB74;">"size"</span> : <span style="color: #AE81FF;">12</span> <span style="color: #AE81FF;">}</span>
+</pre>
+</div>
+
+<p>
+得出结论：修改器$inc可以对文档的某个值为数字型（只能为满足要求的数字）的键进行增减的操作。
+（这里有个问题：上篇中说到更新默认只对满足条件的记录集中第一个文档进行更新，那么使用$inc修改器之后，还是一样吗？）
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf82ab4e" class="outline-3">
+<h3 id="orgf82ab4e"><span class="section-number-3">1.2</span> $set</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+用来指定一个键并更新键值，若键不存在并创建。来看看下面的效果：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript">&gt; db.a.findOne<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span>,<span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"500216de81b954b6161a7d8f"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"desc"</span> : <span style="color: #E6DB74;">"hello world2!"</span>, <span style="color: #E6DB74;">"num"</span>
+: <span style="color: #AE81FF;">40</span>, <span style="color: #E6DB74;">"sname"</span> : <span style="color: #E6DB74;">"jk"</span>, <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span>, <span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span> <span style="color: #AE81FF;">}</span>
+<span style="color: #75715E;">//</span><span style="color: #75715E;">size&#38190;&#19981;&#23384;&#22312;&#30340;&#22330;&#21512;</span>
+&gt; db.a.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span>,<span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"$set"</span>:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"size"</span>:<span style="color: #AE81FF;">10</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.a.findOne<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span>,<span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"500216de81b954b6161a7d8f"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"desc"</span> : <span style="color: #E6DB74;">"hello world2!"</span>, <span style="color: #E6DB74;">"num"</span>
+: <span style="color: #AE81FF;">40</span>, <span style="color: #E6DB74;">"size"</span> : <span style="color: #AE81FF;">10</span>, <span style="color: #E6DB74;">"sname"</span> : <span style="color: #E6DB74;">"jk"</span>, <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span>, <span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span> <span style="color: #AE81FF;">}</span>
+<span style="color: #75715E;">//</span><span style="color: #75715E;">sname&#38190;&#23384;&#22312;&#30340;&#22330;&#21512;</span>
+&gt; db.a.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span>,<span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"$set"</span>:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"sname"</span>:<span style="color: #E6DB74;">"ssk"</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.a.find<span style="color: #AE81FF;">()</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"500216de81b954b6161a7d8f"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"desc"</span> : <span style="color: #E6DB74;">"hello world2!"</span>, <span style="color: #E6DB74;">"num"</span>
+: <span style="color: #AE81FF;">40</span>, <span style="color: #E6DB74;">"size"</span> : <span style="color: #AE81FF;">10</span>, <span style="color: #E6DB74;">"sname"</span> : <span style="color: #E6DB74;">"ssk"</span>, <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span>, <span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span> <span style="color: #AE81FF;">}</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"50026affdeb4fa8d154f8572"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"desc"</span> : <span style="color: #E6DB74;">"hello world1!"</span>, <span style="color: #E6DB74;">"num"</span>
+: <span style="color: #AE81FF;">50</span>, <span style="color: #E6DB74;">"sname"</span> : <span style="color: #E6DB74;">"jk"</span>, <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"1"</span>, <span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span> <span style="color: #AE81FF;">}</span>
+<span style="color: #75715E;">//</span><span style="color: #75715E;">&#21487;&#25913;&#21464;&#38190;&#30340;&#20540;&#31867;&#22411;</span>
+&gt; db.a.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span>,<span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"$set"</span>:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"sname"</span>:<span style="color: #E6DB74;">[</span><span style="color: #E6DB74;">"java"</span>,<span style="color: #E6DB74;">".net"</span>,<span style="color: #E6DB74;">"c++"</span><span style="color: #E6DB74;">]</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.a.findOne<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span>,<span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span style="color: #AE81FF;">{</span>
+        <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"500216de81b954b6161a7d8f"</span><span style="color: #66D9EF;">)</span>,
+        <span style="color: #E6DB74;">"desc"</span> : <span style="color: #E6DB74;">"hello world2!"</span>,
+        <span style="color: #E6DB74;">"num"</span> : <span style="color: #AE81FF;">40</span>,
+        <span style="color: #E6DB74;">"size"</span> : <span style="color: #AE81FF;">10</span>,
+        <span style="color: #E6DB74;">"sname"</span> : <span style="color: #66D9EF;">[</span>
+                <span style="color: #E6DB74;">"java"</span>,
+                <span style="color: #E6DB74;">".net"</span>,
+                <span style="color: #E6DB74;">"c++"</span>
+        <span style="color: #66D9EF;">]</span>,
+        <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span>,
+        <span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span>
+<span style="color: #AE81FF;">}</span>
+</pre>
+</div>
+
+<p>
+对于内嵌的文档，$set又是如何进行更新的内嵌的文档的呢，请看下面的示例：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #AE81FF;">{</span><span style="color: #E6DB74;">"name"</span>:<span style="color: #E6DB74;">"toyota"</span>,<span style="color: #E6DB74;">"type"</span>:<span style="color: #E6DB74;">"suv"</span>,<span style="color: #E6DB74;">"size"</span>:<span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"height"</span>:<span style="color: #AE81FF;">10</span>,<span style="color: #E6DB74;">"width"</span>:<span style="color: #AE81FF;">5</span>,<span style="color: #E6DB74;">"length"</span>:<span style="color: #AE81FF;">15</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">}</span>
+&gt; db.c.findOne<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"name"</span>:<span style="color: #E6DB74;">"toyota"</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span style="color: #AE81FF;">{</span>
+        <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003be465af21ff428dafbe7"</span><span style="color: #66D9EF;">)</span>,
+        <span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span>,
+        <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"suv"</span>,
+        <span style="color: #E6DB74;">"size"</span> : <span style="color: #66D9EF;">{</span>
+                <span style="color: #E6DB74;">"height"</span> : <span style="color: #AE81FF;">10</span>,
+                <span style="color: #E6DB74;">"width"</span> : <span style="color: #AE81FF;">5</span>,
+                <span style="color: #E6DB74;">"length"</span> : <span style="color: #AE81FF;">15</span>
+        <span style="color: #66D9EF;">}</span>
+<span style="color: #AE81FF;">}</span>
+&gt; db.c.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"name"</span>:<span style="color: #E6DB74;">"toyota"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"$set"</span>:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"size.height"</span>:<span style="color: #AE81FF;">8</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.c.findOne<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"name"</span>:<span style="color: #E6DB74;">"toyota"</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span style="color: #AE81FF;">{</span>
+        <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003be465af21ff428dafbe7"</span><span style="color: #66D9EF;">)</span>,
+        <span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span>,
+        <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"suv"</span>,
+        <span style="color: #E6DB74;">"size"</span> : <span style="color: #66D9EF;">{</span>
+                <span style="color: #E6DB74;">"height"</span> : <span style="color: #AE81FF;">8</span>,
+                <span style="color: #E6DB74;">"width"</span> : <span style="color: #AE81FF;">5</span>,
+                <span style="color: #E6DB74;">"length"</span> : <span style="color: #AE81FF;">15</span>
+        <span style="color: #66D9EF;">}</span>
+<span style="color: #AE81FF;">}</span>
+&gt; db.c.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"name"</span>:<span style="color: #E6DB74;">"toyota"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"$set"</span>:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"size.width"</span>:<span style="color: #AE81FF;">7</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.c.findOne<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"name"</span>:<span style="color: #E6DB74;">"toyota"</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span style="color: #AE81FF;">{</span>
+        <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003be465af21ff428dafbe7"</span><span style="color: #66D9EF;">)</span>,
+        <span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span>,
+        <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"suv"</span>,
+        <span style="color: #E6DB74;">"size"</span> : <span style="color: #66D9EF;">{</span>
+                <span style="color: #E6DB74;">"height"</span> : <span style="color: #AE81FF;">8</span>,
+                <span style="color: #E6DB74;">"width"</span> : <span style="color: #AE81FF;">7</span>,
+                <span style="color: #E6DB74;">"length"</span> : <span style="color: #AE81FF;">15</span>
+        <span style="color: #66D9EF;">}</span>
+<span style="color: #AE81FF;">}</span>
+</pre>
+</div>
+
+<p>
+可见：对于内嵌文档在使用$set更新时，使用"."连接的方式。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9b468a7" class="outline-3">
+<h3 id="org9b468a7"><span class="section-number-3">1.3</span> $unset</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+从字面就可以看出其意义，主要是用来删除键。
+</p>
+
+<p>
+示例操作效果如下：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript">&gt; db.a.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span>,<span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"$unset"</span>:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"sname"</span>:<span style="color: #AE81FF;">1</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.a.findOne<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span>,<span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span style="color: #AE81FF;">{</span>
+        <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"500216de81b954b6161a7d8f"</span><span style="color: #66D9EF;">)</span>,
+        <span style="color: #E6DB74;">"desc"</span> : <span style="color: #E6DB74;">"hello world2!"</span>,
+        <span style="color: #E6DB74;">"num"</span> : <span style="color: #AE81FF;">40</span>,
+        <span style="color: #E6DB74;">"size"</span> : <span style="color: #AE81FF;">10</span>,
+        <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span>,
+        <span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span>
+<span style="color: #AE81FF;">}</span>
+&gt; db.a.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span>,<span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"$unset"</span>:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"num"</span>:<span style="color: #AE81FF;">0</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.a.findOne<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span>,<span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span style="color: #AE81FF;">{</span>
+        <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"500216de81b954b6161a7d8f"</span><span style="color: #66D9EF;">)</span>,
+        <span style="color: #E6DB74;">"desc"</span> : <span style="color: #E6DB74;">"hello world2!"</span>,
+        <span style="color: #E6DB74;">"size"</span> : <span style="color: #AE81FF;">10</span>,
+        <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span>,
+        <span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span>
+<span style="color: #AE81FF;">}</span>
+&gt; db.a.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span>,<span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"$unset"</span>:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"size"</span>:-<span style="color: #AE81FF;">1</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.a.findOne<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span>,<span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span style="color: #AE81FF;">{</span>
+        <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"500216de81b954b6161a7d8f"</span><span style="color: #66D9EF;">)</span>,
+        <span style="color: #E6DB74;">"desc"</span> : <span style="color: #E6DB74;">"hello world2!"</span>,
+        <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span>,
+        <span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span>
+<span style="color: #AE81FF;">}</span>
+&gt; db.a.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span>,<span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"$unset"</span>:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"desc"</span>:<span style="color: #E6DB74;">"sssssss"</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.a.findOne<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span>,<span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span style="color: #AE81FF;">{</span>
+        <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"500216de81b954b6161a7d8f"</span><span style="color: #66D9EF;">)</span>,
+        <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"3"</span>,
+        <span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span>
+<span style="color: #AE81FF;">}</span>
+</pre>
+</div>
+
+<p>
+得出结论：使用修改器$unset时，不论对目标键使用1、0、-1或者具体的字符串等都是可以删除该目标键。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org73d7104" class="outline-3">
+<h3 id="org73d7104"><span class="section-number-3">1.4</span> $push (数组修改器)</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+示例操作效果如下：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript">&gt; db.c.find<span style="color: #AE81FF;">()</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003be465af21ff428dafbe7"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span>, <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"suv"</span>,
+<span style="color: #E6DB74;">"size"</span> : <span style="color: #66D9EF;">{</span> <span style="color: #E6DB74;">"height"</span> : <span style="color: #AE81FF;">8</span>, <span style="color: #E6DB74;">"width"</span> : <span style="color: #AE81FF;">7</span>, <span style="color: #E6DB74;">"length"</span> : <span style="color: #AE81FF;">15</span> <span style="color: #66D9EF;">}</span> <span style="color: #AE81FF;">}</span>
+<span style="color: #75715E;">//</span><span style="color: #75715E;">&#20808;push&#19968;&#20010;&#24403;&#21069;&#25991;&#26723;&#20013;&#19981;&#23384;&#22312;&#30340;&#38190;title</span>
+&gt; db.c.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span>$push:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"title"</span>:<span style="color: #E6DB74;">"t1"</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.c.find<span style="color: #AE81FF;">()</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003be465af21ff428dafbe7"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span>, <span style="color: #E6DB74;">"size"</span> : <span style="color: #66D9EF;">{</span> <span style="color: #E6DB74;">"height"</span> : <span style="color: #AE81FF;">8</span>,
+ <span style="color: #E6DB74;">"width"</span> : <span style="color: #AE81FF;">7</span>, <span style="color: #E6DB74;">"length"</span> : <span style="color: #AE81FF;">15</span> <span style="color: #66D9EF;">}</span>, <span style="color: #E6DB74;">"title"</span> : <span style="color: #66D9EF;">[</span> <span style="color: #E6DB74;">"t1"</span> <span style="color: #66D9EF;">]</span>, <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"suv"</span> <span style="color: #AE81FF;">}</span>
+
+<span style="color: #75715E;">//</span><span style="color: #75715E;">&#20877;&#21521;title&#20013;push&#19968;&#20010;&#20540;</span>
+&gt; db.c.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span>$push:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"title"</span>:<span style="color: #E6DB74;">"t2"</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.c.find<span style="color: #AE81FF;">()</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003be465af21ff428dafbe7"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span>, <span style="color: #E6DB74;">"size"</span> : <span style="color: #66D9EF;">{</span> <span style="color: #E6DB74;">"height"</span> : <span style="color: #AE81FF;">8</span>,
+ <span style="color: #E6DB74;">"width"</span> : <span style="color: #AE81FF;">7</span>, <span style="color: #E6DB74;">"length"</span> : <span style="color: #AE81FF;">15</span> <span style="color: #66D9EF;">}</span>, <span style="color: #E6DB74;">"title"</span> : <span style="color: #66D9EF;">[</span> <span style="color: #E6DB74;">"t1"</span>, <span style="color: #E6DB74;">"t2"</span> <span style="color: #66D9EF;">]</span>, <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"suv"</span> <span style="color: #AE81FF;">}</span>
+<span style="color: #75715E;">//</span><span style="color: #75715E;">&#20877;&#21521;title&#20013;push&#19968;&#20010;&#20540;</span>
+&gt; db.c.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span>$push:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"title"</span>:<span style="color: #E6DB74;">"t2"</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.c.find<span style="color: #AE81FF;">()</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003be465af21ff428dafbe7"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span>, <span style="color: #E6DB74;">"size"</span> : <span style="color: #66D9EF;">{</span> <span style="color: #E6DB74;">"height"</span> : <span style="color: #AE81FF;">8</span>,
+ <span style="color: #E6DB74;">"width"</span> : <span style="color: #AE81FF;">7</span>, <span style="color: #E6DB74;">"length"</span> : <span style="color: #AE81FF;">15</span> <span style="color: #66D9EF;">}</span>, <span style="color: #E6DB74;">"title"</span> : <span style="color: #66D9EF;">[</span> <span style="color: #E6DB74;">"t1"</span>, <span style="color: #E6DB74;">"t2"</span>, <span style="color: #E6DB74;">"t2"</span> <span style="color: #66D9EF;">]</span>, <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"suv"</span> <span style="color: #AE81FF;">}</span>
+<span style="color: #75715E;">//</span><span style="color: #75715E;">&#20877;&#21521;&#19968;&#20010;&#24050;&#32463;&#23384;&#22312;&#30340;&#38190;&#20540;&#38750;&#25968;&#32452;&#31867;&#22411;&#30340;&#38190;push&#19968;&#20010;&#20540;</span>
+&gt; db.c.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span>$push:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"size.height"</span>:<span style="color: #AE81FF;">10</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+Cannot apply $push/$pushAll modifier to non-array
+&gt; db.c.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span>$push:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"name"</span>:<span style="color: #E6DB74;">"ddddddd"</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+Cannot apply $push/$pushAll modifier to non-array
+</pre>
+</div>
+
+<p>
+得出结论：$push&#x2013;向文档的某个数组类型的键添加一个数组元素，不过滤重复的数据。添加时键存在，要求键值类型必须是数组；键不存在，则创建数组类型的键。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf96a150" class="outline-3">
+<h3 id="orgf96a150"><span class="section-number-3">1.5</span> $ne/$addToSet (数组修改器)</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+主要给数组类型键值添加一个元素时，避免在数组中产生重复数据，$ne在有些情况是不通行的。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript">&gt; db.c.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"title"</span> : <span style="color: #A6E22E;">{</span>$ne:<span style="color: #E6DB74;">"t2"</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span>$push:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"title"</span>:<span style="color: #E6DB74;">"t2"</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.c.find<span style="color: #AE81FF;">()</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003be465af21ff428dafbe7"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span>, <span style="color: #E6DB74;">"size"</span> : <span style="color: #66D9EF;">{</span> <span style="color: #E6DB74;">"height"</span> : <span style="color: #AE81FF;">8</span>,
+ <span style="color: #E6DB74;">"width"</span> : <span style="color: #AE81FF;">7</span>, <span style="color: #E6DB74;">"length"</span> : <span style="color: #AE81FF;">15</span> <span style="color: #66D9EF;">}</span>, <span style="color: #E6DB74;">"title"</span> : <span style="color: #66D9EF;">[</span> <span style="color: #E6DB74;">"t1"</span>, <span style="color: #E6DB74;">"t2"</span>, <span style="color: #E6DB74;">"t2"</span> <span style="color: #66D9EF;">]</span>, <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"suv"</span> <span style="color: #AE81FF;">}</span>
+&gt; db.c.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span>$addToSet:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"title"</span>:<span style="color: #E6DB74;">"t2"</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.c.find<span style="color: #AE81FF;">()</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003be465af21ff428dafbe7"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span>, <span style="color: #E6DB74;">"size"</span> : <span style="color: #66D9EF;">{</span> <span style="color: #E6DB74;">"height"</span> : <span style="color: #AE81FF;">8</span>,
+ <span style="color: #E6DB74;">"width"</span> : <span style="color: #AE81FF;">7</span>, <span style="color: #E6DB74;">"length"</span> : <span style="color: #AE81FF;">15</span> <span style="color: #66D9EF;">}</span>, <span style="color: #E6DB74;">"title"</span> : <span style="color: #66D9EF;">[</span> <span style="color: #E6DB74;">"t1"</span>, <span style="color: #E6DB74;">"t2"</span>, <span style="color: #E6DB74;">"t2"</span> <span style="color: #66D9EF;">]</span>, <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"suv"</span> <span style="color: #AE81FF;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org6972101" class="outline-3">
+<h3 id="org6972101"><span class="section-number-3">1.6</span> $pop、$pull (数组修改器)</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+$pop从数组的头或者尾删除数组中的元素，示例如下：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003be465af21ff428dafbe7"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span>, <span style="color: #E6DB74;">"size"</span> : <span style="color: #66D9EF;">{</span> <span style="color: #E6DB74;">"height"</span> : <span style="color: #AE81FF;">8</span>,
+ <span style="color: #E6DB74;">"width"</span> : <span style="color: #AE81FF;">7</span>, <span style="color: #E6DB74;">"length"</span> : <span style="color: #AE81FF;">15</span> <span style="color: #66D9EF;">}</span>, <span style="color: #E6DB74;">"title"</span> : <span style="color: #66D9EF;">[</span> <span style="color: #E6DB74;">"t1"</span>, <span style="color: #E6DB74;">"t2"</span>, <span style="color: #E6DB74;">"t3"</span>, <span style="color: #E6DB74;">"t4"</span> <span style="color: #66D9EF;">]</span>,<span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"suv"</span> <span style="color: #AE81FF;">}</span>
+ <span style="color: #75715E;">//</span><span style="color: #75715E;">&#20174;&#25968;&#32452;&#30340;&#23614;&#37096;&#21024;&#38500; 1</span>
+&gt; db.c.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span>$pop:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"title"</span>:<span style="color: #AE81FF;">1</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.c.find<span style="color: #AE81FF;">()</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003be465af21ff428dafbe7"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span>, <span style="color: #E6DB74;">"size"</span> : <span style="color: #66D9EF;">{</span> <span style="color: #E6DB74;">"height"</span> : <span style="color: #AE81FF;">8</span>,
+ <span style="color: #E6DB74;">"width"</span> : <span style="color: #AE81FF;">7</span>, <span style="color: #E6DB74;">"length"</span> : <span style="color: #AE81FF;">15</span> <span style="color: #66D9EF;">}</span>, <span style="color: #E6DB74;">"title"</span> : <span style="color: #66D9EF;">[</span> <span style="color: #E6DB74;">"t1"</span>, <span style="color: #E6DB74;">"t2"</span>, <span style="color: #E6DB74;">"t3"</span> <span style="color: #66D9EF;">]</span>, <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"suv"</span> <span style="color: #AE81FF;">}</span>
+ <span style="color: #75715E;">//</span><span style="color: #75715E;">&#20174;&#25968;&#32452;&#30340;&#22836;&#37096; -1</span>
+&gt; db.c.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span>$pop:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"title"</span>:-<span style="color: #AE81FF;">1</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.c.find<span style="color: #AE81FF;">()</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003be465af21ff428dafbe7"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span>, <span style="color: #E6DB74;">"size"</span> : <span style="color: #66D9EF;">{</span> <span style="color: #E6DB74;">"height"</span> : <span style="color: #AE81FF;">8</span>,
+ <span style="color: #E6DB74;">"width"</span> : <span style="color: #AE81FF;">7</span>, <span style="color: #E6DB74;">"length"</span> : <span style="color: #AE81FF;">15</span> <span style="color: #66D9EF;">}</span>, <span style="color: #E6DB74;">"title"</span> : <span style="color: #66D9EF;">[</span> <span style="color: #E6DB74;">"t2"</span>, <span style="color: #E6DB74;">"t3"</span> <span style="color: #66D9EF;">]</span>, <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"suv"</span> <span style="color: #AE81FF;">}</span>
+<span style="color: #75715E;">//</span><span style="color: #75715E;">&#20174;&#25968;&#32452;&#30340;&#23614;&#37096;&#21024;&#38500; 0</span>
+&gt; db.c.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span>$pop:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"title"</span>:<span style="color: #AE81FF;">0</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.c.find<span style="color: #AE81FF;">()</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003be465af21ff428dafbe7"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span>, <span style="color: #E6DB74;">"size"</span> : <span style="color: #66D9EF;">{</span> <span style="color: #E6DB74;">"height"</span> : <span style="color: #AE81FF;">8</span>,
+ <span style="color: #E6DB74;">"width"</span> : <span style="color: #AE81FF;">7</span>, <span style="color: #E6DB74;">"length"</span> : <span style="color: #AE81FF;">15</span> <span style="color: #66D9EF;">}</span>, <span style="color: #E6DB74;">"title"</span> : <span style="color: #66D9EF;">[</span> <span style="color: #E6DB74;">"t2"</span> <span style="color: #66D9EF;">]</span>, <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"suv"</span> <span style="color: #AE81FF;">}</span>
+</pre>
+</div>
+
+<p>
+$pull从数组中删除满足条件的元素，示例如下：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003be465af21ff428dafbe7"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span>, <span style="color: #E6DB74;">"size"</span> : <span style="color: #66D9EF;">{</span> <span style="color: #E6DB74;">"height"</span> : <span style="color: #AE81FF;">8</span>,
+ <span style="color: #E6DB74;">"width"</span> : <span style="color: #AE81FF;">7</span>, <span style="color: #E6DB74;">"length"</span> : <span style="color: #AE81FF;">15</span> <span style="color: #66D9EF;">}</span>, <span style="color: #E6DB74;">"title"</span> : <span style="color: #66D9EF;">[</span> <span style="color: #E6DB74;">"t1"</span>, <span style="color: #E6DB74;">"t2"</span>, <span style="color: #E6DB74;">"t2"</span>, <span style="color: #E6DB74;">"t3"</span> <span style="color: #66D9EF;">]</span>,<span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"suv"</span> <span style="color: #AE81FF;">}</span>
+&gt; db.c.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span>$pull:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"title"</span>:<span style="color: #E6DB74;">"t2"</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.c.find<span style="color: #AE81FF;">()</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003be465af21ff428dafbe7"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"toyota"</span>, <span style="color: #E6DB74;">"size"</span> : <span style="color: #66D9EF;">{</span> <span style="color: #E6DB74;">"height"</span> : <span style="color: #AE81FF;">8</span>,
+ <span style="color: #E6DB74;">"width"</span> : <span style="color: #AE81FF;">7</span>, <span style="color: #E6DB74;">"length"</span> : <span style="color: #AE81FF;">15</span> <span style="color: #66D9EF;">}</span>, <span style="color: #E6DB74;">"title"</span> : <span style="color: #66D9EF;">[</span> <span style="color: #E6DB74;">"t1"</span>, <span style="color: #E6DB74;">"t3"</span> <span style="color: #66D9EF;">]</span>, <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"suv"</span> <span style="color: #AE81FF;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcaf0302" class="outline-3">
+<h3 id="orgcaf0302"><span class="section-number-3">1.7</span> 数组的定位修改器</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+在需要对数组中的值进行操作的时候，可通过位置或者定位操作符（"$"）.数组是0开始的，可以直接将下标作为键来选择元素。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #AE81FF;">{</span><span style="color: #E6DB74;">"uid"</span>:<span style="color: #E6DB74;">"001"</span>,comments:<span style="color: #66D9EF;">[</span><span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"name"</span>:<span style="color: #E6DB74;">"t1"</span>,<span style="color: #E6DB74;">"size"</span>:<span style="color: #AE81FF;">10</span><span style="color: #A6E22E;">}</span>,<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"name"</span>:<span style="color: #E6DB74;">"t2"</span>,<span style="color: #E6DB74;">"size"</span>:<span style="color: #AE81FF;">12</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">]</span><span style="color: #AE81FF;">}</span>
+&gt; db.c.find<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span>:<span style="color: #E6DB74;">"001"</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003da405af21ff428dafbe8"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"001"</span>, <span style="color: #E6DB74;">"comments"</span> : <span style="color: #66D9EF;">[</span> <span style="color: #A6E22E;">{</span>
+<span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"t1"</span>, <span style="color: #E6DB74;">"size"</span> : <span style="color: #AE81FF;">10</span> <span style="color: #A6E22E;">}</span>, <span style="color: #A6E22E;">{</span> <span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"t2"</span>, <span style="color: #E6DB74;">"size"</span> : <span style="color: #AE81FF;">12</span> <span style="color: #A6E22E;">}</span> <span style="color: #66D9EF;">]</span> <span style="color: #AE81FF;">}</span>
+&gt; db.c.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span>:<span style="color: #E6DB74;">"001"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span>$inc:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"comments.0.size"</span>:<span style="color: #AE81FF;">1</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.c.find<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span>:<span style="color: #E6DB74;">"001"</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003da405af21ff428dafbe8"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"001"</span>, <span style="color: #E6DB74;">"comments"</span> : <span style="color: #66D9EF;">[</span> <span style="color: #A6E22E;">{</span>
+<span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"t1"</span>, <span style="color: #E6DB74;">"size"</span> : <span style="color: #AE81FF;">11</span> <span style="color: #A6E22E;">}</span>, <span style="color: #A6E22E;">{</span> <span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"t2"</span>, <span style="color: #E6DB74;">"size"</span> : <span style="color: #AE81FF;">12</span> <span style="color: #A6E22E;">}</span> <span style="color: #66D9EF;">]</span> <span style="color: #AE81FF;">}</span>
+&gt; db.c.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"comments.name"</span>:<span style="color: #E6DB74;">"t1"</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span>$set:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"comments.$.size"</span>:<span style="color: #AE81FF;">1</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.c.find<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"uid"</span>:<span style="color: #E6DB74;">"001"</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003da405af21ff428dafbe8"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"001"</span>, <span style="color: #E6DB74;">"comments"</span> : <span style="color: #66D9EF;">[</span> <span style="color: #A6E22E;">{</span>
+<span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"t1"</span>, <span style="color: #E6DB74;">"size"</span> : <span style="color: #AE81FF;">1</span> <span style="color: #A6E22E;">}</span>, <span style="color: #A6E22E;">{</span> <span style="color: #E6DB74;">"name"</span> : <span style="color: #E6DB74;">"t2"</span>, <span style="color: #E6DB74;">"size"</span> : <span style="color: #AE81FF;">12</span> <span style="color: #A6E22E;">}</span> <span style="color: #66D9EF;">]</span> <span style="color: #AE81FF;">}</span>
+</pre>
+</div>
+
+<p>
+<b>若为多个文档满足条件，则只更新第一个文档。</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org620fa82" class="outline-3">
+<h3 id="org620fa82"><span class="section-number-3">1.8</span> upsert</h3>
+<div class="outline-text-3" id="text-1-8">
+<p>
+upsert是一种特殊的更新。当没有符合条件的文档，就以这个条件和更新文档为基础创建一个新的文档，如果找到匹配的文档就正常的更新。
+</p>
+
+<p>
+使用upsert，既可以避免竞态问题，也可以减少代码量（update的第三个参数就表示这个upsert，参数为true时）
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript">&gt; db.c.remove<span style="color: #AE81FF;">()</span>
+&gt; db.c.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"size"</span>:<span style="color: #AE81FF;">11</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span>$inc:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"size"</span>:<span style="color: #AE81FF;">3</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+&gt; db.c.find<span style="color: #AE81FF;">()</span>
+&gt; db.c.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"size"</span>:<span style="color: #AE81FF;">11</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span>$inc:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"size"</span>:<span style="color: #AE81FF;">3</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span>,<span style="color: #AE81FF;">false</span><span style="color: #AE81FF;">)</span>
+&gt; db.c.find<span style="color: #AE81FF;">()</span>
+&gt; db.c.update<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span><span style="color: #E6DB74;">"size"</span>:<span style="color: #AE81FF;">11</span><span style="color: #66D9EF;">}</span>,<span style="color: #66D9EF;">{</span>$inc:<span style="color: #A6E22E;">{</span><span style="color: #E6DB74;">"size"</span>:<span style="color: #AE81FF;">3</span><span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">}</span>,<span style="color: #AE81FF;">true</span><span style="color: #AE81FF;">)</span>
+&gt; db.c.find<span style="color: #AE81FF;">()</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"5003ded6c28f67507a6df1de"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"size"</span> : <span style="color: #AE81FF;">14</span> <span style="color: #AE81FF;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc59be28" class="outline-3">
+<h3 id="orgc59be28"><span class="section-number-3">1.9</span> save函数</h3>
+<div class="outline-text-3" id="text-1-9">
+<ol class="org-ol">
+<li>可以在文档不存在的时候插入，存在的时候更新，只有一个参数文档。</li>
+<li>要是文档含有"_id"，会调用upsert。否则，会调用插入。</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-javascript">&gt; db.a.find<span style="color: #AE81FF;">()</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"50026affdeb4fa8d154f8572"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"desc"</span> : <span style="color: #E6DB74;">"hello world1!"</span>, <span style="color: #E6DB74;">"num"</span>: <span style="color: #AE81FF;">50</span>,
+ <span style="color: #E6DB74;">"sname"</span> : <span style="color: #E6DB74;">"jk"</span>, <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"1"</span>, <span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span> <span style="color: #AE81FF;">}</span>
+&gt; <span style="color: #F92672;">var</span> <span style="color: #FD971F;">o</span> = db.a.findOne<span style="color: #AE81FF;">()</span>
+&gt; o.num = <span style="color: #AE81FF;">55</span>
+<span style="color: #AE81FF;">55</span>
+&gt; db.a.save<span style="color: #AE81FF;">(</span>o<span style="color: #AE81FF;">)</span>
+&gt; db.a.find<span style="color: #AE81FF;">()</span>
+<span style="color: #AE81FF;">{</span> <span style="color: #E6DB74;">"_id"</span> : ObjectId<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">"50026affdeb4fa8d154f8572"</span><span style="color: #66D9EF;">)</span>, <span style="color: #E6DB74;">"desc"</span> : <span style="color: #E6DB74;">"hello world1!"</span>, <span style="color: #E6DB74;">"num"</span>: <span style="color: #AE81FF;">55</span>,
+ <span style="color: #E6DB74;">"sname"</span> : <span style="color: #E6DB74;">"jk"</span>, <span style="color: #E6DB74;">"type"</span> : <span style="color: #E6DB74;">"1"</span>, <span style="color: #E6DB74;">"uid"</span> : <span style="color: #E6DB74;">"20120002"</span> <span style="color: #AE81FF;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2017-04-01 Sat 00:00</p>
+<p class="author">Author: Mephis Pheies</p>
+<p class="date">Created: 2017-04-12 Wed 22:43</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
