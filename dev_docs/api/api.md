@@ -13,7 +13,10 @@ FORMAT: 1A
 - _id 为 mongodb 中数据项的 pk
 - url中的 page 参数是从 0 开始的
 
-**url 中的others参数作为筛选要求**
+## url 中的others参数
+
+url 中的others参数作为筛选要求
+
 > 下列 reponse body 结构表示，返回值为一个array，array的元素是object， 以及object的键值
 
 others结构：
@@ -23,6 +26,20 @@ others结构：
         - key `String` (required) -- 需要筛选的键
         - value `T | Array<T>` (optional) -- 如果value为单个值，则直接匹配，如果value为数组，则进行多值匹配
         - region `Array<T>` (optional) -- 该值为包含两个元素的数组，[from, to]
+        
+## 错误信息
+
+1. url path 中的参数错误一律返回 `status 404` 与空响应体
+2. 其他错误一律返回 `status 400` 与相应的错误信息，格式如下
+
+```javascript
+    // Response 400 (application/json)
+    {
+        "error": "Your request body is wrong!"
+    }
+```
+
+
 
 # Group Material
 
@@ -45,6 +62,7 @@ others结构：
 - length `Number` -- 物资长度，该系统中固定为2
 - repository_id `Number` -- 储存仓库的id
 - location_id `Number` -- 仓库中位置的id
+- layer `Number` -- 位置中的层（0， 1， 2）
 - status `Number` -- 状态码，详见 db doc
 - last_migrations `String` -- 最近一次搬运记录_id
 - location_update_time `Date(String)` -- 位置更新时间
@@ -60,6 +78,7 @@ others结构：
         "width": 1,
         "length": 2,
         "repository_id": 3,
+        "layer": 0,
         "location_id": 2,
         "status": 300,
         "last_migrations": "1234",
@@ -74,11 +93,6 @@ others结构：
 
 - key: value  -- key都是要修改的键，value是新的值，可多对
 
-
-**Response 400 Body**
-
-- error `String` -- 请求体错误具体原因
-
 + Request (application/json)
     {
         "repository_id": 4,
@@ -87,11 +101,6 @@ others结构：
 
 + Response 200 (application/json)
     {}
-
-+ Response 400 (application/json)
-    {
-        "error": "Your request body is wrong!"
-    }
 
 ### 删除特定物资 [DELETE]
 
@@ -142,8 +151,10 @@ others结构：
 - date `date` -- 搬运完成时间, 未完成为空值
 - from_repository `number` -- 原仓库, 仓库id, 0表示入库
 - from_location `number` -- 原位置, 原位置的id
+- from_layer `number` -- 原层
 - to_repository `number` -- 目标仓库, 仓库id, -1表示出库
 - to_location `number` -- 目标位置, 目标位置的id
+- to_layer `number` -- 目标层
 
 + Parameters
     + id (String) - 物资的id
@@ -157,8 +168,10 @@ others结构：
         "material": "dsafdsaf32141314",
         "from_repository": 2,
         "from_location": 12,
+        "from_layer": 0,
         "to_repository": -1,
-        "to_location": 0
+        "to_location": 0,
+        "to_layer": 0,
     }, ...]
     
 ### 移动物资到新位置 [POST]
@@ -181,14 +194,12 @@ others结构：
 - date `Date` -- 搬运完成时间, 未完成为空值
 - from_repository `Number` -- 原仓库, 仓库id
 - from_location `Number` -- 原位置, 原位置的id
+- from_layer `number` -- 原层
 - to_repository `Number` -- 目标仓库, 仓库id, -1表示出库
 - to_location `Number` -- 目标位置, 目标位置的id
+- to_layer `number` -- 目标层
 - exportinfo (object) -- 当to_repository == -1时有效
     - destination `String` -- 去向
-
-**Response 400 Body**
-
-- error `String` -- 请求体错误具体原因
 
 + Request (application/json)
     {
@@ -205,18 +216,15 @@ others结构：
         "material": "dsafdsaf32141314",
         "from_repository": 2,
         "from_location": 12,
+        "from_layer": 1,
         "to_repository": -1,
         "to_location": 0,
+        "to_layer": 1,
         "exportinfo": {
             "distination": "幻想乡"
         }
     }
 
-+ Response 400 (application/json)
-    {
-        "error": "Your request body is wrong!"
-    }
-    
 
 ## Materials [/materials]
 
@@ -236,6 +244,7 @@ others结构：
 - length `Number` (optional, default: 2) --  物资高度，该系统中固定为2
 - repository_id `Number` (required) --  储存仓库的id
 - location_id `Number` (required) -- 仓库中位置的id
+- layer `Number` (required) -- 位置中的层
 
 **Response 201 Body**
 
@@ -249,13 +258,10 @@ others结构：
 - length `Number` -- 物资长度，该系统中固定为2
 - repository_id `Number` -- 储存仓库的id
 - location_id `Number` -- 仓库中位置的id
+- layer `Number` -- 位置中的层
 - status `Number` -- 状态码，详见 db doc
 - last_migrations `String` -- 最近一次搬运记录_id
 - location_update_time `Date(String)` -- 位置更新时间
-
-**Response 400 Body**
-
-- error `String` -- 请求体错误具体原因
 
 + Request (application/json)
     {
@@ -269,6 +275,7 @@ others结构：
         "length": 2,
         "repository_id": 2,
         "location_id":  3,
+        "layer": 1
     }
 
 + Response 201 (application/json)
@@ -283,15 +290,12 @@ others结构：
          "length": 2,
          "repository_id": 3,
          "location_id": 2,
+         "layer": 1,
          "status": 300,
          "last_migrations": "1234",
          "location_update_time": "2017-04-06T04:57:36.801Z"
     }
 
-+ Response 400 (application/json)
-    {
-        "error": "Your request body is wrong!"
-    }
 
 ### 获取所有物资的数量 [HEAD]
 
@@ -327,6 +331,7 @@ others结构：
       - length `Number` -- 物资长度，该系统中固定为2
       - repository_id `Number` -- 储存仓库的id
       - location_id `Number` -- 仓库中位置的id
+      - layer `Number` -- 位置中的层
       - status `Number` -- 状态码，详见 db doc
       - last_migrations `String` -- 最近一次搬运记录_id
       - location_update_time `Date(String)` -- 位置更新时间
@@ -349,6 +354,7 @@ others结构：
          "length": 2,
          "repository_id": 3,
          "location_id": 2,
+         "layer": 1,
          "status": 300,
          "last_migrations": "1234",
          "location_update_time": "2017-04-06T04:57:36.801Z"
@@ -398,6 +404,7 @@ others结构：
       - length `Number` -- 物资长度，该系统中固定为2
       - repository_id `Number` -- 储存仓库的id
       - location_id `Number` -- 仓库中位置的id
+      - layer `Number` -- 位置中的层
       - status `Number` -- 状态码，详见 db doc
       - last_migrations `String` -- 最近一次搬运记录_id
       - location_update_time `Date(String)` -- 位置更新时间
@@ -421,6 +428,7 @@ others结构：
          "length": 2,
          "repository_id": 3,
          "location_id": 2,
+         "layer": 0,
          "status": 300,
          "last_migrations": "1234",
          "location_update_time": "2017-04-06T04:57:36.801Z"
@@ -464,6 +472,7 @@ others结构：
       - length `Number` -- 物资长度，该系统中固定为2
       - repository_id `Number` -- 储存仓库的id
       - location_id `Number` -- 仓库中位置的id
+      - layer `Number` -- 位置中的层
       - status `Number` -- 状态码，详见 db doc
       - last_migrations `String` -- 最近一次搬运记录_id
       - location_update_time `Date(String)` -- 位置更新时间
@@ -488,6 +497,7 @@ others结构：
          "length": 2,
          "repository_id": 3,
          "location_id": 2,
+         "layer": 0,
          "status": 300,
          "last_migrations": "1234",
          "location_update_time": "2017-04-06T04:57:36.801Z"
@@ -581,6 +591,7 @@ others结构：
       - error(object) -- 当action为6开头时才会有这个键值
         - repository `Number` --  错误仓库
         - location `Number` --  错误位置
+        - layer `Number` -- ❎错误层
         - material `Number` -- 物资id, 如果错误码为2，则为空值
         - image `Number` --  照相图片，错误照片，圈出错误
 
@@ -602,6 +613,7 @@ others结构：
        "error": {
          "repository": 1,
          "location": 3,
+         "layer": 0,
          "material": 32143214,
          "image": "/errors/a.png"
         }
@@ -615,6 +627,7 @@ others结构：
 
 - repository `Number` (required) -- 错误所在仓库id
 - location `Number` (required) -- 错误所在位置id
+- layer `Number` (required) -- 错误所在的层
 - error_code `Number` (optional, default: 1) -- 错误码, 1位置错误2无法识别
 - material `Number` (optional) -- 物资id, 如果错误码为1，则为必须
 - image `String` (required) -- 照相图片路径, 错误照片，圈出错误
@@ -630,12 +643,10 @@ others结构：
 - error(object) -- 当action为6开头时才会有这个键值
   - repository `Number` --  错误仓库
   - location `Number` --  错误位置
+  - layer `Number` (required) -- 错误所在的层
   - material `Number` -- 物资id, 如果错误码为2，则为空值
   - image `Number` --  照相图片，错误照片，圈出错误
 
-**Response 400 Body**
-
-- error `String` -- 请求体错误具体原因
 
 + Request (application/json)
     {
@@ -643,6 +654,7 @@ others结构：
         "location": 3,
         "error_code": 1,
         "material": 3214132,
+        "layer": 0,
         "image": "/errors/a.png"
     }
     
@@ -658,14 +670,10 @@ others结构：
         "error": {
           "repository": 1,
           "location": 3,
+          "layer": 0,
           "material": 32143214,
           "image": "/errors/a.png"
         }
-    }
-
-+ Response 400 (application/json)
-    {
-        "error": "Your request body is wrong!"
     }
 
     
@@ -788,11 +796,14 @@ others结构：
         - location_update_time `Date(String)` -- 位置更新时间
         - from_repository `number` -- 原仓库, 仓库id, 0表示入库
         - from_location `number` -- 原位置, 原位置的id
+        - from_layer `number` -- 原层
         - to_repository `number` -- 目标仓库, 仓库id, -1表示出库
         - to_location `number` -- 目标位置, 目标位置的id
+        - to_layer `number` -- 目标层
       - error(object) -- 当action为6开头时才会有这个键值
         - repository `Number` --  错误仓库
         - location `Number` --  错误位置
+        - layer `Number` -- 错误所在的层
         - material `Number` -- 物资id, 如果错误码为2，则为空值
         - image `Number` --  照相图片，错误照片，圈出错误
      
@@ -825,8 +836,10 @@ others结构：
             "status": 300,
             "from_repository": 2,
             "from_location": 12,
+            "from_layer": 1,
             "to_repository": -1,
             "to_location": 0,
+            "to_layer": 0,
             "last_migrations": "1234",
             "location_update_time": "2017-04-06T04:57:36.801Z"
         }
@@ -868,6 +881,7 @@ others结构：
   - length `Number` -- 物资长度，该系统中固定为2
   - repository_id `Number` -- 储存仓库的id
   - location_id `Number` -- 仓库中位置的id
+  - layer `Number` -- 位置中的层
   - status `Number` -- 状态码，详见 db doc
   - last_migrations `String` -- 最近一次搬运记录_id
   - location_update_time `Date(String)` -- 位置更新时间
@@ -903,6 +917,7 @@ others结构：
             "length": 2,
             "repository_id": 3,
             "location_id": 2,
+            "layer": 0,
             "status": 300,
             "last_migrations": "1234",
             "location_update_time": "2017-04-06T04:57:36.801Z"
@@ -954,10 +969,6 @@ others结构：
 - key: value  -- key都是要修改的键，value是新的值，可多对
 
 
-**Response 400 Body**
-
-- error `String` -- 请求体错误具体原因
-
 + Request (application/json)
     {
         "age": 4,
@@ -966,11 +977,6 @@ others结构：
 
 + Response 200 (application/json)
     {}
-
-+ Response 400 (application/json)
-    {
-        "error": "Your request body is wrong!"
-    }
 
 ### 删除特定职员 [DELETE]
 
@@ -997,10 +1003,6 @@ others结构：
 - signup_time `Date` -- 注册时间
 - last_login_time `Date` -- 最近登录时间
 
-**Response 400 Body**
-
-- error `String` -- 请求体错误具体原因
-
 + Request (application/json)
     {
         "account": "fuck1234",
@@ -1019,20 +1021,11 @@ others结构：
         "last_login_time": 1491451593158
     }
 
-+ Response 400 (application/json)
-    {
-        "error": "Your request body is wrong!"
-    }
-
 ### 修改密码 [PATCH]
 
 **Request Body**
 
 - passwd `String` (required) -- 职员密码
-
-**Response 400 Body**
-
-- error `String` -- 请求体错误具体原因
 
 + Request (application/json)
     {
@@ -1041,11 +1034,6 @@ others结构：
     
 + Response 200 (application/json)
     {}
-
-+ Response 400 (application/json)
-    {
-        "error": "Your request body is wrong!"
-    }
 
 ## Staffs [/staffs]
 
@@ -1076,10 +1064,6 @@ others结构：
 - signup_time `Date` -- 注册时间
 - last_login_time `Date` -- 最近登录时间
 
-**Response 400 Body**
-
-- error `String` -- 请求体错误具体原因
-
 + Request (application/json)
     {
         "name": "铃仙·优昙华院·因幡",
@@ -1105,10 +1089,6 @@ others结构：
         "last_login_time": 1491451593158
     }
 
-+ Response 400 (application/json)
-    {
-        "error": "Your request body is wrong!"
-    }
 
 ### 获取职员的数量 [HEAD]
 
@@ -1213,6 +1193,7 @@ others结构：
         - length `Number` -- 物资长度，该系统中固定为2
         - repository_id `Number` -- 储存仓库的id
         - location_id `Number` -- 仓库中位置的id
+        - layer `Number` -- 位置中的层
         - status `Number` -- 状态码，详见 db doc
         - last_migrations `String` -- 最近一次搬运记录_id
         - location_update_time `Date(String)` -- 位置更新时间
@@ -1240,6 +1221,7 @@ others结构：
           "length": 2,
           "repository_id": 3,
           "location_id": 2,
+          "layer": 0,
           "status": 300,
           "last_migrations": "1234",
           "location_update_time": "2017-04-06T04:57:36.801Z"

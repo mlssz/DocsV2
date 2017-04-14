@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-04-12 Wed 22:54 -->
+<!-- 2017-04-14 Fri 20:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Documents</title>
@@ -234,34 +234,34 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd80e927">1. collections</a>
+<li><a href="#orgb3c9a0c">1. collections</a>
 <ul>
-<li><a href="#orga727ed4">1.1. repositories</a>
+<li><a href="#org2f23b63">1.1. repositories</a>
 <ul>
-<li><a href="#orga42421e">1.1.1. locations Object</a></li>
+<li><a href="#orge6a5664">1.1.1. locations Object</a></li>
 </ul>
 </li>
-<li><a href="#org2c95b54">1.2. materials</a>
+<li><a href="#org8ca8eb6">1.2. materials</a>
 <ul>
-<li><a href="#orgcf4849a">1.2.1. status</a></li>
+<li><a href="#org1c0fc19">1.2.1. status</a></li>
 </ul>
 </li>
-<li><a href="#org7984b38">1.3. migrations</a></li>
-<li><a href="#org0cad80f">1.4. errorinfos</a></li>
-<li><a href="#orgc1b881d">1.5. tasks</a>
+<li><a href="#org13051ea">1.3. migrations</a></li>
+<li><a href="#org15a0202">1.4. errorinfos</a></li>
+<li><a href="#orgbe15ae2">1.5. tasks</a>
 <ul>
-<li><a href="#org9a1c22e">1.5.1. action</a></li>
+<li><a href="#org5069935">1.5.1. action</a></li>
 </ul>
 </li>
-<li><a href="#org81f02d1">1.6. exportinfos</a></li>
-<li><a href="#orgc70c711">1.7. staffs</a></li>
+<li><a href="#org0911c3b">1.6. exportinfos</a></li>
+<li><a href="#orgd892ddf">1.7. staffs</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd80e927" class="outline-2">
-<h2 id="orgd80e927"><span class="section-number-2">1</span> collections</h2>
+<div id="outline-container-orgb3c9a0c" class="outline-2">
+<h2 id="orgb3c9a0c"><span class="section-number-2">1</span> collections</h2>
 <div class="outline-text-2" id="text-1">
 <blockquote>
 <p>
@@ -286,8 +286,8 @@ ps5: 物资大小为 1*2*1 (长宽高)， 每个区域放两排，每排最高3�
 </blockquote>
 </div>
 
-<div id="outline-container-orga727ed4" class="outline-3">
-<h3 id="orga727ed4"><span class="section-number-3">1.1</span> repositories</h3>
+<div id="outline-container-org2f23b63" class="outline-3">
+<h3 id="org2f23b63"><span class="section-number-3">1.1</span> repositories</h3>
 <div class="outline-text-3" id="text-1-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -348,8 +348,8 @@ ps5: 物资大小为 1*2*1 (长宽高)， 每个区域放两排，每排最高3�
 </table>
 </div>
 
-<div id="outline-container-orga42421e" class="outline-4">
-<h4 id="orga42421e"><span class="section-number-4">1.1.1</span> locations Object</h4>
+<div id="outline-container-orge6a5664" class="outline-4">
+<h4 id="orge6a5664"><span class="section-number-4">1.1.1</span> locations Object</h4>
 <div class="outline-text-4" id="text-1-1-1">
 
 <div class="figure">
@@ -416,8 +416,8 @@ ps5: 物资大小为 1*2*1 (长宽高)， 每个区域放两排，每排最高3�
 <tr>
 <td class="org-left">materials</td>
 <td class="org-left">存放的物资</td>
-<td class="org-left">Array&lt;ObjectId&gt;</td>
-<td class="org-left">[]</td>
+<td class="org-left">Array&lt;Array&lt;ObjectId&gt;&gt;</td>
+<td class="org-left">[[], [], []]</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 </tbody>
@@ -426,8 +426,8 @@ ps5: 物资大小为 1*2*1 (长宽高)， 每个区域放两排，每排最高3�
 </div>
 </div>
 
-<div id="outline-container-org2c95b54" class="outline-3">
-<h3 id="org2c95b54"><span class="section-number-3">1.2</span> materials</h3>
+<div id="outline-container-org8ca8eb6" class="outline-3">
+<h3 id="org8ca8eb6"><span class="section-number-3">1.2</span> materials</h3>
 <div class="outline-text-3" id="text-1-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -534,6 +534,14 @@ ps5: 物资大小为 1*2*1 (长宽高)， 每个区域放两排，每排最高3�
 </tr>
 
 <tr>
+<td class="org-left">layer</td>
+<td class="org-left">位置中的层</td>
+<td class="org-left">Number</td>
+<td class="org-left">requried</td>
+<td class="org-left">0表示最下层</td>
+</tr>
+
+<tr>
 <td class="org-left">status</td>
 <td class="org-left">物资状态</td>
 <td class="org-left">Number</td>
@@ -560,8 +568,8 @@ ps5: 物资大小为 1*2*1 (长宽高)， 每个区域放两排，每排最高3�
 </table>
 </div>
 
-<div id="outline-container-orgcf4849a" class="outline-4">
-<h4 id="orgcf4849a"><span class="section-number-4">1.2.1</span> status</h4>
+<div id="outline-container-org1c0fc19" class="outline-4">
+<h4 id="org1c0fc19"><span class="section-number-4">1.2.1</span> status</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <ul class="org-ul">
 <li>1 开头为位置正确
@@ -592,8 +600,8 @@ ps5: 物资大小为 1*2*1 (长宽高)， 每个区域放两排，每排最高3�
 </div>
 
 
-<div id="outline-container-org7984b38" class="outline-3">
-<h3 id="org7984b38"><span class="section-number-3">1.3</span> migrations</h3>
+<div id="outline-container-org13051ea" class="outline-3">
+<h3 id="org13051ea"><span class="section-number-3">1.3</span> migrations</h3>
 <div class="outline-text-3" id="text-1-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -652,6 +660,14 @@ ps5: 物资大小为 1*2*1 (长宽高)， 每个区域放两排，每排最高3�
 </tr>
 
 <tr>
+<td class="org-left">from_layer</td>
+<td class="org-left">原层</td>
+<td class="org-left">Number</td>
+<td class="org-left">required</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
 <td class="org-left">to_repository</td>
 <td class="org-left">目标仓库</td>
 <td class="org-left">Number</td>
@@ -666,12 +682,21 @@ ps5: 物资大小为 1*2*1 (长宽高)， 每个区域放两排，每排最高3�
 <td class="org-left">required</td>
 <td class="org-left">目标位置的id</td>
 </tr>
+
+<tr>
+<td class="org-left">to_layer</td>
+<td class="org-left">目标层</td>
+<td class="org-left">Number</td>
+<td class="org-left">required</td>
+<td class="org-left">&#xa0;</td>
+</tr>
 </tbody>
 </table>
 </div>
 </div>
-<div id="outline-container-org0cad80f" class="outline-3">
-<h3 id="org0cad80f"><span class="section-number-3">1.4</span> errorinfos</h3>
+
+<div id="outline-container-org15a0202" class="outline-3">
+<h3 id="org15a0202"><span class="section-number-3">1.4</span> errorinfos</h3>
 <div class="outline-text-3" id="text-1-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -730,6 +755,14 @@ ps5: 物资大小为 1*2*1 (长宽高)， 每个区域放两排，每排最高3�
 </tr>
 
 <tr>
+<td class="org-left">layer</td>
+<td class="org-left">层</td>
+<td class="org-left">Number</td>
+<td class="org-left">required</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
 <td class="org-left">material</td>
 <td class="org-left">物资id</td>
 <td class="org-left">Number</td>
@@ -750,8 +783,8 @@ ps5: 物资大小为 1*2*1 (长宽高)， 每个区域放两排，每排最高3�
 </div>
 
 
-<div id="outline-container-orgc1b881d" class="outline-3">
-<h3 id="orgc1b881d"><span class="section-number-3">1.5</span> tasks</h3>
+<div id="outline-container-orgbe15ae2" class="outline-3">
+<h3 id="orgbe15ae2"><span class="section-number-3">1.5</span> tasks</h3>
 <div class="outline-text-3" id="text-1-5">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -853,8 +886,8 @@ ps5: 物资大小为 1*2*1 (长宽高)， 每个区域放两排，每排最高3�
 </div>
 
 
-<div id="outline-container-org9a1c22e" class="outline-4">
-<h4 id="org9a1c22e"><span class="section-number-4">1.5.1</span> action</h4>
+<div id="outline-container-org5069935" class="outline-4">
+<h4 id="org5069935"><span class="section-number-4">1.5.1</span> action</h4>
 <div class="outline-text-4" id="text-1-5-1">
 <ul class="org-ul">
 <li>5 开头为移动
@@ -873,8 +906,8 @@ ps5: 物资大小为 1*2*1 (长宽高)， 每个区域放两排，每排最高3�
 </div>
 </div>
 
-<div id="outline-container-org81f02d1" class="outline-3">
-<h3 id="org81f02d1"><span class="section-number-3">1.6</span> exportinfos</h3>
+<div id="outline-container-org0911c3b" class="outline-3">
+<h3 id="org0911c3b"><span class="section-number-3">1.6</span> exportinfos</h3>
 <div class="outline-text-3" id="text-1-6">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -936,8 +969,8 @@ ps5: 物资大小为 1*2*1 (长宽高)， 每个区域放两排，每排最高3�
 </div>
 </div>
 
-<div id="outline-container-orgc70c711" class="outline-3">
-<h3 id="orgc70c711"><span class="section-number-3">1.7</span> staffs</h3>
+<div id="outline-container-orgd892ddf" class="outline-3">
+<h3 id="orgd892ddf"><span class="section-number-3">1.7</span> staffs</h3>
 <div class="outline-text-3" id="text-1-7">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1035,7 +1068,7 @@ ps5: 物资大小为 1*2*1 (长宽高)， 每个区域放两排，每排最高3�
 <div id="postamble" class="status">
 <p class="date">Date: 2017-04-01 Sat 00:00</p>
 <p class="author">Author: Mephis Pheies</p>
-<p class="date">Created: 2017-04-12 Wed 22:54</p>
+<p class="date">Created: 2017-04-14 Fri 20:08</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
