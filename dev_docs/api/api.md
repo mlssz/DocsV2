@@ -575,7 +575,7 @@ others结构：
     }
 
 
-### 获取所有出库信息 [GET /errors(?page, limit)]
+### 获取所有错误信息 [GET /errors(?page, limit)]
 
 **Response 200 Body**
 
@@ -678,6 +678,119 @@ others结构：
 
     
 # Group Task
+
+## Tasks [/tasks]
+
+### 获取所有任务数量 [HEAD /tasks(?other)]
+
+> 当你希望一页一页地获取时，你可以先通过该接口获取所有的数量，然后使用下一个接口。
+
+**Response 200 Body**
+
+- num `Number` -- 错误信息数量
+
++ Parameters
+    + others (optional) - 见开头readme
+
++ Response 200 (application/json)
+    {
+        "num": 20
+    }
+
+
+### 获取所有任务信息 [GET /tasks(?page, limit, other)]
+
+**Response 200 Body**
+
+- (array)
+    - (object)
+      - _id `String` -- 任务_id
+      - action `Number` --  动作，详见 db doc
+      - status `Number` -- 任务状态, 0未开始1进行中2完成3任务取消
+      - publish_time `Date`-- 任务发布时间
+      - start_time  `Date` --   任务开始时间
+      - end_time   `Date`  --   任务结束时间
+      - staff(object)
+        - name `String`  -- 职员名
+        - account `String`  -- 职员账户
+        - passwd `String`  -- 职员密码
+        - sex `Number`  -- 性别，0女1男
+        - age `Number`   -- 年龄
+        - permission `Number`  -- 职员权限，0管理员1员工99root
+        - signup_time `Date`  -- 注册时间
+        - last_login_time `Date`  -- 最近登录时间
+      - remark     `Date`  --   任务附加评语, 一般用于任务取消时
+      - material(object) -- 当action为5开头时才会有这个键值
+        - id `Number` -- 物资编号
+        - type `Number` -- 物资类型
+        - description `Date(String)` -- 物资描述
+        - import_time `Date(String)` -- 入库时间
+        - estimated_export_time   `Date(String)` -- 估计出库时间
+        - height `Number` -- 物资长度，该系统中固定为1
+        - width `Number` -- 物资长度，该系统中固定为1
+        - length `Number` -- 物资长度，该系统中固定为2
+        - status `Number` -- 状态码，详见 db doc
+        - last_migrations `String` -- 最近一次搬运记录_id
+        - location_update_time `Date(String)` -- 位置更新时间
+        - from_repository `number` -- 原仓库, 仓库id, 0表示入库
+        - from_location `number` -- 原位置, 原位置的id
+        - from_layer `number` -- 原层
+        - to_repository `number` -- 目标仓库, 仓库id, -1表示出库
+        - to_location `number` -- 目标位置, 目标位置的id
+        - to_layer `number` -- 目标层
+      - error(object) -- 当action为6开头时才会有这个键值
+        - repository `Number` --  错误仓库
+        - location `Number` --  错误位置
+        - layer `Number` -- 错误所在的层
+        - material `Number` -- 物资id, 如果错误码为2，则为空值
+        - image `Number` --  照相图片，错误照片，圈出错误
+
+
++ Parameters
+    + page: 0 (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
+    + limit: 10 (Number, optional) - 每页几项
+    + others (optional) - 见开头readme
+
++ Response 200 (application/json)
+    [{
+        "_id": "dsafdsadsaf32413141kl2",
+        "action": 500,
+        "status": 1,
+        "publish_time": "2017-04-06T04:57:36.801Z",
+        "start_time": "2017-04-06T04:57:36.801Z",
+        "end_time":  "2017-04-06T04:57:36.801Z",
+        "remark": "",
+        "staff": {
+            "name": "因幡帝",
+            "account": "inaba_tewi",
+            "passwd": "123456",
+            "sex": 0,
+            "age": 222,
+            "permission": 1,
+            "signup_time": 1491451593158,
+            "last_login_time": 1491451593158
+        },
+        "material": {
+            "id": 1491451593158,
+            "type": 0,
+            "description": "wonderful repository",
+            "import_time": "2017-04-06T04:57:36.801Z",
+            "estimated_export_time": "2017-04-06T04:57:36.801Z",
+            "height": 1,
+            "width": 1,
+            "length": 2,
+            "status": 300,
+            "from_repository": 2,
+            "from_location": 12,
+            "from_layer": 1,
+            "to_repository": -1,
+            "to_location": 0,
+            "to_layer": 0,
+            "last_migrations": "1234",
+            "location_update_time": "2017-04-06T04:57:36.801Z"
+        }
+    }, ...]
+
 
 ## Error [/error/task/:id]
 
@@ -823,7 +936,7 @@ others结构：
         "publish_time": "2017-04-06T04:57:36.801Z",
         "start_time": "2017-04-06T04:57:36.801Z",
         "end_time":  "2017-04-06T04:57:36.801Z",
-        "remark": ""
+        "remark": "",
         "material": {
             "id": 1491451593158,
             "type": 0,
