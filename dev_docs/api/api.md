@@ -790,7 +790,84 @@ others结构：
             "location_update_time": "2017-04-06T04:57:36.801Z"
         }
     }, ...]
+    
+### 接受任务 [POST]
 
+> 给任务填入staff，设置start_time为当前时间，修改status
+
+**Request Body**
+
+- account `String`  -- 职员账户
+
+**Response Body**
+
+- (array)
+    - (object)
+      - _id `String` -- 任务_id
+      - action `Number` --  动作，详见 db doc
+      - status `Number` -- 任务状态, 0未开始1进行中2完成3任务取消
+      - publish_time `Date`-- 任务发布时间
+      - start_time  `Date` --   任务开始时间
+      - remark     `Date`  --   任务附加评语, 一般用于任务取消时
+      - material(object) -- 当action为5开头时才会有这个键值
+        - id `Number` -- 物资编号
+        - type `Number` -- 物资类型
+        - description `Date(String)` -- 物资描述
+        - import_time `Date(String)` -- 入库时间
+        - estimated_export_time   `Date(String)` -- 估计出库时间
+        - height `Number` -- 物资长度，该系统中固定为1
+        - width `Number` -- 物资长度，该系统中固定为1
+        - length `Number` -- 物资长度，该系统中固定为2
+        - status `Number` -- 状态码，详见 db doc
+        - last_migrations `String` -- 最近一次搬运记录_id
+        - location_update_time `Date(String)` -- 位置更新时间
+        - from_repository `number` -- 原仓库, 仓库id, 0表示入库
+        - from_location `number` -- 原位置, 原位置的id
+        - from_layer `number` -- 原层
+        - to_repository `number` -- 目标仓库, 仓库id, -1表示出库
+        - to_location `number` -- 目标位置, 目标位置的id
+        - to_layer `number` -- 目标层
+      - error(object) -- 当action为6开头时才会有这个键值
+        - repository `Number` --  错误仓库
+        - location `Number` --  错误位置
+        - layer `Number` -- 错误所在的层
+        - material `Number` -- 物资id, 如果错误码为2，则为空值
+        - image `Number` --  照相图片，错误照片，圈出错误
+
++ Request (application/json)
+    {
+        "account": "2314dsf"
+    }
+     
++ Response 200 (application/json)
+
+    [{
+        "_id": "dsafdsadsaf32413141kl2",
+        "action": 500,
+        "status": 1,
+        "publish_time": "2017-04-06T04:57:36.801Z",
+        "start_time": "2017-04-06T04:57:36.801Z",
+        "remark": "",
+        "material": {
+            "id": 1491451593158,
+            "type": 0,
+            "description": "wonderful repository",
+            "import_time": "2017-04-06T04:57:36.801Z",
+            "estimated_export_time": "2017-04-06T04:57:36.801Z",
+            "height": 1,
+            "width": 1,
+            "length": 2,
+            "status": 300,
+            "from_repository": 2,
+            "from_location": 12,
+            "from_layer": 1,
+            "to_repository": -1,
+            "to_location": 0,
+            "to_layer": 0,
+            "last_migrations": "1234",
+            "location_update_time": "2017-04-06T04:57:36.801Z"
+        }
+    }, ...]
 
 ## Error [/error/task/:id]
 
@@ -810,23 +887,10 @@ others结构：
     + sid (String, required) - 职员的_id
     + id (String, required) - 任务的_id
     
-### 接受任务 [POST]
-
-> 给任务填入staff，设置start_time为当前时间，修改status
-
-+ Response 200 (application/json)
-    {}
     
 ### 开始执行任务 [PATCH]
 
 > 当微信扫到货物时，开始任务。修改status。如果任务为出库，则直接结束，结束时间为当前时间加上某一个固定值；
-
-+ Response 200 (application/json)
-    {}
-
-### 放弃任务 [DELETE]
-
-> 删除任务staff字段，同时修改status为0
 
 + Response 200 (application/json)
     {}
