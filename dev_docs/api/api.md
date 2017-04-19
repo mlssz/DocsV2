@@ -518,7 +518,7 @@ others结构：
       - place `Number` -- 块号, 该值仅用于显示，根据文档图，分四个大块，该值表示第几块（顺时针算）
       - label `String` -- 位置标记, 该值仅用于显示，显示location时其上的标记
       - available_space `Number` -- 剩余空间, 该位置剩余的高度。(2*3*10 立方米)
-      - materials `Number` -- 存放的物资的数量
+      - materials_num `Array<Number>` -- 各层存放的物资的数量
 
 + Response 200 (application/json)
     [{
@@ -526,7 +526,7 @@ others结构：
         place: 3,
         label: "23",
         available_space: 34,
-        materials: 12
+        materials: [1, 2, 3]
     }, ...]
     
 ## Location [/repository/:id/location]

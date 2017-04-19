@@ -546,7 +546,7 @@
     place: <span class="hljs-number">3</span>,
     label: <span class="hljs-string">"23"</span>,
     available_space: <span class="hljs-number">34</span>,
-    materials: <span class="hljs-number">12</span>
+    materials: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
 }, ...]</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="repository-locations-get" class="action get"><h4 class="action-heading"><div class="name">返回仓库中所有位置的信息</div><a href="#repository-locations-get" class="method get">GET</a><code class="uri">/repository/:id/locations</code></h4><p><strong>Response 200 Body</strong></p>
 <ul>
 <li>(array)
@@ -557,7 +557,7 @@
 <li>place <code>Number</code> – 块号, 该值仅用于显示，根据文档图，分四个大块，该值表示第几块（顺时针算）</li>
 <li>label <code>String</code> – 位置标记, 该值仅用于显示，显示location时其上的标记</li>
 <li>available_space <code>Number</code> – 剩余空间, 该位置剩余的高度。(2<em>3</em>10 立方米)</li>
-<li>materials <code>Number</code> – 存放的物资的数量</li>
+<li>materials_num <code>Array&lt;Number&gt;</code> – 各层存放的物资的数量</li>
 </ul>
 </li>
 </ul>
