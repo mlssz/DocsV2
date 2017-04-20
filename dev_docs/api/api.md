@@ -46,20 +46,20 @@ others结构：
 ## Material [/material/{id}]
 
 + Parameters
-    + id (String) - 物资的id
+    + id (String, required) - 物资的id
 
 ### 获取一个特定的物资 [GET]
 
  **Response 200 Body**
 
 - id `Number` -- 物资编号
-- type `Number` -- 物资类型
+- type `String` -- 物资类型
 - description `Date(String)` -- 物资描述
 - import_time `Date(String)` -- 入库时间
 - estimated_export_time   `Date(String)` -- 估计出库时间
 - height `Number` -- 物资长度，该系统中固定为1
 - width `Number` -- 物资长度，该系统中固定为1
-- length `Number` -- 物资长度，该系统中固定为2
+- length `Number` -- 物资长度，该系统中固定为1
 - repository_id `Number` -- 储存仓库的id
 - location_id `Number` -- 仓库中位置的id
 - layer `Number` -- 位置中的层（0， 1， 2）
@@ -70,7 +70,7 @@ others结构：
 + Response 200 (application/json)
     {
         "id": 1491451593158,
-        "type": 0,
+        "type": "tester",
         "description": "wonderful repository",
         "import_time": "2017-04-06T04:57:36.801Z",
         "estimated_export_time": "2017-04-06T04:57:36.801Z",
@@ -110,8 +110,8 @@ others结构：
 ## Migration of Material [/material/:id/migration/:mid]
 
 + Parameters
-    + id (String) - 物资的id
-    + mid (String) - 移动信息的_id
+    + id (String, required) - 物资的id
+    + mid (String, required) - 移动信息的_id
 
 ### 取消移动物资 [DELETE]
 
@@ -127,7 +127,7 @@ others结构：
 ## Migrations Of Material [/material/:id/migrations]
 
 + Parameters
-    + id (String) - 物资的id
+    + id (String, required) - 物资的id
 
 ### 查看物品移动记录数量 [GET /material/:id/migrations]
 
@@ -157,9 +157,11 @@ others结构：
 - to_layer `number` -- 目标层
 
 + Parameters
-    + id (String) - 物资的id
-    + page: 0 (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
-    + limit: 10 (Number, optional) - 每页几项
+    + id (String, required) - 物资的id
+    + page (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
+        + Default: 0
+    + limit (Number, optional) - 每页几项
+        + Default: 10
     
 + Response 200 (application/json)
 
@@ -228,45 +230,46 @@ others结构：
 
 ## Materials [/materials]
 
-### 创建一个物资 [POST]
+### 录入多个物资 [POST]
 
-> 该接口在仓储系统管理人员输入物资编号、物资类型、物资描述、入库时间、估计出库时间，输入信息上报给服务器时调用，服务请应当创建一个相应的material实例储存到数据库。
+> 该接口根据管理员数据的物资相关信息与数量，生成多个物资，id自动生成
 
 **Request Body**
 
-- id `Number` (optional, default: now) -- 物资编号，默认值为当前时间戳
-- type `Number` (optional, default: 0) -- 物资类型
+- type `String` (required) -- 物资类型
 - description `String` (optional, default: "") -- 物资描述
 - import_time `Date`  (optional, default: now) -- 物资入库时间
 - estimated_export_time `Date` (optional) -- 该值为时间数值, date.getTime(), 估计出库时间
 - height `Number` (optional, default: 1) --  物资高度，该系统中固定为1
 - width `Number` (optional, default: 1) --  物资高度，该系统中固定为1
-- length `Number` (optional, default: 2) --  物资高度，该系统中固定为2
+- length `Number` (optional, default: 2) --  物资高度，该系统中固定为1
 - repository_id `Number` (required) --  储存仓库的id
 - location_id `Number` (required) -- 仓库中位置的id
 - layer `Number` (required) -- 位置中的层
+- num `Number` (optional, default: 1) -- 物资数量
 
 **Response 201 Body**
 
-- id `Number` -- 物资编号
-- type `Number` -- 物资类型
-- description `String` -- 物资描述
-- import_time `Date(String)` -- 入库时间
-- estimated_export_time   `Date(String)` -- 估计出库时间
-- height `Number` -- 物资长度，该系统中固定为1
-- width `Number` -- 物资长度，该系统中固定为1
-- length `Number` -- 物资长度，该系统中固定为2
-- repository_id `Number` -- 储存仓库的id
-- location_id `Number` -- 仓库中位置的id
-- layer `Number` -- 位置中的层
-- status `Number` -- 状态码，详见 db doc
-- last_migrations `String` -- 最近一次搬运记录_id
-- location_update_time `Date(String)` -- 位置更新时间
+- (array)
+    - (object)
+      - id `Number` -- 物资编号
+      - type `String` -- 物资类型
+      - description `String` -- 物资描述
+      - import_time `Date(String)` -- 入库时间
+      - estimated_export_time   `Date(String)` -- 估计出库时间
+      - height `Number` -- 物资长度，该系统中固定为1
+      - width `Number` -- 物资长度，该系统中固定为1
+      - length `Number` -- 物资长度，该系统中固定为1
+      - repository_id `Number` -- 储存仓库的id
+      - location_id `Number` -- 仓库中位置的id
+      - layer `Number` -- 位置中的层
+      - status `Number` -- 状态码，详见 db doc
+      - last_migrations `String` -- 最近一次搬运记录_id
+      - location_update_time `Date(String)` -- 位置更新时间
 
 + Request (application/json)
     {
-        "id": 3214,
-        "type": 0,
+        "type": "tester",
         "description": "wonderful repository",
         "import_time": 1491451593158,
         "estimated_export_time": 1491451593158,
@@ -275,13 +278,14 @@ others结构：
         "length": 2,
         "repository_id": 2,
         "location_id":  3,
-        "layer": 1
+        "layer": 1,
+        "num": 2
     }
 
 + Response 201 (application/json)
-    {
+    [{
          "id": 1491451593158,
-         "type": 0,
+         "type": "tester",
          "description": "wonderful repository",
          "import_time": "2017-04-06T04:57:36.801Z",
          "estimated_export_time": "2017-04-06T04:57:36.801Z",
@@ -294,7 +298,8 @@ others结构：
          "status": 300,
          "last_migrations": "1234",
          "location_update_time": "2017-04-06T04:57:36.801Z"
-    }
+    }...]
+    
 
 
 ### 获取所有物资的数量 [HEAD]
@@ -322,13 +327,13 @@ others结构：
 - (array)
     - (object)
       - id `Number` -- 物资编号
-      - type `Number` -- 物资类型
+      - type `String` -- 物资类型
       - description `String` -- 物资描述
       - import_time `Date(String)` -- 入库时间
       - estimated_export_time   `Date(String)` -- 估计出库时间
       - height `Number` -- 物资长度，该系统中固定为1
       - width `Number` -- 物资长度，该系统中固定为1
-      - length `Number` -- 物资长度，该系统中固定为2
+      - length `Number` -- 物资长度，该系统中固定为1
       - repository_id `Number` -- 储存仓库的id
       - location_id `Number` -- 仓库中位置的id
       - layer `Number` -- 位置中的层
@@ -337,15 +342,17 @@ others结构：
       - location_update_time `Date(String)` -- 位置更新时间
 
 + Parameters
-    + page: 0 (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
-    + limit: 10 (Number, optional) - 每页几项
+    + page (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
+        + Default: 0
+    + limit (Number, optional) - 每页几项
+        + Default: 10
     + others (optional) - 见开头readme
 
 + Response 200 (application/json)
 
     [{
          "id": 1491451593158,
-         "type": 0,
+         "type": "tester",
          "description": "wonderful repository",
          "import_time": "2017-04-06T04:57:36.801Z",
          "estimated_export_time": "2017-04-06T04:57:36.801Z",
@@ -395,13 +402,13 @@ others结构：
 - (array)
     - (object)
       - id `Number` -- 物资编号
-      - type `Number` -- 物资类型
+      - type `String` -- 物资类型
       - description `String` -- 物资描述
       - import_time `Date(String)` -- 入库时间
       - estimated_export_time   `Date(String)` -- 估计出库时间
       - height `Number` -- 物资长度，该系统中固定为1
       - width `Number` -- 物资长度，该系统中固定为1
-      - length `Number` -- 物资长度，该系统中固定为2
+      - length `Number` -- 物资长度，该系统中固定为1
       - repository_id `Number` -- 储存仓库的id
       - location_id `Number` -- 仓库中位置的id
       - layer `Number` -- 位置中的层
@@ -411,15 +418,17 @@ others结构：
 
 + Parameters
     + id (required) - 仓库id
-    + page: 0 (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
-    + limit: 10 (Number, optional) - 每页几项
+    + page (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
+        + Default: 0
+    + limit (Number, optional) - 每页几项
+        + Default: 10
     + others (optional) - 见开头readme
 
 + Response 200 (application/json)
 
     [{
          "id": 1491451593158,
-         "type": 0,
+         "type": "tester",
          "description": "wonderful repository",
          "import_time": "2017-04-06T04:57:36.801Z",
          "estimated_export_time": "2017-04-06T04:57:36.801Z",
@@ -463,13 +472,13 @@ others结构：
 - (array)
     - (object)
       - id `Number` -- 物资编号
-      - type `Number` -- 物资类型
+      - type `String` -- 物资类型
       - description `String` -- 物资描述
       - import_time `Date(String)` -- 入库时间
       - estimated_export_time   `Date(String)` -- 估计出库时间
       - height `Number` -- 物资长度，该系统中固定为1
       - width `Number` -- 物资长度，该系统中固定为1
-      - length `Number` -- 物资长度，该系统中固定为2
+      - length `Number` -- 物资长度，该系统中固定为1
       - repository_id `Number` -- 储存仓库的id
       - location_id `Number` -- 仓库中位置的id
       - layer `Number` -- 位置中的层
@@ -480,15 +489,17 @@ others结构：
 + Parameters
     + rid (required) - 仓库id
     + lid (required) - 位置id
-    + page: 0 (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
-    + limit: 10 (Number, optional) - 每页几项
+    + page (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
+        + Default: 0
+    + limit (Number, optional) - 每页几项
+        + Default: 10
     + others (optional) - 见开头readme
 
 + Response 200 (application/json)
 
     [{
          "id": 1491451593158,
-         "type": 0,
+         "type": "tester",
          "description": "wonderful repository",
          "import_time": "2017-04-06T04:57:36.801Z",
          "estimated_export_time": "2017-04-06T04:57:36.801Z",
@@ -531,28 +542,39 @@ others结构：
     
 ## Location [/repository/:id/location]
     
-### 返回仓库中的一个空位 [GET /repository/:id/empty-location(?width, height, length)]
+### 自动分配仓库中的空位 [GET /repository/:id/empty-location(?num, width, height, length)]
 
-> 该接口查询仓库余位，根据货物大小，调度分配到合适的仓库位置(具体到某个仓 库内的某个货架的位置标号)。在将货物信息保存到数据库之前，需要先调用该接口获得空位。如果没有找到需要的空位，会返回404错误
+> 该接口查询仓库余位，根据货物大小，调度分配到合适的仓库位置(具体到某个仓 库内的某个货架的位置)。在将货物信息保存到数据库之前，需要先调用该接口获得空位。如果没有找到需要的空位，会返回404错误
 
 **Response 200 Body**
 
-- repository `Number` - 仓库id
-- location `Number` - 位置id
+- (array)
+    - (object)
+      - location `Number` - 位置id
+      - layer `Number` - 层，从下到上（0-2）
+      - num `Number` - 该位置的空位数
 
 + Parameters
-    + width: 1 (Number, optional) - 物资的宽度
-    + length: 2 (Number, optional) - 物资的长度
-    + height: 1 (Number, optional) - 物资的高度
+    + width (Number, optional) - 物资的宽度
+        + Default: 1
+    + length (Number, optional) - 物资的长度
+        + Default: 1
+    + height (Number, optional) - 物资的高度
+        + Default: 1
+    + num (Number, optional) - 物资的数量
+        + Default: 1
     
 + Response 200 (application/json)
-    {
-        "repository": 2,
-        "location": 3
-    }
-    
-+ Response 404 (application/json)
-    {}
+    // HTTP1.1 GET /repository/1/empty-location?num=10
+    [{
+        "location": 3,
+        "layer": 0,
+        "num": 3
+    }, {
+        "location": 3,
+        "layer": 1,
+        "num": 7
+    }]
     
 # Group Error
 
@@ -596,8 +618,10 @@ others结构：
         - image `Number` --  照相图片，错误照片，圈出错误
 
 + Parameters
-    + page: 0 (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
-    + limit: 10 (Number, optional) - 每页几项
+    + page (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
+        + Default: 0
+    + limit (Number, optional) - 每页几项
+        + Default: 10
     + others (optional) - 见开头readme
 
 + Response 200 (application/json)
@@ -722,13 +746,13 @@ others结构：
       - remark     `Date`  --   任务附加评语, 一般用于任务取消时
       - material(object) -- 当action为5开头时才会有这个键值
         - id `Number` -- 物资编号
-        - type `Number` -- 物资类型
+        - type `String` -- 物资类型
         - description `Date(String)` -- 物资描述
         - import_time `Date(String)` -- 入库时间
         - estimated_export_time   `Date(String)` -- 估计出库时间
         - height `Number` -- 物资长度，该系统中固定为1
         - width `Number` -- 物资长度，该系统中固定为1
-        - length `Number` -- 物资长度，该系统中固定为2
+        - length `Number` -- 物资长度，该系统中固定为1
         - status `Number` -- 状态码，详见 db doc
         - last_migrations `String` -- 最近一次搬运记录_id
         - location_update_time `Date(String)` -- 位置更新时间
@@ -747,8 +771,10 @@ others结构：
 
 
 + Parameters
-    + page: 0 (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
-    + limit: 10 (Number, optional) - 每页几项
+    + page (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
+        + Default: 0
+    + limit (Number, optional) - 每页几项
+        + Default: 10
     + others (optional) - 见开头readme
 
 + Response 200 (application/json)
@@ -772,7 +798,7 @@ others结构：
         },
         "material": {
             "id": 1491451593158,
-            "type": 0,
+            "type": "tester",
             "description": "wonderful repository",
             "import_time": "2017-04-06T04:57:36.801Z",
             "estimated_export_time": "2017-04-06T04:57:36.801Z",
@@ -781,10 +807,10 @@ others结构：
             "length": 2,
             "status": 300,
             "from_repository": 2,
-            "from_location": 12,
-            "from_layer": 1,
-            "to_repository": -1,
-            "to_location": 0,
+            "from_location": 0,
+            "from_layer": 0,
+            "to_repository": 12,
+            "to_location": 1,
             "to_layer": 0,
             "last_migrations": "1234",
             "location_update_time": "2017-04-06T04:57:36.801Z"
@@ -811,13 +837,13 @@ others结构：
       - remark     `Date`  --   任务附加评语, 一般用于任务取消时
       - material(object) -- 当action为5开头时才会有这个键值
         - id `Number` -- 物资编号
-        - type `Number` -- 物资类型
+        - type `String` -- 物资类型
         - description `Date(String)` -- 物资描述
         - import_time `Date(String)` -- 入库时间
         - estimated_export_time   `Date(String)` -- 估计出库时间
         - height `Number` -- 物资长度，该系统中固定为1
         - width `Number` -- 物资长度，该系统中固定为1
-        - length `Number` -- 物资长度，该系统中固定为2
+        - length `Number` -- 物资长度，该系统中固定为1
         - status `Number` -- 状态码，详见 db doc
         - last_migrations `String` -- 最近一次搬运记录_id
         - location_update_time `Date(String)` -- 位置更新时间
@@ -850,7 +876,7 @@ others结构：
         "remark": "",
         "material": {
             "id": 1491451593158,
-            "type": 0,
+            "type": "tester",
             "description": "wonderful repository",
             "import_time": "2017-04-06T04:57:36.801Z",
             "estimated_export_time": "2017-04-06T04:57:36.801Z",
@@ -872,7 +898,7 @@ others结构：
 ## Error [/error/task/:id]
 
 + Parameters
-    + id (required) - 任务的_id
+    + id (String, required) - 任务的_id
     
 ### 完成错误任务 [PATCH]
 
@@ -961,13 +987,13 @@ others结构：
       - remark     `Date`  --   任务附加评语, 一般用于任务取消时
       - material(object) -- 当action为5开头时才会有这个键值
         - id `Number` -- 物资编号
-        - type `Number` -- 物资类型
+        - type `String` -- 物资类型
         - description `Date(String)` -- 物资描述
         - import_time `Date(String)` -- 入库时间
         - estimated_export_time   `Date(String)` -- 估计出库时间
         - height `Number` -- 物资长度，该系统中固定为1
         - width `Number` -- 物资长度，该系统中固定为1
-        - length `Number` -- 物资长度，该系统中固定为2
+        - length `Number` -- 物资长度，该系统中固定为1
         - status `Number` -- 状态码，详见 db doc
         - last_migrations `String` -- 最近一次搬运记录_id
         - location_update_time `Date(String)` -- 位置更新时间
@@ -987,8 +1013,10 @@ others结构：
 
 + Parameters
     + sid (String, required) - 职员的_id
-    + page: 0 (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
-    + limit: 10 (Number, optional) - 每页几项
+    + page (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
+        + Default: 0
+    + limit (Number, optional) - 每页几项
+        + Default: 10
     + others (optional) - 见开头readme
 
 + Response 200 (application/json)
@@ -1003,7 +1031,7 @@ others结构：
         "remark": "",
         "material": {
             "id": 1491451593158,
-            "type": 0,
+            "type": "tester",
             "description": "wonderful repository",
             "import_time": "2017-04-06T04:57:36.801Z",
             "estimated_export_time": "2017-04-06T04:57:36.801Z",
@@ -1049,13 +1077,13 @@ others结构：
   - last_login_time `Date`  -- 最近登录时间
 - material(object)
   - id `Number` -- 物资编号
-  - type `Number` -- 物资类型
+  - type `String` -- 物资类型
   - description `Date(String)` -- 物资描述
   - import_time `Date(String)` -- 入库时间
   - estimated_export_time   `Date(String)` -- 估计出库时间
   - height `Number` -- 物资长度，该系统中固定为1
   - width `Number` -- 物资长度，该系统中固定为1
-  - length `Number` -- 物资长度，该系统中固定为2
+  - length `Number` -- 物资长度，该系统中固定为1
   - repository_id `Number` -- 储存仓库的id
   - location_id `Number` -- 仓库中位置的id
   - layer `Number` -- 位置中的层
@@ -1085,7 +1113,7 @@ others结构：
         },
         "material": {
             "id": 1491451593158,
-            "type": 0,
+            "type": "tester",
             "description": "wonderful repository",
             "import_time": "2017-04-06T04:57:36.801Z",
             "estimated_export_time": "2017-04-06T04:57:36.801Z",
@@ -1302,8 +1330,10 @@ others结构：
       - last_login_time `Date`  -- 最近登录时间
 
 + Parameters
-    + page: 0 (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
-    + limit: 10 (Number, optional) - 每页几项
+    + page (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
+        + Default: 0
+    + limit (Number, optional) - 每页几项
+        + Default: 10
     + others (optional) - 见开头readme
 
 + Response 200 (application/json)
@@ -1361,13 +1391,13 @@ others结构：
       - from_repository `Number` -- 原仓库
       - material (object) -- 物资
         - id `Number` -- 物资编号
-        - type `Number` -- 物资类型
+        - type `String` -- 物资类型
         - description `Date(String)` -- 物资描述
         - import_time `Date(String)` -- 入库时间
         - estimated_export_time   `Date(String)` -- 估计出库时间
         - height `Number` -- 物资长度，该系统中固定为1
         - width `Number` -- 物资长度，该系统中固定为1
-        - length `Number` -- 物资长度，该系统中固定为2
+        - length `Number` -- 物资长度，该系统中固定为1
         - repository_id `Number` -- 储存仓库的id
         - location_id `Number` -- 仓库中位置的id
         - layer `Number` -- 位置中的层
@@ -1376,8 +1406,10 @@ others结构：
         - location_update_time `Date(String)` -- 位置更新时间
 
 + Parameters
-    + page: 0 (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
-    + limit: 10 (Number, optional) - 每页几项
+    + page (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
+        + Default: 0
+    + limit (Number, optional) - 每页几项
+        + Default: 10
     + others (optional) - 见开头readme
 
 + Response 200 (application/json)
@@ -1389,7 +1421,7 @@ others结构：
         "from_repository": 2,
         "material": {
           "id": 1491451593158,
-          "type": 0,
+          "type": "tester",
           "description": "wonderful repository",
           "import_time": "2017-04-06T04:57:36.801Z",
           "estimated_export_time": "2017-04-06T04:57:36.801Z",
