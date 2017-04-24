@@ -46,7 +46,7 @@ others结构：
 ## Material [/material/{id}]
 
 + Parameters
-    + id (String, required) - 物资的id
+    + id (String, required) - 物资的_id
 
 ### 获取一个特定的物资 [GET]
 
@@ -107,10 +107,10 @@ others结构：
 + Response 200 (application/json)
     {}
 
-## Migration of Material [/material/:id/migration/:mid]
+## Migration of Material [/material/{id}/migration/{mid}]
 
 + Parameters
-    + id (String, required) - 物资的id
+    + id (String, required) - 物资的_id
     + mid (String, required) - 移动信息的_id
 
 ### 取消移动物资 [DELETE]
@@ -124,12 +124,12 @@ others结构：
     {}
 
 
-## Migrations Of Material [/material/:id/migrations]
+## Migrations Of Material [/material/{id}/migrations]
 
 + Parameters
-    + id (String, required) - 物资的id
+    + id (String, required) - 物资的_id
 
-### 查看物品移动记录数量 [GET /material/:id/migrations]
+### 查看物品移动记录数量 [GET /material/{id}/migrations]
 
 > 当你希望一页一页地获取物资时，你可以先通过该接口获取所有物资的数量，然后使用下一个接口。
 
@@ -142,7 +142,7 @@ others结构：
         "num": 2
     }
     
-### 查看一个物品的移动记录 [GET /material/:id/migrations(?page, limit)]
+### 查看一个物品的移动记录 [GET /material/{id}/migrations{?page, limit}]
 
 **Response 200 Body**
 
@@ -319,7 +319,7 @@ others结构：
         num: 20
 
 
-### 获取所有物资信息 [GET /materials(?page, limit)]
+### 获取所有物资信息 [GET /materials{?page, limit}]
 
 
 **Response 200 Body**
@@ -374,10 +374,10 @@ others结构：
 + Response 200 (application/json)
     {}
 
-## Materials In Repository [/repository/:id/materials]
+## Materials In Repository [/repository/{id}/materials]
 
 + Parameters
-    + id (required) - 仓库id
+    + id (required) - 仓库_id
 
 ### 获取特定仓库所有物资的数量 [HEAD]
 
@@ -395,7 +395,7 @@ others结构：
     + Headers
         num: 20
 
-### 获取特定仓库中的物资 [GET /repository/:id/materials(?page, limit)]
+### 获取特定仓库中的物资 [GET /repository/{id}/materials{?page, limit}]
 
 **Response 200 Body**
 
@@ -465,7 +465,7 @@ others结构：
     + Headers
         num: 20
 
-### 获取特定位置的物资 [GET /repository/:rid/location/:lid/materials(?page, limit)]
+### 获取特定位置的物资 [GET /repository/{rid}/location/{lid}/materials{?page, limit}]
 
 **Response 200 Body**
 
@@ -517,7 +517,7 @@ others结构：
 # Group Repository
 
 
-## Locations [/repository/:id/locations]
+## Locations [/repository/{id}/locations]
 
 ### 返回仓库中所有位置的信息 [GET]
 
@@ -540,9 +540,9 @@ others结构：
         materials: [1, 2, 3]
     }, ...]
     
-## Location [/repository/:id/location]
+## Location [/repository/{id}/location]
     
-### 自动分配仓库中的空位 [GET /repository/:id/empty-location(?num, width, height, length)]
+### 自动分配仓库中的空位 [GET /repository/{id}/empty-location{?num, width, height, length}]
 
 > 该接口查询仓库余位，根据货物大小，调度分配到合适的仓库位置(具体到某个仓 库内的某个货架的位置)。在将货物信息保存到数据库之前，需要先调用该接口获得空位。如果没有找到需要的空位，会返回404错误
 
@@ -597,7 +597,7 @@ others结构：
         num: 20
 
 
-### 获取所有错误信息 [GET /errors(?page, limit)]
+### 获取所有错误信息 [GET /errors{?page, limit}]
 
 **Response 200 Body**
 
@@ -705,7 +705,7 @@ others结构：
 
 ## Tasks [/tasks]
 
-### 获取所有任务数量 [HEAD /tasks(?other)]
+### 获取所有任务数量 [HEAD /tasks{?other}]
 
 > 当你希望一页一页地获取时，你可以先通过该接口获取所有的数量，然后使用下一个接口。
 
@@ -722,7 +722,7 @@ others结构：
         num: 20
 
 
-### 获取所有任务信息 [GET /tasks(?page, limit, other)]
+### 获取所有任务信息 [GET /tasks{?page, limit, other}]
 
 **Response 200 Body**
 
@@ -895,7 +895,7 @@ others结构：
         }
     }, ...]
 
-## Error [/error/task/:id]
+## Error [/error/task/{id}]
 
 + Parameters
     + id (String, required) - 任务的_id
@@ -907,7 +907,7 @@ others结构：
 + Response 200 (application/json)
     {}
 
-## Staff's Task [/staff/:sid/task/:id]
+## Staff's Task [/staff/{sid}/task/{id}]
 
 + Parameters
     + sid (String, required) - 职员的_id
@@ -972,7 +972,7 @@ others结构：
     + Headers
         num: 20
     
-### 获取特定职员的任务 [GET /staff/:sid/tasks(?page, limit)]
+### 获取特定职员的任务 [GET /staff/{sid}/tasks{?page, limit}]
 
 **Response 200 Body**
 
@@ -1050,7 +1050,7 @@ others结构：
         }
     }, ...]
 
-## Task with Migration [/migration/:id/task]
+## Task with Migration [/migration/{id}/task]
 
 + Parameters
     + id (String, required) - migration数据的 _id
@@ -1132,7 +1132,7 @@ others结构：
 # Group Staff
 
 
-## Staff [/staff/:id]
+## Staff [/staff/{id}]
 
 ### 获取特定用户的信息 [GET]
 
@@ -1226,7 +1226,7 @@ others结构：
         "last_login_time": 1491451593158
     }
 
-### 修改密码 [PATCH /staff/auth/:id]
+### 修改密码 [PATCH /staff/auth/{id}]
 
 **Request Body**
 
@@ -1315,7 +1315,7 @@ others结构：
         num: 20
 
 
-### 获取所有职员信息 [GET /staffs(?page, limit)]
+### 获取所有职员信息 [GET /staffs{?page, limit}]
 
 
 **Response 200 Body**
@@ -1368,7 +1368,7 @@ others结构：
 
 > 当你希望一页一页地获取时，你可以先通过该接口获取所有的数量，然后使用下一个接口。
 
-**Response 200 Body**
+**Response 200 HEAD**
 
 - num `Number` -- 出库信息数量
 
@@ -1381,7 +1381,7 @@ others结构：
         num: 20
 
 
-### 获取所有出库信息 [GET /exportinfos(?page, limit)]
+### 获取所有出库信息 [GET /exportinfos{?page, limit}]
 
 
 **Response 200 HEAD**
