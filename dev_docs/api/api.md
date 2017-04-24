@@ -1188,7 +1188,7 @@ others结构：
 + Response 200 (application/json)
     {}
 
-## Auth [/staff/:id/auth]
+## Auth [/staff/auth]
 
 ### 登录 [POST]
 
@@ -1226,11 +1226,14 @@ others结构：
         "last_login_time": 1491451593158
     }
 
-### 修改密码 [PATCH]
+### 修改密码 [PATCH /staff/auth/:id]
 
 **Request Body**
 
 - passwd `String` (required) -- 职员密码
+
++ Parameters
+    + id (String, required) - 职员的_id
 
 + Request (application/json)
     {
