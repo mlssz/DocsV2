@@ -516,6 +516,116 @@ others结构：
 
 # Group Repository
 
+## Repository [/repository/{id}]
+
++ Parameters
+    + id (String, required) - 仓库的_id
+    
+### 返回仓库详细信息 [GET]
+
+> 包括 locations 的信息
+
+**Response 200 Body**
+
+- id `Number` -- 仓库编号
+- available_space `Number` -- 空闲空间数量
+- stored_count `Number` -- 已存放物资数
+- locations(array) -- 各位置信息
+    - (object)
+      - id `Number` -- 位置id, 该值用于定位,顺时针算
+      - place `Number` -- 块号, 该值仅用于显示，根据文档图，分四个大块，该值表示第几块（顺时针算）
+      - label `String` -- 位置标记, 该值仅用于显示，显示location时其上的标记
+      - available_space `Number` -- 剩余空间, 该位置剩余的高度。(2*3*10 立方米)
+      - materials_num `Array<Number>` -- 各层存放的物资的数量
+
++ Response 200 (application/json)
+    
+    {
+        "id": 1,
+        "available_space": 40,
+        "stored_count": 23,
+        "locations": [{
+            id: 2,
+            place: 3,
+            label: "23",
+            available_space: 34,
+            materials: [1, 2, 3]
+        }, ...]
+    }
+    
+### 删除仓库 [DELETE]
+
++ Response 200 (application/json)
+    
+    {}
+    
+## Repostories [/repositories]
+
+### 返回所有仓库信息 [GET]
+
+> 不包括 locations 的信息
+
+**Response 200 Body**
+
+- (array)
+    - (object)
+      - id `Number` -- 仓库编号
+      - available_space `Number` -- 空闲空间数量
+      - stored_count `Number` -- 已存放物资数
+
++ Response 200 (application/json)
+    
+    [{
+        "id": 1,
+        "available_space": 40,
+        "stored_count": 23
+    }, ...]
+    
+### 创建一个仓库 [POST]
+
+**Request Body**
+
+- id `Number` -- 仓库编号
+
+**Response 200 Body**
+
+- id `Number` -- 仓库编号
+- available_space `Number` -- 空闲空间数量
+- stored_count `Number` -- 已存放物资数
+- locations(array) -- 各位置信息
+    - (object)
+      - id `Number` -- 位置id, 该值用于定位,顺时针算
+      - place `Number` -- 块号, 该值仅用于显示，根据文档图，分四个大块，该值表示第几块（顺时针算）
+      - label `String` -- 位置标记, 该值仅用于显示，显示location时其上的标记
+      - available_space `Number` -- 剩余空间, 该位置剩余的高度。(2*3*10 立方米)
+      - materials_num `Array<Number>` -- 各层存放的物资的数量
+      
++ Request (application/json)
+
+    {
+        "id": 2
+    }
+
++ Response 200 (application/json)
+    
+    {
+        "id": 1,
+        "available_space": 40,
+        "stored_count": 23,
+        "locations": [{
+            id: 2,
+            place: 3,
+            label: "23",
+            available_space: 34,
+            materials: [1, 2, 3]
+        }, ...]
+    }
+    
+### 删除所有仓库 [DELETE]
+
++ Response 200 (application/json)
+    
+    {}
 
 ## Locations [/repository/{id}/locations]
 
@@ -555,6 +665,7 @@ others结构：
       - num `Number` - 该位置的空位数
 
 + Parameters
+    + id (String, required) - 仓库的_id
     + width (Number, optional) - 物资的宽度
         + Default: 1
     + length (Number, optional) - 物资的长度
