@@ -353,12 +353,10 @@
 </ul>
 </li>
 </ul>
-</div></div><hr class="split"><div class="right"><div class="definition"><span class="method head">HEAD</span>&nbsp;<span class="uri"><span class="hostname"></span>/materials</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-  "<span class="hljs-attribute">num</span>": <span class="hljs-value"><span class="hljs-number">20</span>
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="material-materials-head" class="action head"><h4 class="action-heading"><div class="name">获取所有物资的数量</div><a href="#material-materials-head" class="method head">HEAD</a><code class="uri">/materials</code></h4><blockquote>
+</div></div><hr class="split"><div class="right"><div class="definition"><span class="method head">HEAD</span>&nbsp;<span class="uri"><span class="hostname"></span>/materials</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">num</span>: <span class="hljs-string">20</span></code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="material-materials-head" class="action head"><h4 class="action-heading"><div class="name">获取所有物资的数量</div><a href="#material-materials-head" class="method head">HEAD</a><code class="uri">/materials</code></h4><blockquote>
 <p>当你希望一页一页地获取物资时，你可以先通过该接口获取所有物资的数量，然后使用下一个接口。</p>
 </blockquote>
-<p><strong>Response 200 Body</strong></p>
+<p><strong>Response 200 HEAD</strong></p>
 <ul>
 <li>num <code>Number</code> – 物资数量</li>
 </ul>
@@ -409,12 +407,10 @@
 </dd></dl></div></div></div><hr class="split"><div class="right"><div class="definition"><span class="method delete">DELETE</span>&nbsp;<span class="uri"><span class="hostname"></span>/materials</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="material-materials-delete" class="action delete"><h4 class="action-heading"><div class="name">删除所有物资</div><a href="#material-materials-delete" class="method delete">DELETE</a><code class="uri">/materials</code></h4><blockquote>
 <p>该接口只提供给root用户，或用于开发测试，慎用！</p>
 </blockquote>
-</div></div><hr class="split"><div class="middle"><div id="material-materials-in-repository" class="resource"><h3 class="resource-heading">Materials In Repository <a href="#material-materials-in-repository" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method head">HEAD</span>&nbsp;<span class="uri"><span class="hostname"></span>/repository/:id/materials</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-  "<span class="hljs-attribute">num</span>": <span class="hljs-value"><span class="hljs-number">20</span>
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="material-materials-in-repository-head" class="action head"><h4 class="action-heading"><div class="name">获取特定仓库所有物资的数量</div><a href="#material-materials-in-repository-head" class="method head">HEAD</a><code class="uri">/repository/:id/materials</code></h4><blockquote>
+</div></div><hr class="split"><div class="middle"><div id="material-materials-in-repository" class="resource"><h3 class="resource-heading">Materials In Repository <a href="#material-materials-in-repository" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method head">HEAD</span>&nbsp;<span class="uri"><span class="hostname"></span>/repository/:id/materials</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">num</span>: <span class="hljs-string">20</span></code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="material-materials-in-repository-head" class="action head"><h4 class="action-heading"><div class="name">获取特定仓库所有物资的数量</div><a href="#material-materials-in-repository-head" class="method head">HEAD</a><code class="uri">/repository/:id/materials</code></h4><blockquote>
 <p>当你希望一页一页地获取物资时，你可以先通过该接口获取所有物资的数量，然后使用下一个接口。</p>
 </blockquote>
-<p><strong>Response 200 Body</strong></p>
+<p><strong>Response 200 HEAD</strong></p>
 <ul>
 <li>num <code>Number</code> – 物资数量</li>
 </ul>
@@ -464,12 +460,10 @@
 </dd><dt>page</dt><dd><code>Number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>0</span></span>&nbsp;<p>当前第几页, 当该值为-1时，返回所有的物资</p>
 </dd><dt>limit</dt><dd><code>Number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>10</span></span>&nbsp;<p>每页几项</p>
 </dd><dt>others</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<p>见开头readme</p>
-</dd></dl></div></div></div><hr class="split"><div class="middle"><div id="material-materials-in-location" class="resource"><h3 class="resource-heading">Materials In Location <a href="#material-materials-in-location" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method head">HEAD</span>&nbsp;<span class="uri"><span class="hostname"></span>/repository/:rid/location/:lid/materials</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-  "<span class="hljs-attribute">num</span>": <span class="hljs-value"><span class="hljs-number">20</span>
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="material-materials-in-location-head" class="action head"><h4 class="action-heading"><div class="name">获取特定位置所有物资的数量</div><a href="#material-materials-in-location-head" class="method head">HEAD</a><code class="uri">/repository/:rid/location/:lid/materials</code></h4><blockquote>
+</dd></dl></div></div></div><hr class="split"><div class="middle"><div id="material-materials-in-location" class="resource"><h3 class="resource-heading">Materials In Location <a href="#material-materials-in-location" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method head">HEAD</span>&nbsp;<span class="uri"><span class="hostname"></span>/repository/:rid/location/:lid/materials</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">num</span>: <span class="hljs-string">20</span></code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="material-materials-in-location-head" class="action head"><h4 class="action-heading"><div class="name">获取特定位置所有物资的数量</div><a href="#material-materials-in-location-head" class="method head">HEAD</a><code class="uri">/repository/:rid/location/:lid/materials</code></h4><blockquote>
 <p>当你希望一页一页地获取物资时，你可以先通过该接口获取所有物资的数量，然后使用下一个接口。</p>
 </blockquote>
-<p><strong>Response 200 Body</strong></p>
+<p><strong>Response 200 HEAD</strong></p>
 <ul>
 <li>num <code>Number</code> – 物资数量</li>
 </ul>
@@ -573,12 +567,10 @@
 </dd><dt>length</dt><dd><code>Number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>1</span></span>&nbsp;<p>物资的长度</p>
 </dd><dt>height</dt><dd><code>Number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>1</span></span>&nbsp;<p>物资的高度</p>
 </dd><dt>num</dt><dd><code>Number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>1</span></span>&nbsp;<p>物资的数量</p>
-</dd></dl></div></div></div><hr class="split"><div class="middle"><section id="error" class="resource-group"><h2 class="group-heading">Error <a href="#error" class="permalink">&para;</a></h2></section></div><div class="middle"><div id="error-errors" class="resource"><h3 class="resource-heading">Errors <a href="#error-errors" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method head">HEAD</span>&nbsp;<span class="uri"><span class="hostname"></span>/errors</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-  "<span class="hljs-attribute">num</span>": <span class="hljs-value"><span class="hljs-number">20</span>
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="error-errors-head" class="action head"><h4 class="action-heading"><div class="name">获取错误信息数量</div><a href="#error-errors-head" class="method head">HEAD</a><code class="uri">/errors</code></h4><blockquote>
+</dd></dl></div></div></div><hr class="split"><div class="middle"><section id="error" class="resource-group"><h2 class="group-heading">Error <a href="#error" class="permalink">&para;</a></h2></section></div><div class="middle"><div id="error-errors" class="resource"><h3 class="resource-heading">Errors <a href="#error-errors" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method head">HEAD</span>&nbsp;<span class="uri"><span class="hostname"></span>/errors</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">num</span>: <span class="hljs-string">20</span></code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="error-errors-head" class="action head"><h4 class="action-heading"><div class="name">获取错误信息数量</div><a href="#error-errors-head" class="method head">HEAD</a><code class="uri">/errors</code></h4><blockquote>
 <p>当你希望一页一页地获取时，你可以先通过该接口获取所有的数量，然后使用下一个接口。</p>
 </blockquote>
-<p><strong>Response 200 Body</strong></p>
+<p><strong>Response 200 HEAD</strong></p>
 <ul>
 <li>num <code>Number</code> – 错误信息数量</li>
 </ul>
@@ -708,12 +700,10 @@
 </ul>
 </li>
 </ul>
-</div></div><hr class="split"><div class="middle"><section id="task" class="resource-group"><h2 class="group-heading">Task <a href="#task" class="permalink">&para;</a></h2></section></div><div class="middle"><div id="task-tasks" class="resource"><h3 class="resource-heading">Tasks <a href="#task-tasks" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method head">HEAD</span>&nbsp;<span class="uri"><span class="hostname"></span>/tasks(?other)</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-  "<span class="hljs-attribute">num</span>": <span class="hljs-value"><span class="hljs-number">20</span>
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="task-tasks-head" class="action head"><h4 class="action-heading"><div class="name">获取所有任务数量</div><a href="#task-tasks-head" class="method head">HEAD</a><code class="uri">/tasks(?other)</code></h4><blockquote>
+</div></div><hr class="split"><div class="middle"><section id="task" class="resource-group"><h2 class="group-heading">Task <a href="#task" class="permalink">&para;</a></h2></section></div><div class="middle"><div id="task-tasks" class="resource"><h3 class="resource-heading">Tasks <a href="#task-tasks" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method head">HEAD</span>&nbsp;<span class="uri"><span class="hostname"></span>/tasks(?other)</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">num</span>: <span class="hljs-string">20</span></code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="task-tasks-head" class="action head"><h4 class="action-heading"><div class="name">获取所有任务数量</div><a href="#task-tasks-head" class="method head">HEAD</a><code class="uri">/tasks(?other)</code></h4><blockquote>
 <p>当你希望一页一页地获取时，你可以先通过该接口获取所有的数量，然后使用下一个接口。</p>
 </blockquote>
-<p><strong>Response 200 Body</strong></p>
+<p><strong>Response 200 HEAD</strong></p>
 <ul>
 <li>num <code>Number</code> – 错误信息数量</li>
 </ul>
@@ -940,12 +930,10 @@
 </li>
 </ul>
 <div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>sid</dt><dd><code>String</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>职员的_id</p>
-</dd></dl></div></div></div><hr class="split"><div class="right"><div class="definition"><span class="method head">HEAD</span>&nbsp;<span class="uri"><span class="hostname"></span>/staff/:sid/tasks</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-  "<span class="hljs-attribute">num</span>": <span class="hljs-value"><span class="hljs-number">20</span>
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="task-staff-s-tasks-head" class="action head"><h4 class="action-heading"><div class="name">获取特定职员的任务数量</div><a href="#task-staff-s-tasks-head" class="method head">HEAD</a><code class="uri">/staff/:sid/tasks</code></h4><blockquote>
+</dd></dl></div></div></div><hr class="split"><div class="right"><div class="definition"><span class="method head">HEAD</span>&nbsp;<span class="uri"><span class="hostname"></span>/staff/:sid/tasks</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">num</span>: <span class="hljs-string">20</span></code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="task-staff-s-tasks-head" class="action head"><h4 class="action-heading"><div class="name">获取特定职员的任务数量</div><a href="#task-staff-s-tasks-head" class="method head">HEAD</a><code class="uri">/staff/:sid/tasks</code></h4><blockquote>
 <p>当你希望一页一页地获取任务时，你可以先通过该接口获取所有任务的数量，然后使用下一个接口。</p>
 </blockquote>
-<p><strong>Response 200 Body</strong></p>
+<p><strong>Response 200 HEAD</strong></p>
 <ul>
 <li>num <code>Number</code> – 任务数量</li>
 </ul>
@@ -1276,12 +1264,10 @@
 <p>last_login_time <code>Date</code> – 最近登录时间</p>
 </li>
 </ul>
-</div></div><hr class="split"><div class="right"><div class="definition"><span class="method head">HEAD</span>&nbsp;<span class="uri"><span class="hostname"></span>/staffs</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-  "<span class="hljs-attribute">num</span>": <span class="hljs-value"><span class="hljs-number">20</span>
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="staff-staffs-head" class="action head"><h4 class="action-heading"><div class="name">获取职员的数量</div><a href="#staff-staffs-head" class="method head">HEAD</a><code class="uri">/staffs</code></h4><blockquote>
+</div></div><hr class="split"><div class="right"><div class="definition"><span class="method head">HEAD</span>&nbsp;<span class="uri"><span class="hostname"></span>/staffs</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">num</span>: <span class="hljs-string">20</span></code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="staff-staffs-head" class="action head"><h4 class="action-heading"><div class="name">获取职员的数量</div><a href="#staff-staffs-head" class="method head">HEAD</a><code class="uri">/staffs</code></h4><blockquote>
 <p>当你希望一页一页地获取职员时，你可以先通过该接口获取所有职员的数量，然后使用下一个接口。</p>
 </blockquote>
-<p><strong>Response 200 Body</strong></p>
+<p><strong>Response 200 HEAD</strong></p>
 <ul>
 <li>num <code>Number</code> – 职员数量</li>
 </ul>
@@ -1322,9 +1308,7 @@
 </dd></dl></div></div></div><hr class="split"><div class="right"><div class="definition"><span class="method delete">DELETE</span>&nbsp;<span class="uri"><span class="hostname"></span>/staffs</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="staff-staffs-delete" class="action delete"><h4 class="action-heading"><div class="name">删除所有职员</div><a href="#staff-staffs-delete" class="method delete">DELETE</a><code class="uri">/staffs</code></h4><blockquote>
 <p>该接口只提供给root用户，或用于开发测试，慎用！</p>
 </blockquote>
-</div></div><hr class="split"><div class="middle"><section id="exportinfo" class="resource-group"><h2 class="group-heading">Exportinfo <a href="#exportinfo" class="permalink">&para;</a></h2></section></div><div class="middle"><div id="exportinfo-exportinfos" class="resource"><h3 class="resource-heading">Exportinfos <a href="#exportinfo-exportinfos" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method head">HEAD</span>&nbsp;<span class="uri"><span class="hostname"></span>/exportinfos</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-  "<span class="hljs-attribute">num</span>": <span class="hljs-value"><span class="hljs-number">20</span>
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="exportinfo-exportinfos-head" class="action head"><h4 class="action-heading"><div class="name">获取出库信息数量</div><a href="#exportinfo-exportinfos-head" class="method head">HEAD</a><code class="uri">/exportinfos</code></h4><blockquote>
+</div></div><hr class="split"><div class="middle"><section id="exportinfo" class="resource-group"><h2 class="group-heading">Exportinfo <a href="#exportinfo" class="permalink">&para;</a></h2></section></div><div class="middle"><div id="exportinfo-exportinfos" class="resource"><h3 class="resource-heading">Exportinfos <a href="#exportinfo-exportinfos" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method head">HEAD</span>&nbsp;<span class="uri"><span class="hostname"></span>/exportinfos</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">num</span>: <span class="hljs-string">20</span></code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="exportinfo-exportinfos-head" class="action head"><h4 class="action-heading"><div class="name">获取出库信息数量</div><a href="#exportinfo-exportinfos-head" class="method head">HEAD</a><code class="uri">/exportinfos</code></h4><blockquote>
 <p>当你希望一页一页地获取时，你可以先通过该接口获取所有的数量，然后使用下一个接口。</p>
 </blockquote>
 <p><strong>Response 200 Body</strong></p>
@@ -1353,7 +1337,7 @@
       "<span class="hljs-attribute">last_migrations</span>": <span class="hljs-value"><span class="hljs-string">"1234"</span></span>,
       "<span class="hljs-attribute">location_update_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span>
     </span>}
-</span>}, ...]</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="exportinfo-exportinfos-get" class="action get"><h4 class="action-heading"><div class="name">获取所有出库信息</div><a href="#exportinfo-exportinfos-get" class="method get">GET</a><code class="uri">/exportinfos(?page, limit)</code></h4><p><strong>Response 200 Body</strong></p>
+</span>}, ...]</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="exportinfo-exportinfos-get" class="action get"><h4 class="action-heading"><div class="name">获取所有出库信息</div><a href="#exportinfo-exportinfos-get" class="method get">GET</a><code class="uri">/exportinfos(?page, limit)</code></h4><p><strong>Response 200 HEAD</strong></p>
 <ul>
 <li>(array)
 <ul>

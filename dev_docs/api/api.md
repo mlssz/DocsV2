@@ -306,7 +306,7 @@ others结构：
 
 > 当你希望一页一页地获取物资时，你可以先通过该接口获取所有物资的数量，然后使用下一个接口。
 
-**Response 200 Body**
+**Response 200 HEAD**
 
 - num `Number` -- 物资数量
 
@@ -314,9 +314,9 @@ others结构：
     + others (optional) - 见开头readme
 
 + Response 200 (application/json)
-    {
-        "num": 20
-    }
+
+    + Headers
+        num: 20
 
 
 ### 获取所有物资信息 [GET /materials(?page, limit)]
@@ -383,7 +383,7 @@ others结构：
 
 > 当你希望一页一页地获取物资时，你可以先通过该接口获取所有物资的数量，然后使用下一个接口。
 
-**Response 200 Body**
+**Response 200 HEAD**
 
 - num `Number` -- 物资数量
 
@@ -391,9 +391,9 @@ others结构：
     + others (optional) - 见开头readme
 
 + Response 200 (application/json)
-    {
-        "num": 20
-    }
+
+    + Headers
+        num: 20
 
 ### 获取特定仓库中的物资 [GET /repository/:id/materials(?page, limit)]
 
@@ -453,7 +453,7 @@ others结构：
 
 > 当你希望一页一页地获取物资时，你可以先通过该接口获取所有物资的数量，然后使用下一个接口。
 
-**Response 200 Body**
+**Response 200 HEAD**
 
 - num `Number` -- 物资数量
 
@@ -461,9 +461,9 @@ others结构：
     + others (optional) - 见开头readme
 
 + Response 200 (application/json)
-    {
-        "num": 20
-    }
+
+    + Headers
+        num: 20
 
 ### 获取特定位置的物资 [GET /repository/:rid/location/:lid/materials(?page, limit)]
 
@@ -584,7 +584,7 @@ others结构：
 
 > 当你希望一页一页地获取时，你可以先通过该接口获取所有的数量，然后使用下一个接口。
 
-**Response 200 Body**
+**Response 200 HEAD**
 
 - num `Number` -- 错误信息数量
 
@@ -592,9 +592,9 @@ others结构：
     + others (optional) - 见开头readme
 
 + Response 200 (application/json)
-    {
-        "num": 20
-    }
+
+    + Headers
+        num: 20
 
 
 ### 获取所有错误信息 [GET /errors(?page, limit)]
@@ -709,7 +709,7 @@ others结构：
 
 > 当你希望一页一页地获取时，你可以先通过该接口获取所有的数量，然后使用下一个接口。
 
-**Response 200 Body**
+**Response 200 HEAD**
 
 - num `Number` -- 错误信息数量
 
@@ -717,9 +717,9 @@ others结构：
     + others (optional) - 见开头readme
 
 + Response 200 (application/json)
-    {
-        "num": 20
-    }
+
+    + Headers
+        num: 20
 
 
 ### 获取所有任务信息 [GET /tasks(?page, limit, other)]
@@ -960,7 +960,7 @@ others结构：
 
 > 当你希望一页一页地获取任务时，你可以先通过该接口获取所有任务的数量，然后使用下一个接口。
 
-**Response 200 Body**
+**Response 200 HEAD**
 
 - num `Number` -- 任务数量
 
@@ -968,9 +968,9 @@ others结构：
     + others (optional) - 见开头readme
 
 + Response 200 (application/json)
-    {
-        "num": 20
-    }
+
+    + Headers
+        num: 20
     
 ### 获取特定职员的任务 [GET /staff/:sid/tasks(?page, limit)]
 
@@ -1302,7 +1302,7 @@ others结构：
 
 > 当你希望一页一页地获取职员时，你可以先通过该接口获取所有职员的数量，然后使用下一个接口。
 
-**Response 200 Body**
+**Response 200 HEAD**
 
 - num `Number` -- 职员数量
 
@@ -1310,9 +1310,9 @@ others结构：
     + others (optional) - 见开头readme
 
 + Response 200 (application/json)
-    {
-        "num": 20
-    }
+
+    + Headers
+        num: 20
 
 
 ### 获取所有职员信息 [GET /staffs(?page, limit)]
@@ -1376,15 +1376,15 @@ others结构：
     + others (optional) - 见开头readme
 
 + Response 200 (application/json)
-    {
-        "num": 20
-    }
+
+    + Headers
+        num: 20
 
 
 ### 获取所有出库信息 [GET /exportinfos(?page, limit)]
 
 
-**Response 200 Body**
+**Response 200 HEAD**
 
 - (array)
     - (object)
