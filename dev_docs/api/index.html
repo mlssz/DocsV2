@@ -621,13 +621,13 @@
 </ul>
 </li>
 </ul>
-</div></div><hr class="split"><div class="right"><div class="definition"><span class="method delete">DELETE</span>&nbsp;<span class="uri"><span class="hostname"></span>/repositories</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="repository-repostories-delete" class="action delete"><h4 class="action-heading"><div class="name">删除所有仓库</div><a href="#repository-repostories-delete" class="method delete">DELETE</a><code class="uri">/repositories</code></h4></div></div><hr class="split"><div class="middle"><div id="repository-locations" class="resource"><h3 class="resource-heading">Locations <a href="#repository-locations" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/repository/locations</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[{
+</div></div><hr class="split"><div class="right"><div class="definition"><span class="method delete">DELETE</span>&nbsp;<span class="uri"><span class="hostname"></span>/repositories</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="repository-repostories-delete" class="action delete"><h4 class="action-heading"><div class="name">删除所有仓库</div><a href="#repository-repostories-delete" class="method delete">DELETE</a><code class="uri">/repositories</code></h4></div></div><hr class="split"><div class="middle"><div id="repository-locations" class="resource"><h3 class="resource-heading">Locations <a href="#repository-locations" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/repository/<span class="hljs-attribute" title="id">id</span>/locations</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[{
     id: <span class="hljs-number">2</span>,
     place: <span class="hljs-number">3</span>,
     label: <span class="hljs-string">"23"</span>,
     available_space: <span class="hljs-number">34</span>,
     materials: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
-}, ...]</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="repository-locations-get" class="action get"><h4 class="action-heading"><div class="name">返回仓库中所有位置的信息</div><a href="#repository-locations-get" class="method get">GET</a><code class="uri">/repository/locations</code></h4><p><strong>Response 200 Body</strong></p>
+}, ...]</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="repository-locations-get" class="action get"><h4 class="action-heading"><div class="name">返回仓库中所有位置的信息</div><a href="#repository-locations-get" class="method get">GET</a><code class="uri">/repository/{id}/locations</code></h4><p><strong>Response 200 Body</strong></p>
 <ul>
 <li>(array)
 <ul>
@@ -643,7 +643,8 @@
 </ul>
 </li>
 </ul>
-</div></div><hr class="split"><div class="middle"><div id="repository-location" class="resource"><h3 class="resource-heading">Location <a href="#repository-location" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/repository/<span class="hljs-attribute" title="id">id</span>/empty-location?<span class="hljs-attribute">num=</span><span class="hljs-literal"></span></span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code><span class="hljs-comment">// HTTP1.1 GET /repository/1/empty-location?num=10</span>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>String</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>仓库的_id</p>
+</dd></dl></div></div></div><hr class="split"><div class="middle"><div id="repository-location" class="resource"><h3 class="resource-heading">Location <a href="#repository-location" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/repository/<span class="hljs-attribute" title="id">id</span>/empty-location?<span class="hljs-attribute">num=</span><span class="hljs-literal"></span></span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code><span class="hljs-comment">// HTTP1.1 GET /repository/1/empty-location?num=10</span>
 [{
     <span class="hljs-string">"location"</span>: <span class="hljs-number">3</span>,
     <span class="hljs-string">"layer"</span>: <span class="hljs-number">0</span>,
@@ -683,42 +684,26 @@
 </ul>
 <div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>others</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<p>见开头readme</p>
 </dd></dl></div></div></div><hr class="split"><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/errors?<span class="hljs-attribute">page=</span><span class="hljs-literal"></span></span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[{
-   "<span class="hljs-attribute">_id</span>": <span class="hljs-value"><span class="hljs-string">"dsafdsadsaf32413141kl2"</span></span>,
-   "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
-   "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
-   "<span class="hljs-attribute">publish_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span></span>,
-   "<span class="hljs-attribute">start_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span></span>,
-   "<span class="hljs-attribute">end_time</span>":  <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span></span>,
-   "<span class="hljs-attribute">remark</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
-   "<span class="hljs-attribute">error</span>": <span class="hljs-value">{
-     "<span class="hljs-attribute">repository</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
-     "<span class="hljs-attribute">location</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
-     "<span class="hljs-attribute">layer</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-     "<span class="hljs-attribute">material</span>": <span class="hljs-value"><span class="hljs-number">32143214</span></span>,
-     "<span class="hljs-attribute">image</span>": <span class="hljs-value"><span class="hljs-string">"/errors/a.png"</span>
-    </span>}
+    "<span class="hljs-attribute">fixed</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">error_code</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">repository</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">location</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">layer</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">material</span>": <span class="hljs-value"><span class="hljs-number">32143214</span></span>,
+    "<span class="hljs-attribute">image</span>": <span class="hljs-value"><span class="hljs-string">"/errors/a.png"</span>
 </span>}, ...]</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="error-errors-get" class="action get"><h4 class="action-heading"><div class="name">获取所有错误信息</div><a href="#error-errors-get" class="method get">GET</a><code class="uri">/errors{?page}</code></h4><p><strong>Response 200 Body</strong></p>
 <ul>
 <li>(array)
 <ul>
 <li>(object)
 <ul>
-<li>_id <code>String</code> – 任务_id</li>
-<li>action <code>Number</code> –  动作，详见 db doc</li>
-<li>status <code>Number</code> – 任务状态, 0未开始1进行中2完成3任务取消</li>
-<li>publish_time <code>Date</code>– 任务发布时间</li>
-<li>start_time  <code>Date</code> –   任务开始时间</li>
-<li>end_time   <code>Date</code>  –   任务结束时间</li>
-<li>remark     <code>Date</code>  –   任务附加评语, 一般用于任务取消时</li>
-<li>error(object) – 当action为6开头时才会有这个键值
-<ul>
+<li>fixed <code>Boolean</code> – 修复完成</li>
+<li>error_code <code>Number</code> – 错误码, 1位置错误2无法识别</li>
 <li>repository <code>Number</code> –  错误仓库</li>
 <li>location <code>Number</code> –  错误位置</li>
 <li>layer <code>Number</code> – ❎错误层</li>
 <li>material <code>Number</code> – 物资id, 如果错误码为2，则为空值</li>
 <li>image <code>Number</code> –  照相图片，错误照片，圈出错误</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -1480,7 +1465,7 @@
 <div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>page</dt><dd><code>Number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>0</span></span>&nbsp;<p>当前第几页, 当该值为-1时，返回所有的物资</p>
 </dd><dt>limit</dt><dd><code>Number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>10</span></span>&nbsp;<p>每页几项</p>
 </dd><dt>others</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<p>见开头readme</p>
-</dd></dl></div></div></div><hr class="split"><div class="middle"><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 24 Apr 2017</p></div></div></div></div><script>/* eslint-env browser */
+</dd></dl></div></div></div><hr class="split"><div class="middle"><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 26 Apr 2017</p></div></div></div></div><script>/* eslint-env browser */
 /* eslint quotes: [2, "single"] */
 'use strict';
 

@@ -629,6 +629,9 @@ others结构：
 
 ## Locations [/repository/{id}/locations]
 
++ Parameters
+    + id (String, required) - 仓库的_id
+
 ### 返回仓库中所有位置的信息 [GET]
 
 **Response 200 Body**
@@ -714,14 +717,8 @@ others结构：
 
 - (array)
     - (object)
-      - _id `String` -- 任务_id
-      - action `Number` --  动作，详见 db doc
-      - status `Number` -- 任务状态, 0未开始1进行中2完成3任务取消
-      - publish_time `Date`-- 任务发布时间
-      - start_time  `Date` --   任务开始时间
-      - end_time   `Date`  --   任务结束时间
-      - remark     `Date`  --   任务附加评语, 一般用于任务取消时
-      - error(object) -- 当action为6开头时才会有这个键值
+        - fixed `Boolean` -- 修复完成
+        - error_code `Number` -- 错误码, 1位置错误2无法识别
         - repository `Number` --  错误仓库
         - location `Number` --  错误位置
         - layer `Number` -- ❎错误层
@@ -738,20 +735,13 @@ others结构：
 + Response 200 (application/json)
 
     [{
-       "_id": "dsafdsadsaf32413141kl2",
-       "action": 500,
-       "status": 1,
-       "publish_time": "2017-04-06T04:57:36.801Z",
-       "start_time": "2017-04-06T04:57:36.801Z",
-       "end_time":  "2017-04-06T04:57:36.801Z",
-       "remark": "",
-       "error": {
-         "repository": 1,
-         "location": 3,
-         "layer": 0,
-         "material": 32143214,
-         "image": "/errors/a.png"
-        }
+        "fixed": false,
+        "error_code": 1,
+        "repository": 1,
+        "location": 3,
+        "layer": 0,
+        "material": 32143214,
+        "image": "/errors/a.png"
     }, ...]
 
 ### 创建错误 [POST]
