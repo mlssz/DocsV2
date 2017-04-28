@@ -51,7 +51,7 @@ others结构：
 ### 获取一个特定的物资 [GET]
 
  **Response 200 Body**
-
+- _id `String` -- 物资_id
 - id `Number` -- 物资编号
 - type `String` -- 物资类型
 - description `Date(String)` -- 物资描述
@@ -69,6 +69,7 @@ others结构：
 
 + Response 200 (application/json)
     {
+        "_id": "1491451593158",
         "id": 1491451593158,
         "type": "tester",
         "description": "wonderful repository",
@@ -192,7 +193,7 @@ others结构：
 **Response 201 Body**
 
 - _id `String` -- 移动信息的_id
-- material `String`-- 物资_d
+- material `String`-- 物资_id
 - date `Date` -- 搬运完成时间, 未完成为空值
 - from_repository `Number` -- 原仓库, 仓库id
 - from_location `Number` -- 原位置, 原位置的id
@@ -252,6 +253,7 @@ others结构：
 
 - (array)
     - (object)
+      - _id `String` -- 物资_id
       - id `Number` -- 物资编号
       - type `String` -- 物资类型
       - description `String` -- 物资描述
@@ -284,6 +286,7 @@ others结构：
 
 + Response 201 (application/json)
     [{
+        "_id": "dsafdsaf32141314",
          "id": 1491451593158,
          "type": "tester",
          "description": "wonderful repository",
@@ -326,6 +329,7 @@ others结构：
 
 - (array)
     - (object)
+      - _id `String` -- 物资_id
       - id `Number` -- 物资编号
       - type `String` -- 物资类型
       - description `String` -- 物资描述
@@ -351,6 +355,7 @@ others结构：
 + Response 200 (application/json)
 
     [{
+         "_id": "dsafdsaf32141314",
          "id": 1491451593158,
          "type": "tester",
          "description": "wonderful repository",
@@ -401,6 +406,7 @@ others结构：
 
 - (array)
     - (object)
+      - _id `String` -- 物资_id
       - id `Number` -- 物资编号
       - type `String` -- 物资类型
       - description `String` -- 物资描述
@@ -427,6 +433,7 @@ others结构：
 + Response 200 (application/json)
 
     [{
+         "_id": "dsafdsaf32141314",
          "id": 1491451593158,
          "type": "tester",
          "description": "wonderful repository",
@@ -471,6 +478,7 @@ others结构：
 
 - (array)
     - (object)
+      - _id `String` -- 物资_id
       - id `Number` -- 物资编号
       - type `String` -- 物资类型
       - description `String` -- 物资描述
@@ -498,6 +506,7 @@ others结构：
 + Response 200 (application/json)
 
     [{
+         "_id": "dsafdsaf32141314",
          "id": 1491451593158,
          "type": "tester",
          "description": "wonderful repository",
@@ -527,6 +536,7 @@ others结构：
 
 **Response 200 Body**
 
+- _id `String` -- 仓库_id
 - id `Number` -- 仓库编号
 - available_space `Number` -- 空闲空间数量
 - stored_count `Number` -- 已存放物资数
@@ -541,6 +551,7 @@ others结构：
 + Response 200 (application/json)
     
     {
+        "_id": "dsafkhklsdfakfsda",
         "id": 1,
         "available_space": 40,
         "stored_count": 23,
@@ -569,6 +580,7 @@ others结构：
 
 - (array)
     - (object)
+      - _id `String` -- 仓库_id
       - id `Number` -- 仓库编号
       - available_space `Number` -- 空闲空间数量
       - stored_count `Number` -- 已存放物资数
@@ -576,6 +588,7 @@ others结构：
 + Response 200 (application/json)
     
     [{
+        "_id": "dsafkhklsdfakfsda",
         "id": 1,
         "available_space": 40,
         "stored_count": 23
@@ -585,10 +598,11 @@ others结构：
 
 **Request Body**
 
-- id `Number` -- 仓库编号
+- id `Number` -- 仓库编号, >= 0
 
 **Response 200 Body**
 
+- _id `String` -- 仓库_id
 - id `Number` -- 仓库编号
 - available_space `Number` -- 空闲空间数量
 - stored_count `Number` -- 已存放物资数
@@ -609,6 +623,7 @@ others结构：
 + Response 200 (application/json)
     
     {
+        "_id": "dsaflksdjfsalkfj",
         "id": 1,
         "available_space": 40,
         "stored_count": 23,
@@ -836,6 +851,7 @@ others结构：
       - start_time  `Date` --   任务开始时间
       - end_time   `Date`  --   任务结束时间
       - staff(object)
+        - _id `String` -- 职员_id
         - name `String`  -- 职员名
         - account `String`  -- 职员账户
         - passwd `String`  -- 职员密码
@@ -846,6 +862,7 @@ others结构：
         - last_login_time `Date`  -- 最近登录时间
       - remark     `Date`  --   任务附加评语, 一般用于任务取消时
       - material(object) -- 当action为5开头时才会有这个键值
+        - _id `String` -- 物资_id
         - id `Number` -- 物资编号
         - type `String` -- 物资类型
         - description `Date(String)` -- 物资描述
@@ -864,6 +881,7 @@ others结构：
         - to_location `number` -- 目标位置, 目标位置的id
         - to_layer `number` -- 目标层
       - error(object) -- 当action为6开头时才会有这个键值
+        - _id `String` -- 错误_id
         - repository `Number` --  错误仓库
         - location `Number` --  错误位置
         - layer `Number` -- 错误所在的层
@@ -888,6 +906,7 @@ others结构：
         "end_time":  "2017-04-06T04:57:36.801Z",
         "remark": "",
         "staff": {
+            "_id": "dsafdsadsaf32413141kl2",
             "name": "因幡帝",
             "account": "inaba_tewi",
             "passwd": "123456",
@@ -898,6 +917,7 @@ others结构：
             "last_login_time": 1491451593158
         },
         "material": {
+            "_id": "dsafdsadsaf32413141kl2",
             "id": 1491451593158,
             "type": "tester",
             "description": "wonderful repository",
@@ -937,6 +957,7 @@ others结构：
       - start_time  `Date` --   任务开始时间
       - remark     `Date`  --   任务附加评语, 一般用于任务取消时
       - material(object) -- 当action为5开头时才会有这个键值
+        - _id `String` -- 物资_id
         - id `Number` -- 物资编号
         - type `String` -- 物资类型
         - description `Date(String)` -- 物资描述
@@ -955,6 +976,7 @@ others结构：
         - to_location `number` -- 目标位置, 目标位置的id
         - to_layer `number` -- 目标层
       - error(object) -- 当action为6开头时才会有这个键值
+        - _id `String` -- 错误_id
         - repository `Number` --  错误仓库
         - location `Number` --  错误位置
         - layer `Number` -- 错误所在的层
@@ -976,6 +998,7 @@ others结构：
         "start_time": "2017-04-06T04:57:36.801Z",
         "remark": "",
         "material": {
+            "_id": "dsfklasdafkasfa",
             "id": 1491451593158,
             "type": "tester",
             "description": "wonderful repository",
@@ -1087,6 +1110,7 @@ others结构：
       - end_time   `Date`  --   任务结束时间
       - remark     `Date`  --   任务附加评语, 一般用于任务取消时
       - material(object) -- 当action为5开头时才会有这个键值
+        - _id `String` -- 物资_id
         - id `Number` -- 物资编号
         - type `String` -- 物资类型
         - description `Date(String)` -- 物资描述
@@ -1105,6 +1129,7 @@ others结构：
         - to_location `number` -- 目标位置, 目标位置的id
         - to_layer `number` -- 目标层
       - error(object) -- 当action为6开头时才会有这个键值
+        - _id `String` -- 错误_id
         - repository `Number` --  错误仓库
         - location `Number` --  错误位置
         - layer `Number` -- 错误所在的层
@@ -1131,6 +1156,7 @@ others结构：
         "end_time":  "2017-04-06T04:57:36.801Z",
         "remark": "",
         "material": {
+            "_id": "dsafdsadsaf32413141kl2",
             "id": 1491451593158,
             "type": "tester",
             "description": "wonderful repository",
@@ -1168,6 +1194,7 @@ others结构：
 - end_time   `Date`  --   任务结束时间
 - remark     `Date`  --   任务附加评语, 一般用于任务取消时
 - staff(object)
+  - _id `String` -- 职员_id
   - name `String`  -- 职员名
   - account `String`  -- 职员账户
   - passwd `String`  -- 职员密码
@@ -1177,6 +1204,7 @@ others结构：
   - signup_time `Date`  -- 注册时间
   - last_login_time `Date`  -- 最近登录时间
 - material(object)
+  - _id `String` -- 物资_id
   - id `Number` -- 物资编号
   - type `String` -- 物资类型
   - description `Date(String)` -- 物资描述
@@ -1203,6 +1231,7 @@ others结构：
         "end_time":  "2017-04-06T04:57:36.801Z",
         "remark": "",
         "staff": {
+            "_id": "dsafdsadsaf32413141kl2",
             "name": "因幡帝",
             "account": "inaba_tewi",
             "passwd": "123456",
@@ -1213,6 +1242,7 @@ others结构：
             "last_login_time": 1491451593158
         },
         "material": {
+            "_id": "dsafdsadsaf32413141kl2",
             "id": 1491451593158,
             "type": "tester",
             "description": "wonderful repository",
@@ -1494,6 +1524,7 @@ others结构：
       - destination `String` -- 去向 
       - from_repository `Number` -- 原仓库
       - material (object) -- 物资
+        - _id `String` -- 物资_id
         - id `Number` -- 物资编号
         - type `String` -- 物资类型
         - description `Date(String)` -- 物资描述
@@ -1524,6 +1555,7 @@ others结构：
         "destination": "幻想乡",
         "from_repository": 2,
         "material": {
+          "_id": "dsfkaljh3214",
           "id": 1491451593158,
           "type": "tester",
           "description": "wonderful repository",
