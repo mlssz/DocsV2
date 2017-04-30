@@ -187,8 +187,8 @@ others结构：
 
 - repository `Number` (required) -- 目标仓库, 仓库id, -1表示出库
 - location `Number` (required) -- 目标位置, 目标位置的id
-- exportinfo (object, required while repository == -1)
-    - destination `String` (required) -- 去向
+- layer `Number` (required) -- 目标层
+- destination `String` (required while repository == -1) -- 去向
 
 **Response 201 Body**
 
