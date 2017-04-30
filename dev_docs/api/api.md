@@ -179,9 +179,18 @@ others结构：
     
 ### 移动物资到新位置 [POST]
 
-> 该接口会创建一个新的migration，并修改materials的repository_id, location_id, layer和status, 再创建一个相应的task。
+> 该接口既用来移动物资到新位置，又用来出库。
 
-> 表示出库时，还需要创建一个exportinfo数据。
+> 当该接口用来出库时，请求体中的 `repository` 为 -1，`location`和`layer`随意，而 `destination` 是必须的。该接口此时需要先创建一个 magiration 数据，`from_*`各值为相应 material 数据的 `repository_id`, `location_id` 和 `layer` 的值，而 `to_repository` 为 -1，`to_location` 和 `to_layer` 随意, `date` 为 undefined (空值)。然后根据迁移信息创建一个 task 数据，`action` 为 502, `staff` 为 undefined（空值）, `status` 为 0，`migration` 就是刚刚创建的 migration 数据的 _id， `publish_time`为 now，`start_time`, `end_time`, `remark` 皆为空值。再创建一个 exportinfos 数据，`actual_export_time` 为空值（该值在完成出库时填写，有值表示出库完成），'destination' 就是请求体中的 destination，`from_repository` 为相应 material 中的 `repository_id`。 最后, 修改 material 数据的 `repository_id` 为 -1， `status` 为 302, `location_update_time` 为 now。
+
+> 当管理员想要移动物资时，管理员会现在web端选择 `自动分配空位` 或 `手动填写空位`。如果管理员选择 手动填写空位，则管理员需在web端填写 `repository`, `location` 与 `layer` 信息(也就是该api请求体中相应键的数据)。
+
+> 如果管理员选择 `自动分配空位` ， 则他需要先请求api —— 自动分配仓库中的空位 (Respository组中)， 那个api会根据他填写的基本条件返回自动分配的空位，然后web端将分配到的空位显示给管理员看，管理员确认将物质移动到分配到的空位处。当管理员确认时，web端会根据分配到的空位调用该api（repository, location, layer由分配到的空位信息填充）。
+
+> 该接口用于移动时，请求体中的 `repository`， `location`，`layer` 表示新位置，`destination`没用。该接口此时需要先创建一个 magiration 数据，`from_*`各值为相应 material 数据的 `repository_id`, `location_id` 和 `layer` 的值，而 `to_repository`, `to_location` 和 `to_layer` 为请求体中的 `repository`， `location`，`layer` , `date` 为 undefined (空值)。然后根据迁移信息创建一个 task 数据，`action` 为 501, `staff` 为 undefined（空值）, `status` 为 0，`migration` 就是刚刚创建的 migration 数据的 _id， `publish_time`为 now，`start_time`, `end_time`, `remark` 皆为空值。最后, 修改 material 数据的 `repository_id` , `location_id`, `layer` 改为请求体中的相应键值， `status` 为 301, `location_update_time` 为 now。
+
+> 这个api不需要修改 repository 数据中的位置信息，位置信息一律在移动完成或则物资状态变为2开头时才修改。
+
 
 **Resquest Body**
 
@@ -682,7 +691,14 @@ others结构：
     
 ### 自动分配仓库中的空位 [GET /repository/{id}/empty-location{?num, width, height, length}]
 
-> 该接口查询仓库余位，根据货物大小，调度分配到合适的仓库位置(具体到某个仓 库内的某个货架的位置)。在将货物信息保存到数据库之前，需要先调用该接口获得空位。如果没有找到需要的空位，会返回404错误
+
+> 当管理员想要录入物资信息或移动物资时，管理员会现在web端选择 自动分配空位 或 手动填写空位。如果管理员选择 自动分配空位 ， 则他需要先请求该api，该api需要查询仓库余位，根据货物大小，分配合适的仓库位置。
+
+> 即查询repository数据，遍历个个location信息，找到能完全装下 url 参数中 width，height，length 所表示的空间的位置（具体到层）。当一个location的某一层放不下时，可以用同样方式查该location的其他层，当一个location满时，查其他location。直到查到能将请求中所表示的物资完全放下的位置信息。
+
+> 如果剩余的空位无法放下这些物资，则返回404错误。
+
+> 管理员通过该接口请求到空余信息时，才可调用入库和移动的api完成自动分配空位。
 
 **Response 200 Body**
 

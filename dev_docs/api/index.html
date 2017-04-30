@@ -209,10 +209,22 @@
     "<span class="hljs-attribute">distination</span>": <span class="hljs-value"><span class="hljs-string">"幻想乡"</span>
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="material-migrations-of-material-post" class="action post"><h4 class="action-heading"><div class="name">移动物资到新位置</div><a href="#material-migrations-of-material-post" class="method post">POST</a><code class="uri">/material/{id}/migrations</code></h4><blockquote>
-<p>该接口会创建一个新的migration，并修改materials的repository_id, location_id, layer和status, 再创建一个相应的task。</p>
+<p>该接口既用来移动物资到新位置，又用来出库。</p>
 </blockquote>
 <blockquote>
-<p>表示出库时，还需要创建一个exportinfo数据。</p>
+<p>当该接口用来出库时，请求体中的 <code>repository</code> 为 -1，<code>location</code>和<code>layer</code>随意，而 <code>destination</code> 是必须的。该接口此时需要先创建一个 magiration 数据，<code>from_*</code>各值为相应 material 数据的 <code>repository_id</code>, <code>location_id</code> 和 <code>layer</code> 的值，而 <code>to_repository</code> 为 -1，<code>to_location</code> 和 <code>to_layer</code> 随意, <code>date</code> 为 undefined (空值)。然后根据迁移信息创建一个 task 数据，<code>action</code> 为 502, <code>staff</code> 为 undefined（空值）, <code>status</code> 为 0，<code>migration</code> 就是刚刚创建的 migration 数据的 _id， <code>publish_time</code>为 now，<code>start_time</code>, <code>end_time</code>, <code>remark</code> 皆为空值。再创建一个 exportinfos 数据，<code>actual_export_time</code> 为空值（该值在完成出库时填写，有值表示出库完成），‘destination’ 就是请求体中的 destination，<code>from_repository</code> 为相应 material 中的 <code>repository_id</code>。 最后, 修改 material 数据的 <code>repository_id</code> 为 -1， <code>status</code> 为 302, <code>location_update_time</code> 为 now。</p>
+</blockquote>
+<blockquote>
+<p>当管理员想要移动物资时，管理员会现在web端选择 <code>自动分配空位</code> 或 <code>手动填写空位</code>。如果管理员选择 手动填写空位，则管理员需在web端填写 <code>repository</code>, <code>location</code> 与 <code>layer</code> 信息(也就是该api请求体中相应键的数据)。</p>
+</blockquote>
+<blockquote>
+<p>如果管理员选择 <code>自动分配空位</code> ， 则他需要先请求api —— 自动分配仓库中的空位 (Respository组中)， 那个api会根据他填写的基本条件返回自动分配的空位，然后web端将分配到的空位显示给管理员看，管理员确认将物质移动到分配到的空位处。当管理员确认时，web端会根据分配到的空位调用该api（repository, location, layer由分配到的空位信息填充）。</p>
+</blockquote>
+<blockquote>
+<p>该接口用于移动时，请求体中的 <code>repository</code>， <code>location</code>，<code>layer</code> 表示新位置，<code>destination</code>没用。该接口此时需要先创建一个 magiration 数据，<code>from_*</code>各值为相应 material 数据的 <code>repository_id</code>, <code>location_id</code> 和 <code>layer</code> 的值，而 <code>to_repository</code>, <code>to_location</code> 和 <code>to_layer</code> 为请求体中的 <code>repository</code>， <code>location</code>，<code>layer</code> , <code>date</code> 为 undefined (空值)。然后根据迁移信息创建一个 task 数据，<code>action</code> 为 501, <code>staff</code> 为 undefined（空值）, <code>status</code> 为 0，<code>migration</code> 就是刚刚创建的 migration 数据的 _id， <code>publish_time</code>为 now，<code>start_time</code>, <code>end_time</code>, <code>remark</code> 皆为空值。最后, 修改 material 数据的 <code>repository_id</code> , <code>location_id</code>, <code>layer</code> 改为请求体中的相应键值， <code>status</code> 为 301, <code>location_update_time</code> 为 now。</p>
+</blockquote>
+<blockquote>
+<p>这个api不需要修改 repository 数据中的位置信息，位置信息一律在移动完成或则物资状态变为2开头时才修改。</p>
 </blockquote>
 <p><strong>Resquest Body</strong></p>
 <ul>
@@ -691,7 +703,16 @@
     <span class="hljs-string">"layer"</span>: <span class="hljs-number">1</span>,
     <span class="hljs-string">"num"</span>: <span class="hljs-number">7</span>
 }]</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="repository-location-get" class="action get"><h4 class="action-heading"><div class="name">自动分配仓库中的空位</div><a href="#repository-location-get" class="method get">GET</a><code class="uri">/repository/{id}/empty-location{?num}</code></h4><blockquote>
-<p>该接口查询仓库余位，根据货物大小，调度分配到合适的仓库位置(具体到某个仓 库内的某个货架的位置)。在将货物信息保存到数据库之前，需要先调用该接口获得空位。如果没有找到需要的空位，会返回404错误</p>
+<p>当管理员想要录入物资信息或移动物资时，管理员会现在web端选择 自动分配空位 或 手动填写空位。如果管理员选择 自动分配空位 ， 则他需要先请求该api，该api需要查询仓库余位，根据货物大小，分配合适的仓库位置。</p>
+</blockquote>
+<blockquote>
+<p>即查询repository数据，遍历个个location信息，找到能完全装下 url 参数中 width，height，length 所表示的空间的位置（具体到层）。当一个location的某一层放不下时，可以用同样方式查该location的其他层，当一个location满时，查其他location。直到查到能将请求中所表示的物资完全放下的位置信息。</p>
+</blockquote>
+<blockquote>
+<p>如果剩余的空位无法放下这些物资，则返回404错误。</p>
+</blockquote>
+<blockquote>
+<p>管理员通过该接口请求到空余信息时，才可调用入库和移动的api完成自动分配空位。</p>
 </blockquote>
 <p><strong>Response 200 Body</strong></p>
 <ul>
