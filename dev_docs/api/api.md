@@ -179,7 +179,7 @@ others结构：
     
 ### 移动物资到新位置 [POST]
 
-> 该接口会创建一个新的migration，并修改materials的repository_id, location_id和status, 再创建一个相应的task。
+> 该接口会创建一个新的migration，并修改materials的repository_id, location_id, layer和status, 再创建一个相应的task。
 
 > 表示出库时，还需要创建一个exportinfo数据。
 
@@ -234,6 +234,16 @@ others结构：
 ### 录入多个物资 [POST]
 
 > 该接口根据管理员数据的物资相关信息与数量，生成多个物资，id自动生成
+
+> 当管理员想要录入物资信息时，管理员会现在web端选择 `自动分配空位` 或 `手动填写空位`。如果管理员选择 `手动填写空位`，则管理员需在web端填写 `repository_id`, `location_id` 与 `layer` 信息(也就是该api请求体中相应键的数据)。
+
+> 如果管理员选择 `自动分配空位` ， 则他需要先请求api —— `自动分配仓库中的空位 (Respository组中)`， 那个api会根据他填写的基本条件返回自动分配的空位，然后web端将这些分配到的空位显示给管理员看，管理员确认将这些物质录入到分配到的空位处。当管理员确认时，web端会根据每一个分配到的空位调用一次该api（`repository_id`, `location_id`, `layer`由分配到的空位信息填充）。
+
+> 该api后端接受到请求后，先验证`repository_id`, `location_id`, `layer`所表示的位置，是否真的空余（根据查询repository中location）。若真的空余，先修改数据库中repository信息与相应location中的空位信息，然后在数据库中创建`num`个物资信息，id随机生成（方式随便），`statue` 为 300, `last_migration` 为 undefined, `location_update_time` 为 now。此时 `repository_id`, `location_id`, `layer`虽然填写，但是并不是真实位置, 只有当 `status` 为 1 开头时才是真实位置。若不是真的空，则返回错误信息。
+
+> 然后创建一个 migration 数据，这个migration的 `from_reposirtory` 为 0 ， `from_lcoation` 与 `from_layer` 随意，`to_*`各键为相应material的`repository_id`, `location_id`, `layer`，date 为 undefined （date 有值表示该迁移已经完成）
+
+> 最后根据迁移信息创建一个 task 数据，`action` 为 500, `staff` 为 undefined（空值）, `status` 为 0，`migration` 就是刚刚创建的 migration 数据的 _id， `publish_time`为 now，`start_time`, `end_time`, `remark` 皆为空值。
 
 **Request Body**
 

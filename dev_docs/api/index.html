@@ -209,7 +209,7 @@
     "<span class="hljs-attribute">distination</span>": <span class="hljs-value"><span class="hljs-string">"幻想乡"</span>
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="material-migrations-of-material-post" class="action post"><h4 class="action-heading"><div class="name">移动物资到新位置</div><a href="#material-migrations-of-material-post" class="method post">POST</a><code class="uri">/material/{id}/migrations</code></h4><blockquote>
-<p>该接口会创建一个新的migration，并修改materials的repository_id, location_id和status, 再创建一个相应的task。</p>
+<p>该接口会创建一个新的migration，并修改materials的repository_id, location_id, layer和status, 再创建一个相应的task。</p>
 </blockquote>
 <blockquote>
 <p>表示出库时，还需要创建一个exportinfo数据。</p>
@@ -296,6 +296,21 @@
      "<span class="hljs-attribute">location_update_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span>
 </span>}...]</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="material-materials-post" class="action post"><h4 class="action-heading"><div class="name">录入多个物资</div><a href="#material-materials-post" class="method post">POST</a><code class="uri">/materials</code></h4><blockquote>
 <p>该接口根据管理员数据的物资相关信息与数量，生成多个物资，id自动生成</p>
+</blockquote>
+<blockquote>
+<p>当管理员想要录入物资信息时，管理员会现在web端选择 <code>自动分配空位</code> 或 <code>手动填写空位</code>。如果管理员选择 <code>手动填写空位</code>，则管理员需在web端填写 <code>repository_id</code>, <code>location_id</code> 与 <code>layer</code> 信息(也就是该api请求体中相应键的数据)。</p>
+</blockquote>
+<blockquote>
+<p>如果管理员选择 <code>自动分配空位</code> ， 则他需要先请求api —— <code>自动分配仓库中的空位 (Respository组中)</code>， 那个api会根据他填写的基本条件返回自动分配的空位，然后web端将这些分配到的空位显示给管理员看，管理员确认将这些物质录入到分配到的空位处。当管理员确认时，web端会根据每一个分配到的空位调用一次该api（<code>repository_id</code>, <code>location_id</code>, <code>layer</code>由分配到的空位信息填充）。</p>
+</blockquote>
+<blockquote>
+<p>该api后端接受到请求后，先验证<code>repository_id</code>, <code>location_id</code>, <code>layer</code>所表示的位置，是否真的空余（根据查询repository中location）。若真的空余，先修改数据库中repository信息与相应location中的空位信息，然后在数据库中创建<code>num</code>个物资信息，id随机生成（方式随便），<code>statue</code> 为 300, <code>last_migration</code> 为 undefined, <code>location_update_time</code> 为 now。此时 <code>repository_id</code>, <code>location_id</code>, <code>layer</code>虽然填写，但是并不是真实位置, 只有当 <code>status</code> 为 1 开头时才是真实位置。若不是真的空，则返回错误信息。</p>
+</blockquote>
+<blockquote>
+<p>然后创建一个 migration 数据，这个migration的 <code>from_reposirtory</code> 为 0 ， <code>from_lcoation</code> 与 <code>from_layer</code> 随意，<code>to_*</code>各键为相应material的<code>repository_id</code>, <code>location_id</code>, <code>layer</code>，date 为 undefined （date 有值表示该迁移已经完成）</p>
+</blockquote>
+<blockquote>
+<p>最后根据迁移信息创建一个 task 数据，<code>action</code> 为 500, <code>staff</code> 为 undefined（空值）, <code>status</code> 为 0，<code>migration</code> 就是刚刚创建的 migration 数据的 _id， <code>publish_time</code>为 now，<code>start_time</code>, <code>end_time</code>, <code>remark</code> 皆为空值。</p>
 </blockquote>
 <p><strong>Request Body</strong></p>
 <ul>
