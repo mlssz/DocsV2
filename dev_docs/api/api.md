@@ -116,7 +116,11 @@ others结构：
 
 ### 取消移动物资 [DELETE]
 
-> 该接口只能修改对应任务处于未开始状态（status==0）的任务。通过 离当前最近的且已完成的移动信息 恢复 物资 的数据，主要是repository_id、location_id和last_migration，并修改 status 为 100，删除移动信息与任务信息。
+> 该接口只能删除对应 task 数据处于未开始状态（status==0）的移动信息。
+
+> 根据 `移动物资` 和 `录入物资` 这两个api的详细说明可知，当 material 的移动未完成时，在数据库中其数据的 `repository_id`, `location_id` 和 `layer` 并不是物资现实的位置。物资现实的位置为 `last_migration` (最近完成的移动) 所指的 migration 数据的 `to_*` 数据。因此，该接口需要先将物资现实真实位置赋值到相应 material 的 `repository_id`, `location_id` 和 `layer` ，并修改 `status` 为 100。 然后删除移动信息与任务信息。
+
+> 表示入库时，还需要修改 repository 数据中相应的位置信息。
 
 > 表示出库时，还需要删除exportinfo数据。
 
@@ -187,9 +191,8 @@ others结构：
 
 > 如果管理员选择 `自动分配空位` ， 则他需要先请求api —— 自动分配仓库中的空位 (Respository组中)， 那个api会根据他填写的基本条件返回自动分配的空位，然后web端将分配到的空位显示给管理员看，管理员确认将物质移动到分配到的空位处。当管理员确认时，web端会根据分配到的空位调用该api（repository, location, layer由分配到的空位信息填充）。
 
-> 该接口用于移动时，请求体中的 `repository`， `location`，`layer` 表示新位置，`destination`没用。该接口此时需要先创建一个 magiration 数据，`from_*`各值为相应 material 数据的 `repository_id`, `location_id` 和 `layer` 的值，而 `to_repository`, `to_location` 和 `to_layer` 为请求体中的 `repository`， `location`，`layer` , `date` 为 undefined (空值)。然后根据迁移信息创建一个 task 数据，`action` 为 501, `staff` 为 undefined（空值）, `status` 为 0，`migration` 就是刚刚创建的 migration 数据的 _id， `publish_time`为 now，`start_time`, `end_time`, `remark` 皆为空值。最后, 修改 material 数据的 `repository_id` , `location_id`, `layer` 改为请求体中的相应键值， `status` 为 301, `location_update_time` 为 now。
+> 该接口用于移动时，请求体中的 `repository`， `location`，`layer` 表示新位置，`destination`没用。该接口此时需要先根据 repository 数据判断目标位置是否为空位置，是，则修改数据库中repository信息与相应location中的空位信息（不需要修改当前位置的信息，因为还占着位置），再创建一个 magiration 数据，`from_*`各值为相应 material 数据的 `repository_id`, `location_id` 和 `layer` 的值，而 `to_repository`, `to_location` 和 `to_layer` 为请求体中的 `repository`， `location`，`layer` , `date` 为 undefined (空值)。然后根据迁移信息创建一个 task 数据，`action` 为 501, `staff` 为 undefined（空值）, `status` 为 0，`migration` 就是刚刚创建的 migration 数据的 _id， `publish_time`为 now，`start_time`, `end_time`, `remark` 皆为空值。最后, 修改 material 数据的 `repository_id` , `location_id`, `layer` 改为请求体中的相应键值， `status` 为 301, `location_update_time` 为 now。若目标位置不是空位置，则直接返回错误信息。
 
-> 这个api不需要修改 repository 数据中的位置信息，位置信息一律在移动完成或则物资状态变为2开头时才修改。
 
 
 **Resquest Body**
@@ -1066,7 +1069,15 @@ others结构：
     
 ### 开始执行任务 [PATCH]
 
-> 当微信扫到货物时，开始任务。修改status。如果任务为出库，则直接结束，结束时间为当前时间加上某一个固定值；
+> 当微信扫到货物时，开始任务。修改 task 数据的 status 为 1。将 `start_time` 设置为 now 。
+
+> 如果该任务为入库任务，则还需修改对应物资的 status 为 200。
+
+> 如果该任务为移动物资任务，则还需修改对应物资的 status 为 201。同时，由 `移动物资` api的描述可知，物资还占着当前位置，所以需要修改 repository 数据，将物资现实真实位置空出来（last_migration 中 `to_*` 表示的位置）。
+
+> 如果任务为出库，则直接结束，结束时间为当前时间加上某一个固定值，然后把该结束时间也赋值到相应migration的date中，最后修改相应material数据status为101，last_migration为相应的migration；同时，由 `移动物资` api的描述可知，物资还占着当前位置，所以需要修改 repository 数据，将物资现实真实位置空出来（last_migration 中 `to_*` 表示的位置）。
+
+> 
 
 + Response 200 (application/json)
     {}
@@ -1076,15 +1087,18 @@ others结构：
 + Parameters
     + sid (String, required) - 职员的_id
 
-### 删除所有任务 [DELETE]
-> 删除该staff所有任务的staff字段，同时修改status为0
+### 删除所有未完成任务 [DELETE]
+
+> 删除该staff所有 `status` 字段为 1 或 0 的 task 数据的staff字段，同时修改status为0
 
 + Response 200 (application/json)
     {}
     
 ### 完成多个搬运任务 [PATCH]
 
-> 该接口在用户完成搬运扫货架上的条形码时调用，接口通过摄像头拍摄相应货架，通过图形技术获得该货架上所有货物，然后过滤得到处于搬运状态且为该职员的货物，然后完成这些货物相应的任务。在完成这些任务时，需要给相应migration的date赋值。
+> 该接口在用户完成搬运扫货架上的条形码时调用，接口通过虚拟接口——摄像头拍摄相应货架，通过图形技术获得该货架上所有货物，然后过滤得到处于搬运状态且为该职员的货物，然后完成这些货物相应的任务。
+
+> 在完成这些任务时，先将这些 task 数据的status值改为2，再给相应migration的date赋值, 最后修改相应 material 数据的 status 字段为 100, last_migration 字段为 migration 数据的 _id
 
 **Request Body**
 
