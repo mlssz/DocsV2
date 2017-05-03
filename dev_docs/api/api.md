@@ -550,7 +550,7 @@ others结构：
 ## Repository [/repository/{id}]
 
 + Parameters
-    + id (String, required) - 仓库的_id
+    + id (String, required) - 仓库的id
     
 ### 返回仓库详细信息 [GET]
 
@@ -667,7 +667,7 @@ others结构：
 ## Locations [/repository/{id}/locations]
 
 + Parameters
-    + id (String, required) - 仓库的_id
+    + id (String, required) - 仓库的id
 
 ### 返回仓库中所有位置的信息 [GET]
 
@@ -712,7 +712,7 @@ others结构：
       - num `Number` - 该位置的空位数
 
 + Parameters
-    + id (String, required) - 仓库的_id
+    + id (String, required) - 仓库的id
     + width (Number, optional) - 物资的宽度
         + Default: 1
     + length (Number, optional) - 物资的长度
@@ -890,7 +890,7 @@ others结构：
         - signup_time `Date`  -- 注册时间
         - last_login_time `Date`  -- 最近登录时间
       - remark     `Date`  --   任务附加评语, 一般用于任务取消时
-      - material(object) -- 当action为5开头时才会有这个键值
+      - material(object)
         - _id `String` -- 物资_id
         - id `Number` -- 物资编号
         - type `String` -- 物资类型
@@ -901,8 +901,13 @@ others结构：
         - width `Number` -- 物资长度，该系统中固定为1
         - length `Number` -- 物资长度，该系统中固定为1
         - status `Number` -- 状态码，详见 db doc
+        - repository_id `number` -- 仓库id, 0表示入库
+        - location_id `number` -- 位置的id
+        - layer `number` -- 原层
         - last_migrations `String` -- 最近一次搬运记录_id
         - location_update_time `Date(String)` -- 位置更新时间
+      - migration(object) -- 当action为5开头时才会有这个键值
+        - date  `Date` --   任务完成时间
         - from_repository `number` -- 原仓库, 仓库id, 0表示入库
         - from_location `number` -- 原位置, 原位置的id
         - from_layer `number` -- 原层
@@ -914,7 +919,6 @@ others结构：
         - repository `Number` --  错误仓库
         - location `Number` --  错误位置
         - layer `Number` -- 错误所在的层
-        - material `Number` -- 物资id, 如果错误码为2，则为空值
         - image `Number` --  照相图片，错误照片，圈出错误
 
 
@@ -946,7 +950,7 @@ others结构：
             "last_login_time": 1491451593158
         },
         "material": {
-            "_id": "dsafdsadsaf32413141kl2",
+            "_id": "dsfklasdafkasfa",
             "id": 1491451593158,
             "type": "tester",
             "description": "wonderful repository",
@@ -956,14 +960,19 @@ others结构：
             "width": 1,
             "length": 2,
             "status": 300,
-            "from_repository": 2,
-            "from_location": 0,
-            "from_layer": 0,
-            "to_repository": 12,
-            "to_location": 1,
-            "to_layer": 0,
-            "last_migrations": "1234",
+            "repository_id": 2,
+            "location_id": 12,
+            "layer": 1,
             "location_update_time": "2017-04-06T04:57:36.801Z"
+        },
+        "migration": {
+            "date": "2017-04-06T04:57:36.801Z",
+            "from_repository": 2,
+            "from_location": 12,
+            "from_layer": 1,
+            "to_repository": -1,
+            "to_location": 0,
+            "to_layer": 0,
         }
     }, ...]
     
@@ -1020,7 +1029,7 @@ others结构：
       - publish_time `Date`-- 任务发布时间
       - start_time  `Date` --   任务开始时间
       - remark     `Date`  --   任务附加评语, 一般用于任务取消时
-      - material(object) -- 当action为5开头时才会有这个键值
+      - material(object)
         - _id `String` -- 物资_id
         - id `Number` -- 物资编号
         - type `String` -- 物资类型
@@ -1031,8 +1040,13 @@ others结构：
         - width `Number` -- 物资长度，该系统中固定为1
         - length `Number` -- 物资长度，该系统中固定为1
         - status `Number` -- 状态码，详见 db doc
+        - repository_id `number` -- 仓库id, 0表示入库
+        - location_id `number` -- 位置的id
+        - layer `number` -- 原层
         - last_migrations `String` -- 最近一次搬运记录_id
         - location_update_time `Date(String)` -- 位置更新时间
+      - migration(object) -- 当action为5开头时才会有这个键值
+        - date  `Date` --   任务完成时间
         - from_repository `number` -- 原仓库, 仓库id, 0表示入库
         - from_location `number` -- 原位置, 原位置的id
         - from_layer `number` -- 原层
@@ -1044,7 +1058,6 @@ others结构：
         - repository `Number` --  错误仓库
         - location `Number` --  错误位置
         - layer `Number` -- 错误所在的层
-        - material `Number` -- 物资id, 如果错误码为2，则为空值
         - image `Number` --  照相图片，错误照片，圈出错误
      
 + Response 200 (application/json)
@@ -1067,14 +1080,19 @@ others结构：
             "width": 1,
             "length": 2,
             "status": 300,
+            "repository_id": 2,
+            "location_id": 12,
+            "layer": 1,
+            "location_update_time": "2017-04-06T04:57:36.801Z"
+        },
+        "migration": {
+            "date": "2017-04-06T04:57:36.801Z",
             "from_repository": 2,
             "from_location": 12,
             "from_layer": 1,
             "to_repository": -1,
             "to_location": 0,
             "to_layer": 0,
-            "last_migrations": "1234",
-            "location_update_time": "2017-04-06T04:57:36.801Z"
         }
     }, ...]
 
@@ -1141,7 +1159,7 @@ others结构：
       - start_time  `Date` --   任务开始时间
       - end_time   `Date`  --   任务结束时间
       - remark     `Date`  --   任务附加评语, 一般用于任务取消时
-      - material(object) -- 当action为5开头时才会有这个键值
+      - material(object)
         - _id `String` -- 物资_id
         - id `Number` -- 物资编号
         - type `String` -- 物资类型
@@ -1152,8 +1170,13 @@ others结构：
         - width `Number` -- 物资长度，该系统中固定为1
         - length `Number` -- 物资长度，该系统中固定为1
         - status `Number` -- 状态码，详见 db doc
+        - repository_id `number` -- 仓库id, 0表示入库
+        - location_id `number` -- 位置的id
+        - layer `number` -- 原层
         - last_migrations `String` -- 最近一次搬运记录_id
         - location_update_time `Date(String)` -- 位置更新时间
+      - migration(object) -- 当action为5开头时才会有这个键值
+        - date  `Date` --   任务完成时间
         - from_repository `number` -- 原仓库, 仓库id, 0表示入库
         - from_location `number` -- 原位置, 原位置的id
         - from_layer `number` -- 原层
@@ -1165,7 +1188,6 @@ others结构：
         - repository `Number` --  错误仓库
         - location `Number` --  错误位置
         - layer `Number` -- 错误所在的层
-        - material `Number` -- 物资id, 如果错误码为2，则为空值
         - image `Number` --  照相图片，错误照片，圈出错误
      
 
@@ -1188,7 +1210,7 @@ others结构：
         "end_time":  "2017-04-06T04:57:36.801Z",
         "remark": "",
         "material": {
-            "_id": "dsafdsadsaf32413141kl2",
+            "_id": "dsfklasdafkasfa",
             "id": 1491451593158,
             "type": "tester",
             "description": "wonderful repository",
@@ -1198,14 +1220,19 @@ others结构：
             "width": 1,
             "length": 2,
             "status": 300,
+            "repository_id": 2,
+            "location_id": 12,
+            "layer": 1,
+            "location_update_time": "2017-04-06T04:57:36.801Z"
+        },
+        "migration": {
+            "date": "2017-04-06T04:57:36.801Z",
             "from_repository": 2,
             "from_location": 12,
             "from_layer": 1,
             "to_repository": -1,
             "to_location": 0,
             "to_layer": 0,
-            "last_migrations": "1234",
-            "location_update_time": "2017-04-06T04:57:36.801Z"
         }
     }, ...]
 
@@ -1245,12 +1272,20 @@ others结构：
   - height `Number` -- 物资长度，该系统中固定为1
   - width `Number` -- 物资长度，该系统中固定为1
   - length `Number` -- 物资长度，该系统中固定为1
-  - repository_id `Number` -- 储存仓库的id
-  - location_id `Number` -- 仓库中位置的id
-  - layer `Number` -- 位置中的层
   - status `Number` -- 状态码，详见 db doc
+  - repository_id `number` -- 仓库id, 0表示入库
+  - location_id `number` -- 位置的id
+  - layer `number` -- 原层
   - last_migrations `String` -- 最近一次搬运记录_id
   - location_update_time `Date(String)` -- 位置更新时间
+- migration(object) -- 当action为5开头时才会有这个键值
+  - date  `Date` --   任务完成时间
+  - from_repository `number` -- 原仓库, 仓库id, 0表示入库
+  - from_location `number` -- 原位置, 原位置的id
+  - from_layer `number` -- 原层
+  - to_repository `number` -- 目标仓库, 仓库id, -1表示出库
+  - to_location `number` -- 目标位置, 目标位置的id
+  - to_layer `number` -- 目标层
 
 + Response 200 (application/json)
 
@@ -1274,7 +1309,7 @@ others结构：
             "last_login_time": 1491451593158
         },
         "material": {
-            "_id": "dsafdsadsaf32413141kl2",
+            "_id": "dsfklasdafkasfa",
             "id": 1491451593158,
             "type": "tester",
             "description": "wonderful repository",
@@ -1283,12 +1318,20 @@ others结构：
             "height": 1,
             "width": 1,
             "length": 2,
-            "repository_id": 3,
-            "location_id": 2,
-            "layer": 0,
             "status": 300,
-            "last_migrations": "1234",
+            "repository_id": 2,
+            "location_id": 12,
+            "layer": 1,
             "location_update_time": "2017-04-06T04:57:36.801Z"
+        },
+        "migration": {
+            "date": "2017-04-06T04:57:36.801Z",
+            "from_repository": 2,
+            "from_location": 12,
+            "from_layer": 1,
+            "to_repository": -1,
+            "to_location": 0,
+            "to_layer": 0,
         }
     }
 

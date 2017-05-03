@@ -601,8 +601,8 @@
 </ul>
 </li>
 </ul>
-<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>String</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>仓库的_id</p>
-</dd></dl></div></div></div><hr class="split"><div class="right"><div class="definition"><span class="method delete">DELETE</span>&nbsp;<span class="uri"><span class="hostname"></span>/repository/<span class="hljs-attribute" title="id">id</span></span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="repository-repository-delete" class="action delete"><h4 class="action-heading"><div class="name">删除仓库</div><a href="#repository-repository-delete" class="method delete">DELETE</a><code class="uri">/repository/{id}</code></h4><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>String</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>仓库的_id</p>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>String</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>仓库的id</p>
+</dd></dl></div></div></div><hr class="split"><div class="right"><div class="definition"><span class="method delete">DELETE</span>&nbsp;<span class="uri"><span class="hostname"></span>/repository/<span class="hljs-attribute" title="id">id</span></span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="repository-repository-delete" class="action delete"><h4 class="action-heading"><div class="name">删除仓库</div><a href="#repository-repository-delete" class="method delete">DELETE</a><code class="uri">/repository/{id}</code></h4><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>String</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>仓库的id</p>
 </dd></dl></div></div></div><hr class="split"><div class="middle"><div id="repository-repostories" class="resource"><h3 class="resource-heading">Repostories <a href="#repository-repostories" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/repositories</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[{
     "<span class="hljs-attribute">_id</span>": <span class="hljs-value"><span class="hljs-string">"dsafkhklsdfakfsda"</span></span>,
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
@@ -695,7 +695,7 @@
 </ul>
 </li>
 </ul>
-<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>String</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>仓库的_id</p>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>String</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>仓库的id</p>
 </dd></dl></div></div></div><hr class="split"><div class="middle"><div id="repository-location" class="resource"><h3 class="resource-heading">Location <a href="#repository-location" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/repository/<span class="hljs-attribute" title="id">id</span>/empty-location?<span class="hljs-attribute">num=</span><span class="hljs-literal"></span></span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code><span class="hljs-comment">// HTTP1.1 GET /repository/1/empty-location?num=10</span>
 [{
     <span class="hljs-string">"location"</span>: <span class="hljs-number">3</span>,
@@ -731,7 +731,7 @@
 </ul>
 </li>
 </ul>
-<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>String</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>仓库的_id</p>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>String</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>仓库的id</p>
 </dd><dt>width</dt><dd><code>Number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>1</span></span>&nbsp;<p>物资的宽度</p>
 </dd><dt>length</dt><dd><code>Number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>1</span></span>&nbsp;<p>物资的长度</p>
 </dd><dt>height</dt><dd><code>Number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>1</span></span>&nbsp;<p>物资的高度</p>
@@ -881,7 +881,7 @@
         "<span class="hljs-attribute">last_login_time</span>": <span class="hljs-value"><span class="hljs-number">1491451593158</span>
     </span>}</span>,
     "<span class="hljs-attribute">material</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">_id</span>": <span class="hljs-value"><span class="hljs-string">"dsafdsadsaf32413141kl2"</span></span>,
+        "<span class="hljs-attribute">_id</span>": <span class="hljs-value"><span class="hljs-string">"dsfklasdafkasfa"</span></span>,
         "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1491451593158</span></span>,
         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"tester"</span></span>,
         "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"wonderful repository"</span></span>,
@@ -891,15 +891,20 @@
         "<span class="hljs-attribute">width</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
         "<span class="hljs-attribute">length</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
         "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">300</span></span>,
-        "<span class="hljs-attribute">from_repository</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
-        "<span class="hljs-attribute">from_location</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-        "<span class="hljs-attribute">from_layer</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-        "<span class="hljs-attribute">to_repository</span>": <span class="hljs-value"><span class="hljs-number">12</span></span>,
-        "<span class="hljs-attribute">to_location</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
-        "<span class="hljs-attribute">to_layer</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-        "<span class="hljs-attribute">last_migrations</span>": <span class="hljs-value"><span class="hljs-string">"1234"</span></span>,
+        "<span class="hljs-attribute">repository_id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+        "<span class="hljs-attribute">location_id</span>": <span class="hljs-value"><span class="hljs-number">12</span></span>,
+        "<span class="hljs-attribute">layer</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
         "<span class="hljs-attribute">location_update_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span>
-    </span>}
+    </span>}</span>,
+    "<span class="hljs-attribute">migration</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span></span>,
+        "<span class="hljs-attribute">from_repository</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+        "<span class="hljs-attribute">from_location</span>": <span class="hljs-value"><span class="hljs-number">12</span></span>,
+        "<span class="hljs-attribute">from_layer</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">to_repository</span>": <span class="hljs-value">-<span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">to_location</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">to_layer</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    }
 </span>}, ...]</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="task-tasks-get" class="action get"><h4 class="action-heading"><div class="name">获取所有任务信息</div><a href="#task-tasks-get" class="method get">GET</a><code class="uri">/tasks{?page}</code></h4><p><strong>Response 200 Body</strong></p>
 <ul>
 <li>(array)
@@ -926,7 +931,7 @@
 </ul>
 </li>
 <li>remark     <code>Date</code>  –   任务附加评语, 一般用于任务取消时</li>
-<li>material(object) – 当action为5开头时才会有这个键值
+<li>material(object)
 <ul>
 <li>_id <code>String</code> – 物资_id</li>
 <li>id <code>Number</code> – 物资编号</li>
@@ -938,8 +943,16 @@
 <li>width <code>Number</code> – 物资长度，该系统中固定为1</li>
 <li>length <code>Number</code> – 物资长度，该系统中固定为1</li>
 <li>status <code>Number</code> – 状态码，详见 db doc</li>
+<li>repository_id <code>number</code> – 仓库id, 0表示入库</li>
+<li>location_id <code>number</code> – 位置的id</li>
+<li>layer <code>number</code> – 原层</li>
 <li>last_migrations <code>String</code> – 最近一次搬运记录_id</li>
 <li>location_update_time <code>Date(String)</code> – 位置更新时间</li>
+</ul>
+</li>
+<li>migration(object) – 当action为5开头时才会有这个键值
+<ul>
+<li>date  <code>Date</code> –   任务完成时间</li>
 <li>from_repository <code>number</code> – 原仓库, 仓库id, 0表示入库</li>
 <li>from_location <code>number</code> – 原位置, 原位置的id</li>
 <li>from_layer <code>number</code> – 原层</li>
@@ -954,7 +967,6 @@
 <li>repository <code>Number</code> –  错误仓库</li>
 <li>location <code>Number</code> –  错误位置</li>
 <li>layer <code>Number</code> – 错误所在的层</li>
-<li>material <code>Number</code> – 物资id, 如果错误码为2，则为空值</li>
 <li>image <code>Number</code> –  照相图片，错误照片，圈出错误</li>
 </ul>
 </li>
@@ -1003,15 +1015,20 @@
         "<span class="hljs-attribute">width</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
         "<span class="hljs-attribute">length</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
         "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">300</span></span>,
+        "<span class="hljs-attribute">repository_id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+        "<span class="hljs-attribute">location_id</span>": <span class="hljs-value"><span class="hljs-number">12</span></span>,
+        "<span class="hljs-attribute">layer</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">location_update_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">migration</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span></span>,
         "<span class="hljs-attribute">from_repository</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
         "<span class="hljs-attribute">from_location</span>": <span class="hljs-value"><span class="hljs-number">12</span></span>,
         "<span class="hljs-attribute">from_layer</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
         "<span class="hljs-attribute">to_repository</span>": <span class="hljs-value">-<span class="hljs-number">1</span></span>,
         "<span class="hljs-attribute">to_location</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
         "<span class="hljs-attribute">to_layer</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-        "<span class="hljs-attribute">last_migrations</span>": <span class="hljs-value"><span class="hljs-string">"1234"</span></span>,
-        "<span class="hljs-attribute">location_update_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span>
-    </span>}
+    }
 </span>}, ...]</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="task-staff-s-tasks-post" class="action post"><h4 class="action-heading"><div class="name">接受任务</div><a href="#task-staff-s-tasks-post" class="method post">POST</a><code class="uri">/staff/:sid/tasks</code></h4><blockquote>
 <p>给任务填入staff，设置start_time为当前时间，修改status</p>
 </blockquote>
@@ -1027,7 +1044,7 @@
 <li>publish_time <code>Date</code>– 任务发布时间</li>
 <li>start_time  <code>Date</code> –   任务开始时间</li>
 <li>remark     <code>Date</code>  –   任务附加评语, 一般用于任务取消时</li>
-<li>material(object) – 当action为5开头时才会有这个键值
+<li>material(object)
 <ul>
 <li>_id <code>String</code> – 物资_id</li>
 <li>id <code>Number</code> – 物资编号</li>
@@ -1039,8 +1056,16 @@
 <li>width <code>Number</code> – 物资长度，该系统中固定为1</li>
 <li>length <code>Number</code> – 物资长度，该系统中固定为1</li>
 <li>status <code>Number</code> – 状态码，详见 db doc</li>
+<li>repository_id <code>number</code> – 仓库id, 0表示入库</li>
+<li>location_id <code>number</code> – 位置的id</li>
+<li>layer <code>number</code> – 原层</li>
 <li>last_migrations <code>String</code> – 最近一次搬运记录_id</li>
 <li>location_update_time <code>Date(String)</code> – 位置更新时间</li>
+</ul>
+</li>
+<li>migration(object) – 当action为5开头时才会有这个键值
+<ul>
+<li>date  <code>Date</code> –   任务完成时间</li>
 <li>from_repository <code>number</code> – 原仓库, 仓库id, 0表示入库</li>
 <li>from_location <code>number</code> – 原位置, 原位置的id</li>
 <li>from_layer <code>number</code> – 原层</li>
@@ -1055,7 +1080,6 @@
 <li>repository <code>Number</code> –  错误仓库</li>
 <li>location <code>Number</code> –  错误位置</li>
 <li>layer <code>Number</code> – 错误所在的层</li>
-<li>material <code>Number</code> – 物资id, 如果错误码为2，则为空值</li>
 <li>image <code>Number</code> –  照相图片，错误照片，圈出错误</li>
 </ul>
 </li>
@@ -1117,7 +1141,7 @@
     "<span class="hljs-attribute">end_time</span>":  <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span></span>,
     "<span class="hljs-attribute">remark</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
     "<span class="hljs-attribute">material</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">_id</span>": <span class="hljs-value"><span class="hljs-string">"dsafdsadsaf32413141kl2"</span></span>,
+        "<span class="hljs-attribute">_id</span>": <span class="hljs-value"><span class="hljs-string">"dsfklasdafkasfa"</span></span>,
         "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1491451593158</span></span>,
         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"tester"</span></span>,
         "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"wonderful repository"</span></span>,
@@ -1127,15 +1151,20 @@
         "<span class="hljs-attribute">width</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
         "<span class="hljs-attribute">length</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
         "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">300</span></span>,
+        "<span class="hljs-attribute">repository_id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+        "<span class="hljs-attribute">location_id</span>": <span class="hljs-value"><span class="hljs-number">12</span></span>,
+        "<span class="hljs-attribute">layer</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">location_update_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">migration</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span></span>,
         "<span class="hljs-attribute">from_repository</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
         "<span class="hljs-attribute">from_location</span>": <span class="hljs-value"><span class="hljs-number">12</span></span>,
         "<span class="hljs-attribute">from_layer</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
         "<span class="hljs-attribute">to_repository</span>": <span class="hljs-value">-<span class="hljs-number">1</span></span>,
         "<span class="hljs-attribute">to_location</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
         "<span class="hljs-attribute">to_layer</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-        "<span class="hljs-attribute">last_migrations</span>": <span class="hljs-value"><span class="hljs-string">"1234"</span></span>,
-        "<span class="hljs-attribute">location_update_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span>
-    </span>}
+    }
 </span>}, ...]</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="task-staff-s-tasks-get" class="action get"><h4 class="action-heading"><div class="name">获取特定职员的任务</div><a href="#task-staff-s-tasks-get" class="method get">GET</a><code class="uri">/staff/{sid}/tasks{?page}</code></h4><p><strong>Response 200 Body</strong></p>
 <ul>
 <li>(array)
@@ -1149,7 +1178,7 @@
 <li>start_time  <code>Date</code> –   任务开始时间</li>
 <li>end_time   <code>Date</code>  –   任务结束时间</li>
 <li>remark     <code>Date</code>  –   任务附加评语, 一般用于任务取消时</li>
-<li>material(object) – 当action为5开头时才会有这个键值
+<li>material(object)
 <ul>
 <li>_id <code>String</code> – 物资_id</li>
 <li>id <code>Number</code> – 物资编号</li>
@@ -1161,8 +1190,16 @@
 <li>width <code>Number</code> – 物资长度，该系统中固定为1</li>
 <li>length <code>Number</code> – 物资长度，该系统中固定为1</li>
 <li>status <code>Number</code> – 状态码，详见 db doc</li>
+<li>repository_id <code>number</code> – 仓库id, 0表示入库</li>
+<li>location_id <code>number</code> – 位置的id</li>
+<li>layer <code>number</code> – 原层</li>
 <li>last_migrations <code>String</code> – 最近一次搬运记录_id</li>
 <li>location_update_time <code>Date(String)</code> – 位置更新时间</li>
+</ul>
+</li>
+<li>migration(object) – 当action为5开头时才会有这个键值
+<ul>
+<li>date  <code>Date</code> –   任务完成时间</li>
 <li>from_repository <code>number</code> – 原仓库, 仓库id, 0表示入库</li>
 <li>from_location <code>number</code> – 原位置, 原位置的id</li>
 <li>from_layer <code>number</code> – 原层</li>
@@ -1177,7 +1214,6 @@
 <li>repository <code>Number</code> –  错误仓库</li>
 <li>location <code>Number</code> –  错误位置</li>
 <li>layer <code>Number</code> – 错误所在的层</li>
-<li>material <code>Number</code> – 物资id, 如果错误码为2，则为空值</li>
 <li>image <code>Number</code> –  照相图片，错误照片，圈出错误</li>
 </ul>
 </li>
@@ -1191,41 +1227,49 @@
 </dd><dt>limit</dt><dd><code>Number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>10</span></span>&nbsp;<p>每页几项</p>
 </dd><dt>others</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<p>见开头readme</p>
 </dd></dl></div></div></div><hr class="split"><div class="middle"><div id="task-task-with-migration" class="resource"><h3 class="resource-heading">Task with Migration <a href="#task-task-with-migration" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/migration/<span class="hljs-attribute" title="id">id</span>/task</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-  "<span class="hljs-attribute">_id</span>": <span class="hljs-value"><span class="hljs-string">"dsafdsadsaf32413141kl2"</span></span>,
-  "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
-  "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
-  "<span class="hljs-attribute">publish_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span></span>,
-  "<span class="hljs-attribute">start_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span></span>,
-  "<span class="hljs-attribute">end_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span></span>,
-  "<span class="hljs-attribute">remark</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
-  "<span class="hljs-attribute">staff</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">_id</span>": <span class="hljs-value"><span class="hljs-string">"dsafdsadsaf32413141kl2"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"因幡帝"</span></span>,
-    "<span class="hljs-attribute">account</span>": <span class="hljs-value"><span class="hljs-string">"inaba_tewi"</span></span>,
-    "<span class="hljs-attribute">passwd</span>": <span class="hljs-value"><span class="hljs-string">"123456"</span></span>,
-    "<span class="hljs-attribute">sex</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-    "<span class="hljs-attribute">age</span>": <span class="hljs-value"><span class="hljs-number">222</span></span>,
-    "<span class="hljs-attribute">permission</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
-    "<span class="hljs-attribute">signup_time</span>": <span class="hljs-value"><span class="hljs-number">1491451593158</span></span>,
-    "<span class="hljs-attribute">last_login_time</span>": <span class="hljs-value"><span class="hljs-number">1491451593158</span>
-  </span>}</span>,
-  "<span class="hljs-attribute">material</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">_id</span>": <span class="hljs-value"><span class="hljs-string">"dsafdsadsaf32413141kl2"</span></span>,
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1491451593158</span></span>,
-    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"tester"</span></span>,
-    "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"wonderful repository"</span></span>,
-    "<span class="hljs-attribute">import_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span></span>,
-    "<span class="hljs-attribute">estimated_export_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span></span>,
-    "<span class="hljs-attribute">height</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
-    "<span class="hljs-attribute">width</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
-    "<span class="hljs-attribute">length</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
-    "<span class="hljs-attribute">repository_id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
-    "<span class="hljs-attribute">location_id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
-    "<span class="hljs-attribute">layer</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-    "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">300</span></span>,
-    "<span class="hljs-attribute">last_migrations</span>": <span class="hljs-value"><span class="hljs-string">"1234"</span></span>,
-    "<span class="hljs-attribute">location_update_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span>
-  </span>}
+    "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+    "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">publish_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span></span>,
+    "<span class="hljs-attribute">start_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span></span>,
+    "<span class="hljs-attribute">end_time</span>":  <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span></span>,
+    "<span class="hljs-attribute">remark</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">staff</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">_id</span>": <span class="hljs-value"><span class="hljs-string">"dsafdsadsaf32413141kl2"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"因幡帝"</span></span>,
+        "<span class="hljs-attribute">account</span>": <span class="hljs-value"><span class="hljs-string">"inaba_tewi"</span></span>,
+        "<span class="hljs-attribute">passwd</span>": <span class="hljs-value"><span class="hljs-string">"123456"</span></span>,
+        "<span class="hljs-attribute">sex</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">age</span>": <span class="hljs-value"><span class="hljs-number">222</span></span>,
+        "<span class="hljs-attribute">permission</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">signup_time</span>": <span class="hljs-value"><span class="hljs-number">1491451593158</span></span>,
+        "<span class="hljs-attribute">last_login_time</span>": <span class="hljs-value"><span class="hljs-number">1491451593158</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">material</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">_id</span>": <span class="hljs-value"><span class="hljs-string">"dsfklasdafkasfa"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1491451593158</span></span>,
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"tester"</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"wonderful repository"</span></span>,
+        "<span class="hljs-attribute">import_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span></span>,
+        "<span class="hljs-attribute">estimated_export_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span></span>,
+        "<span class="hljs-attribute">height</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">width</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">length</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">300</span></span>,
+        "<span class="hljs-attribute">repository_id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+        "<span class="hljs-attribute">location_id</span>": <span class="hljs-value"><span class="hljs-number">12</span></span>,
+        "<span class="hljs-attribute">layer</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">location_update_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">migration</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2017-04-06T04:57:36.801Z"</span></span>,
+        "<span class="hljs-attribute">from_repository</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+        "<span class="hljs-attribute">from_location</span>": <span class="hljs-value"><span class="hljs-number">12</span></span>,
+        "<span class="hljs-attribute">from_layer</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">to_repository</span>": <span class="hljs-value">-<span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">to_location</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">to_layer</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    }
 </span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="task-task-with-migration-get" class="action get"><h4 class="action-heading"><div class="name">获取特定搬运信息的相应任务</div><a href="#task-task-with-migration-get" class="method get">GET</a><code class="uri">/migration/{id}/task</code></h4><p><strong>Response 200 Body</strong></p>
 <ul>
 <li>
@@ -1275,12 +1319,24 @@
 <li>height <code>Number</code> – 物资长度，该系统中固定为1</li>
 <li>width <code>Number</code> – 物资长度，该系统中固定为1</li>
 <li>length <code>Number</code> – 物资长度，该系统中固定为1</li>
-<li>repository_id <code>Number</code> – 储存仓库的id</li>
-<li>location_id <code>Number</code> – 仓库中位置的id</li>
-<li>layer <code>Number</code> – 位置中的层</li>
 <li>status <code>Number</code> – 状态码，详见 db doc</li>
+<li>repository_id <code>number</code> – 仓库id, 0表示入库</li>
+<li>location_id <code>number</code> – 位置的id</li>
+<li>layer <code>number</code> – 原层</li>
 <li>last_migrations <code>String</code> – 最近一次搬运记录_id</li>
 <li>location_update_time <code>Date(String)</code> – 位置更新时间</li>
+</ul>
+</li>
+<li>
+<p>migration(object) – 当action为5开头时才会有这个键值</p>
+<ul>
+<li>date  <code>Date</code> –   任务完成时间</li>
+<li>from_repository <code>number</code> – 原仓库, 仓库id, 0表示入库</li>
+<li>from_location <code>number</code> – 原位置, 原位置的id</li>
+<li>from_layer <code>number</code> – 原层</li>
+<li>to_repository <code>number</code> – 目标仓库, 仓库id, -1表示出库</li>
+<li>to_location <code>number</code> – 目标位置, 目标位置的id</li>
+<li>to_layer <code>number</code> – 目标层</li>
 </ul>
 </li>
 </ul>
