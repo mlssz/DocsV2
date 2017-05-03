@@ -761,8 +761,10 @@ others结构：
 
 - (array)
     - (object)
+        - _id `String` -- 错误_id
         - fixed `Boolean` -- 修复完成
         - error_code `Number` -- 错误码, 1位置错误2无法识别
+        - create_date `Date` -- 创建时间
         - repository `Number` --  错误仓库
         - location `Number` --  错误位置
         - layer `Number` -- ❎错误层
@@ -779,9 +781,11 @@ others结构：
 + Response 200 (application/json)
 
     [{
+        "_id": "dsafsadf",
         "fixed": false,
         "error_code": 1,
         "repository": 1,
+        "create_date": "2017-04-06T04:57:36.801Z",
         "location": 3,
         "layer": 0,
         "material": 32143214,
@@ -810,8 +814,12 @@ others结构：
 - end_time   `Date`  --   任务结束时间
 - remark     `Date`  --   任务附加评语, 一般用于任务取消时
 - error(object) -- 当action为6开头时才会有这个键值
+  - _id `String` -- 错误_id
+  - fixed `Boolean` -- 修复完成
+  - error_code `Number` -- 错误码, 1位置错误2无法识别
   - repository `Number` --  错误仓库
   - location `Number` --  错误位置
+  - create_date `Date` -- 创建时间
   - layer `Number` (required) -- 错误所在的层
   - material `Number` -- 物资id, 如果错误码为2，则为空值
   - image `Number` --  照相图片，错误照片，圈出错误
@@ -837,8 +845,12 @@ others结构：
         "end_time":  "2017-04-06T04:57:36.801Z",
         "remark": "",
         "error": {
+          "_id": "dsafsadf",
+          "fixed": false,
+          "error_code": 1,
           "repository": 1,
           "location": 3,
+          "create_date": "2017-04-06T04:57:36.801Z",
           "layer": 0,
           "material": 32143214,
           "image": "/errors/a.png"
@@ -907,6 +919,7 @@ others结构：
         - last_migrations `String` -- 最近一次搬运记录_id
         - location_update_time `Date(String)` -- 位置更新时间
       - migration(object) -- 当action为5开头时才会有这个键值
+        - _id `String` -- 移动信息_id
         - date  `Date` --   任务完成时间
         - from_repository `number` -- 原仓库, 仓库id, 0表示入库
         - from_location `number` -- 原位置, 原位置的id
@@ -916,9 +929,12 @@ others结构：
         - to_layer `number` -- 目标层
       - error(object) -- 当action为6开头时才会有这个键值
         - _id `String` -- 错误_id
+        - fixed `Boolean` -- 修复完成
+        - error_code `Number` -- 错误码, 1位置错误2无法识别
         - repository `Number` --  错误仓库
         - location `Number` --  错误位置
         - layer `Number` -- 错误所在的层
+        - create_date `Date` -- 创建时间
         - image `Number` --  照相图片，错误照片，圈出错误
 
 
@@ -966,6 +982,7 @@ others结构：
             "location_update_time": "2017-04-06T04:57:36.801Z"
         },
         "migration": {
+            "_id": "dsafdsadsaf32413141kl2",
             "date": "2017-04-06T04:57:36.801Z",
             "from_repository": 2,
             "from_location": 12,
@@ -1046,6 +1063,7 @@ others结构：
         - last_migrations `String` -- 最近一次搬运记录_id
         - location_update_time `Date(String)` -- 位置更新时间
       - migration(object) -- 当action为5开头时才会有这个键值
+        - _id `String` -- 移动信息_id
         - date  `Date` --   任务完成时间
         - from_repository `number` -- 原仓库, 仓库id, 0表示入库
         - from_location `number` -- 原位置, 原位置的id
@@ -1055,7 +1073,10 @@ others结构：
         - to_layer `number` -- 目标层
       - error(object) -- 当action为6开头时才会有这个键值
         - _id `String` -- 错误_id
+        - fixed `Boolean` -- 修复完成
+        - error_code `Number` -- 错误码, 1位置错误2无法识别
         - repository `Number` --  错误仓库
+        - create_date `Date` -- 创建时间
         - location `Number` --  错误位置
         - layer `Number` -- 错误所在的层
         - image `Number` --  照相图片，错误照片，圈出错误
@@ -1086,6 +1107,7 @@ others结构：
             "location_update_time": "2017-04-06T04:57:36.801Z"
         },
         "migration": {
+            "_id": "dsfklasdafkasfa",
             "date": "2017-04-06T04:57:36.801Z",
             "from_repository": 2,
             "from_location": 12,
@@ -1176,6 +1198,7 @@ others结构：
         - last_migrations `String` -- 最近一次搬运记录_id
         - location_update_time `Date(String)` -- 位置更新时间
       - migration(object) -- 当action为5开头时才会有这个键值
+        - _id `String` -- 物资_id
         - date  `Date` --   任务完成时间
         - from_repository `number` -- 原仓库, 仓库id, 0表示入库
         - from_location `number` -- 原位置, 原位置的id
@@ -1185,8 +1208,11 @@ others结构：
         - to_layer `number` -- 目标层
       - error(object) -- 当action为6开头时才会有这个键值
         - _id `String` -- 错误_id
+        - fixed `Boolean` -- 修复完成
+        - error_code `Number` -- 错误码, 1位置错误2无法识别
         - repository `Number` --  错误仓库
         - location `Number` --  错误位置
+        - create_date `Date` -- 创建时间
         - layer `Number` -- 错误所在的层
         - image `Number` --  照相图片，错误照片，圈出错误
      
@@ -1226,6 +1252,7 @@ others结构：
             "location_update_time": "2017-04-06T04:57:36.801Z"
         },
         "migration": {
+            "_id": "dsfklasdafkasfa",
             "date": "2017-04-06T04:57:36.801Z",
             "from_repository": 2,
             "from_location": 12,
@@ -1279,6 +1306,7 @@ others结构：
   - last_migrations `String` -- 最近一次搬运记录_id
   - location_update_time `Date(String)` -- 位置更新时间
 - migration(object) -- 当action为5开头时才会有这个键值
+  - _id `String` -- 移动信息_id
   - date  `Date` --   任务完成时间
   - from_repository `number` -- 原仓库, 仓库id, 0表示入库
   - from_location `number` -- 原位置, 原位置的id
@@ -1325,6 +1353,7 @@ others结构：
             "location_update_time": "2017-04-06T04:57:36.801Z"
         },
         "migration": {
+            "_id": "dsfklasdafkasfa",
             "date": "2017-04-06T04:57:36.801Z",
             "from_repository": 2,
             "from_location": 12,
