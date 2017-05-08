@@ -1397,18 +1397,50 @@
   "<span class="hljs-attribute">permission</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
   "<span class="hljs-attribute">signup_time</span>": <span class="hljs-value"><span class="hljs-number">1491451593158</span></span>,
   "<span class="hljs-attribute">last_login_time</span>": <span class="hljs-value"><span class="hljs-number">1491451593158</span>
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="staff-staff-get" class="action get"><h4 class="action-heading"><div class="name">获取特定用户的信息</div><a href="#staff-staff-get" class="method get">GET</a><code class="uri">/staff/{id}</code></h4><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>String</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>职员的_id</p>
-</dd></dl></div></div></div><hr class="split"><div class="right"><div class="definition"><span class="method patch">PATCH</span>&nbsp;<span class="uri"><span class="hostname"></span>/staff/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="staff-staff-get" class="action get"><h4 class="action-heading"><div class="name">获取特定用户的信息</div><a href="#staff-staff-get" class="method get">GET</a><code class="uri">/staff/{id}</code></h4><p><strong>Response 200 Body</strong></p>
+<ul>
+<li>
+<p>_id <code>String</code> – 职员_id</p>
+</li>
+<li>
+<p>name <code>String</code> – 职员名</p>
+</li>
+<li>
+<p>account <code>String</code> – 职员账户</p>
+</li>
+<li>
+<p>passwd <code>String</code> – 职员密码</p>
+</li>
+<li>
+<p>sex <code>Number</code> – 性别，0女1男</p>
+</li>
+<li>
+<p>age <code>Number</code>  – 年龄</p>
+</li>
+<li>
+<p>permission <code>Number</code> – 职员权限，0管理员1员工99root</p>
+</li>
+<li>
+<p>signup_time <code>Date</code> – 注册时间</p>
+</li>
+<li>
+<p>last_login_time <code>Date</code> – 最近登录时间</p>
+</li>
+</ul>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>String</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>职员的_id</p>
+</dd></dl></div></div></div><hr class="split"><div class="right"><div class="definition"><span class="method patch">PATCH</span>&nbsp;<span class="uri"><span class="hostname"></span>/staff/<span class="hljs-attribute" title="id">id</span></span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
     "<span class="hljs-attribute">age</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
     "<span class="hljs-attribute">permission</span>": <span class="hljs-value"><span class="hljs-number">99</span></span>,
-}</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="staff-staff-patch" class="action patch"><h4 class="action-heading"><div class="name">修改职员的部分信息</div><a href="#staff-staff-patch" class="method patch">PATCH</a><code class="uri">/staff/</code></h4><blockquote>
+}</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="staff-staff-patch" class="action patch"><h4 class="action-heading"><div class="name">修改职员的部分信息</div><a href="#staff-staff-patch" class="method patch">PATCH</a><code class="uri">/staff/{id}</code></h4><blockquote>
 <p>该接口用于修改部分信息。请求体为一个对象，它的keys都是要修改的键，values是新的值</p>
 </blockquote>
 <p><strong>Request Body</strong></p>
 <ul>
 <li>key: value  – key都是要修改的键，value是新的值，可多对</li>
 </ul>
-</div></div><hr class="split"><div class="right"><div class="definition"><span class="method delete">DELETE</span>&nbsp;<span class="uri"><span class="hostname"></span>/staff/</span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="staff-staff-delete" class="action delete"><h4 class="action-heading"><div class="name">删除特定职员</div><a href="#staff-staff-delete" class="method delete">DELETE</a><code class="uri">/staff/</code></h4></div></div><hr class="split"><div class="middle"><div id="staff-auth" class="resource"><h3 class="resource-heading">Auth <a href="#staff-auth" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname"></span>/staff/auth</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>String</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>职员的_id</p>
+</dd></dl></div></div></div><hr class="split"><div class="right"><div class="definition"><span class="method delete">DELETE</span>&nbsp;<span class="uri"><span class="hostname"></span>/staff/<span class="hljs-attribute" title="id">id</span></span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="staff-staff-delete" class="action delete"><h4 class="action-heading"><div class="name">删除特定职员</div><a href="#staff-staff-delete" class="method delete">DELETE</a><code class="uri">/staff/{id}</code></h4><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>String</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>职员的_id</p>
+</dd></dl></div></div></div><hr class="split"><div class="middle"><div id="staff-auth" class="resource"><h3 class="resource-heading">Auth <a href="#staff-auth" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname"></span>/staff/auth</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">account</span>": <span class="hljs-value"><span class="hljs-string">"fuck1234"</span></span>,
   "<span class="hljs-attribute">passwd</span>": <span class="hljs-value"><span class="hljs-string">"sqs21995"</span>
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{

@@ -1410,10 +1410,10 @@ others结构：
 
 ## Staff [/staff/{id}]
 
-### 获取特定用户的信息 [GET]
-
 + Parameters
     + id (String, required) - 职员的_id
+
+### 获取特定用户的信息 [GET]
 
 **Response 200 Body**
 
