@@ -64,6 +64,7 @@ others结构：
 - status `Number` -- 状态码，详见 db doc
 - last_migrations `String` -- 最近一次搬运记录_id
 - location_update_time `Date(String)` -- 位置更新时间
+- has_print_barcode `Boolean` -- 是否已打印条形码
 
 + Response 200 (application/json)
     {
@@ -81,6 +82,7 @@ others结构：
         "location_id": 2,
         "status": 300,
         "last_migrations": "1234",
+        "has_print_barcode": false,
         "location_update_time": "2017-04-06T04:57:36.801Z"
     }
 
@@ -107,6 +109,7 @@ others结构：
 - status `Number` -- 状态码，详见 db doc
 - last_migrations `String` -- 最近一次搬运记录_id
 - location_update_time `Date(String)` -- 位置更新时间
+- has_print_barcode `Boolean` -- 是否已打印条形码
 
 + Response 200 (application/json)
     {
@@ -124,6 +127,7 @@ others结构：
         "location_id": 2,
         "status": 300,
         "last_migrations": "1234",
+        "has_print_barcode": false,
         "location_update_time": "2017-04-06T04:57:36.801Z"
     }
 
@@ -331,6 +335,7 @@ others结构：
       - status `Number` -- 状态码，详见 db doc
       - last_migrations `String` -- 最近一次搬运记录_id
       - location_update_time `Date(String)` -- 位置更新时间
+      - has_print_barcode `Boolean` -- 是否已打印条形码
 
 + Request (application/json)
     {
@@ -363,6 +368,7 @@ others结构：
          "layer": 1,
          "status": 300,
          "last_migrations": "1234",
+         "has_print_barcode": false,
          "location_update_time": "2017-04-06T04:57:36.801Z"
     }...]
     
@@ -407,6 +413,7 @@ others结构：
       - status `Number` -- 状态码，详见 db doc
       - last_migrations `String` -- 最近一次搬运记录_id
       - location_update_time `Date(String)` -- 位置更新时间
+      - has_print_barcode `Boolean` -- 是否已打印条形码
 
 + Parameters
     + page (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
@@ -432,6 +439,7 @@ others结构：
          "layer": 1,
          "status": 300,
          "last_migrations": "1234",
+         "has_print_barcode": false,
          "location_update_time": "2017-04-06T04:57:36.801Z"
     }, ...]
 
@@ -484,6 +492,7 @@ others结构：
       - status `Number` -- 状态码，详见 db doc
       - last_migrations `String` -- 最近一次搬运记录_id
       - location_update_time `Date(String)` -- 位置更新时间
+      - has_print_barcode `Boolean` -- 是否已打印条形码
 
 + Parameters
     + id (required) - 仓库id
@@ -510,6 +519,7 @@ others结构：
          "layer": 0,
          "status": 300,
          "last_migrations": "1234",
+         "has_print_barcode": false,
          "location_update_time": "2017-04-06T04:57:36.801Z"
     }, ...]
 
@@ -556,6 +566,7 @@ others结构：
       - status `Number` -- 状态码，详见 db doc
       - last_migrations `String` -- 最近一次搬运记录_id
       - location_update_time `Date(String)` -- 位置更新时间
+      - has_print_barcode `Boolean` -- 是否已打印条形码
 
 + Parameters
     + rid (required) - 仓库id
@@ -583,6 +594,7 @@ others结构：
          "layer": 0,
          "status": 300,
          "last_migrations": "1234",
+         "has_print_barcode": false,
          "location_update_time": "2017-04-06T04:57:36.801Z"
     }, ...]
 
@@ -959,6 +971,7 @@ others结构：
         - layer `number` -- 原层
         - last_migrations `String` -- 最近一次搬运记录_id
         - location_update_time `Date(String)` -- 位置更新时间
+        - has_print_barcode `Boolean` -- 是否已打印条形码
       - migration(object) -- 当action为5开头时才会有这个键值
         - _id `String` -- 移动信息_id
         - date  `Date` --   任务完成时间
@@ -1020,6 +1033,7 @@ others结构：
             "repository_id": 2,
             "location_id": 12,
             "layer": 1,
+         "has_print_barcode": false,
             "location_update_time": "2017-04-06T04:57:36.801Z"
         },
         "migration": {
@@ -1103,6 +1117,7 @@ others结构：
         - layer `number` -- 原层
         - last_migrations `String` -- 最近一次搬运记录_id
         - location_update_time `Date(String)` -- 位置更新时间
+        - has_print_barcode `Boolean` -- 是否已打印条形码
       - migration(object) -- 当action为5开头时才会有这个键值
         - _id `String` -- 移动信息_id
         - date  `Date` --   任务完成时间
@@ -1145,6 +1160,7 @@ others结构：
             "repository_id": 2,
             "location_id": 12,
             "layer": 1,
+         "has_print_barcode": false,
             "location_update_time": "2017-04-06T04:57:36.801Z"
         },
         "migration": {
@@ -1238,6 +1254,7 @@ others结构：
         - layer `number` -- 原层
         - last_migrations `String` -- 最近一次搬运记录_id
         - location_update_time `Date(String)` -- 位置更新时间
+        - has_print_barcode `Boolean` -- 是否已打印条形码
       - migration(object) -- 当action为5开头时才会有这个键值
         - _id `String` -- 物资_id
         - date  `Date` --   任务完成时间
@@ -1290,6 +1307,7 @@ others结构：
             "repository_id": 2,
             "location_id": 12,
             "layer": 1,
+         "has_print_barcode": false,
             "location_update_time": "2017-04-06T04:57:36.801Z"
         },
         "migration": {
@@ -1346,6 +1364,7 @@ others结构：
   - layer `number` -- 原层
   - last_migrations `String` -- 最近一次搬运记录_id
   - location_update_time `Date(String)` -- 位置更新时间
+  - has_print_barcode `Boolean` -- 是否已打印条形码
 - migration(object) -- 当action为5开头时才会有这个键值
   - _id `String` -- 移动信息_id
   - date  `Date` --   任务完成时间
@@ -1391,6 +1410,7 @@ others结构：
             "repository_id": 2,
             "location_id": 12,
             "layer": 1,
+         "has_print_barcode": false,
             "location_update_time": "2017-04-06T04:57:36.801Z"
         },
         "migration": {
@@ -1684,6 +1704,7 @@ others结构：
         - status `Number` -- 状态码，详见 db doc
         - last_migrations `String` -- 最近一次搬运记录_id
         - location_update_time `Date(String)` -- 位置更新时间
+        - has_print_barcode `Boolean` -- 是否已打印条形码
 
 + Parameters
     + page (Number, optional) - 当前第几页, 当该值为-1时，返回所有的物资
@@ -1714,6 +1735,7 @@ others结构：
           "layer": 0,
           "status": 300,
           "last_migrations": "1234",
+         "has_print_barcode": false,
           "location_update_time": "2017-04-06T04:57:36.801Z"
         }
     }, ...]
