@@ -43,6 +43,47 @@ others结构：
 
 # Group Material
 
+## 根据id获得一个特定物资 [GET /material/id/{id}]
+
++ Parameters
+    + id (String, required) - 物资的id
+
+ **Response 200 Body**
+- _id `String` -- 物资_id
+- id `Number` -- 物资编号
+- type `String` -- 物资类型
+- description `Date(String)` -- 物资描述
+- import_time `Date(String)` -- 入库时间
+- estimated_export_time   `Date(String)` -- 估计出库时间
+- height `Number` -- 物资长度，该系统中固定为1
+- width `Number` -- 物资长度，该系统中固定为1
+- length `Number` -- 物资长度，该系统中固定为1
+- repository_id `Number` -- 储存仓库的id
+- location_id `Number` -- 仓库中位置的id
+- layer `Number` -- 位置中的层（0， 1， 2）
+- status `Number` -- 状态码，详见 db doc
+- last_migrations `String` -- 最近一次搬运记录_id
+- location_update_time `Date(String)` -- 位置更新时间
+
++ Response 200 (application/json)
+    {
+        "_id": "1491451593158",
+        "id": 1491451593158,
+        "type": "tester",
+        "description": "wonderful repository",
+        "import_time": "2017-04-06T04:57:36.801Z",
+        "estimated_export_time": "2017-04-06T04:57:36.801Z",
+        "height": 1,
+        "width": 1,
+        "length": 2,
+        "repository_id": 3,
+        "layer": 0,
+        "location_id": 2,
+        "status": 300,
+        "last_migrations": "1234",
+        "location_update_time": "2017-04-06T04:57:36.801Z"
+    }
+
 ## Material [/material/{id}]
 
 + Parameters
