@@ -1424,6 +1424,109 @@ others结构：
             "to_layer": 0,
         }
     }
+    
+## Material [/material/id/{id}/task]
+
++ Parameters
+  + id -- 物品id
+
+### 根据物品id得到任务 [GET]
+
+**Response 200 Body**
+
+- _id `String` -- 任务_id
+- action `Number` --  动作，详见文档 db doc
+- status `Number` -- 任务状态, 0未开始1进行中2完成3任务取消
+- publish_time `Date`-- 任务发布时间
+- start_time  `Date` --   任务开始时间
+- end_time   `Date`  --   任务结束时间
+- remark     `Date`  --   任务附加评语, 一般用于任务取消时
+- staff(object)
+  - _id `String` -- 职员_id
+  - name `String`  -- 职员名
+  - account `String`  -- 职员账户
+  - passwd `String`  -- 职员密码
+  - sex `Number`  -- 性别，0女1男
+  - age `Number`   -- 年龄
+  - permission `Number`  -- 职员权限，0管理员1员工99root
+  - signup_time `Date`  -- 注册时间
+  - last_login_time `Date`  -- 最近登录时间
+- material(object)
+  - _id `String` -- 物资_id
+  - id `Number` -- 物资编号
+  - type `String` -- 物资类型
+  - description `Date(String)` -- 物资描述
+  - import_time `Date(String)` -- 入库时间
+  - estimated_export_time   `Date(String)` -- 估计出库时间
+  - height `Number` -- 物资长度，该系统中固定为1
+  - width `Number` -- 物资长度，该系统中固定为1
+  - length `Number` -- 物资长度，该系统中固定为1
+  - status `Number` -- 状态码，详见 db doc
+  - repository_id `number` -- 仓库id, 0表示入库
+  - location_id `number` -- 位置的id
+  - layer `number` -- 原层
+  - last_migrations `String` -- 最近一次搬运记录_id
+  - location_update_time `Date(String)` -- 位置更新时间
+  - has_print_barcode `Boolean` -- 是否已打印条形码
+- migration(object) -- 当action为5开头时才会有这个键值
+  - _id `String` -- 移动信息_id
+  - date  `Date` --   任务完成时间
+  - from_repository `number` -- 原仓库, 仓库id, 0表示入库
+  - from_location `number` -- 原位置, 原位置的id
+  - from_layer `number` -- 原层
+  - to_repository `number` -- 目标仓库, 仓库id, -1表示出库
+  - to_location `number` -- 目标位置, 目标位置的id
+  - to_layer `number` -- 目标层
+
++ Response 200 (application/json)
+
+    {
+        "_id": "dsafdsadsaf32413141kl2",
+        "action": 500,
+        "status": 1,
+        "publish_time": "2017-04-06T04:57:36.801Z",
+        "start_time": "2017-04-06T04:57:36.801Z",
+        "end_time":  "2017-04-06T04:57:36.801Z",
+        "remark": "",
+        "staff": {
+            "_id": "dsafdsadsaf32413141kl2",
+            "name": "因幡帝",
+            "account": "inaba_tewi",
+            "passwd": "123456",
+            "sex": 0,
+            "age": 222,
+            "permission": 1,
+            "signup_time": 1491451593158,
+            "last_login_time": 1491451593158
+        },
+        "material": {
+            "_id": "dsfklasdafkasfa",
+            "id": 1491451593158,
+            "type": "tester",
+            "description": "wonderful repository",
+            "import_time": "2017-04-06T04:57:36.801Z",
+            "estimated_export_time": "2017-04-06T04:57:36.801Z",
+            "height": 1,
+            "width": 1,
+            "length": 2,
+            "status": 300,
+            "repository_id": 2,
+            "location_id": 12,
+            "layer": 1,
+         "has_print_barcode": false,
+            "location_update_time": "2017-04-06T04:57:36.801Z"
+        },
+        "migration": {
+            "_id": "dsfklasdafkasfa",
+            "date": "2017-04-06T04:57:36.801Z",
+            "from_repository": 2,
+            "from_location": 12,
+            "from_layer": 1,
+            "to_repository": -1,
+            "to_location": 0,
+            "to_layer": 0,
+        }
+    }
 
 # Group Staff
 
